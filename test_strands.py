@@ -3,7 +3,7 @@ from strands.models.openai import OpenAIModel
 
 qwen_model = OpenAIModel(
   client_args={
-    "api_key": "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",
+    "api_key": "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",
     "base_url": "https://openrouter.ai/api/v1"
   },
   model_id="qwen/qwen-2.5-72b-instruct",
@@ -15,7 +15,7 @@ qwen_model = OpenAIModel(
 
 claude_model = OpenAIModel(
   client_args={
-    "api_key": "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",
+    "api_key": "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",
     "base_url": "https://openrouter.ai/api/v1"
   },
   model_id="anthropic/claude-sonnet-4",
