@@ -2,6 +2,6 @@
 
 int main()
 {
-    printf("Executing from C code");
+    printf("Executing from C code - 2");
     return 0;
 }
