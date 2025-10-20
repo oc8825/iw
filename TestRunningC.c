@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-int main()
+int main(int argc, char *argv[])
 {
-    printf("Executing from C code - 2");
+    printf("Argument 1: %s\n", argv[1]);
     return 0;
 }

@@ -38,8 +38,35 @@ def main():
                         print(compile_result.stderr)
                         sys.exit(1)
                 else:
-                    
+                    # label which test case this is
+                    print("----------------")
+                    print("Test Case", i)
 
+                    # run named program on this test case
+                    execute_command = [exe]
+                    command_line_args = line.split(" ")
+                    for arg in command_line_args:
+                        execute_command.append(arg)
+                    run_result = subprocess.run(
+                        execute_command,
+                        capture_output=True,
+                        text=True,
+                        shell=True,
+                    )
+
+                    # print standard output
+                    print("Program Output:")
+                    print(run_result.stdout)
+
+                    # print error output
+                    print("Error Output:")
+                    if run_result.stderr:
+                        print(run_result.stderr)
+                    else:
+                        print("None.")
+                    
+                    # print exit status
+                    print()
 
     except Exception as ex:
         parser.print_usage()
