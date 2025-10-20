@@ -20,31 +20,39 @@ def main():
 
         exe = "execute.exe"
 
+        # use filename as input
         with open(args.filename, 'r') as input:
-            for i, line in enumerate(input):
-                if i == 0:
-                    # compile given program
-                    file_to_run = line.strip()
-                    compile_result = subprocess.run(
-                        ["gcc", file_to_run, "-o", exe],
-                        capture_output=True,
-                        text=True,
-                        shell=True,
-                    )
-                    
-                    # check success of compilation
-                    if compile_result.returncode != 0:
-                        print("Unsucessful compile of", file_to_run)
-                        print(compile_result.stderr)
-                        sys.exit(1)
-                else:
+            # process first line, which provides programname
+            program_name = input.readline().strip()
+            program_name_short = program_name.split('.')[0].strip()
+            output_file = program_name_short + ".out"
+
+            # compile given program
+            compile_result = subprocess.run(
+                ["gcc", program_name, "-o", exe],
+                capture_output=True,
+                text=True,
+                shell=True,
+            )
+
+            # verify success of compilation
+            if compile_result.returncode != 0:
+                print("Unsucessful compile of", file_to_run)
+                print(compile_result.stderr)
+                sys.exit(1)
+            
+            # print test cases to programname.out
+            with open(output_file, 'w') as output:
+                for i, line in enumerate(input):
                     # label which test case this is
-                    print("----------------")
-                    print("Test Case", i)
+                    output.write("----------------\n")
+                    test_case_identifier = "Test Case " + str(i + 1)
+                    output.write(test_case_identifier)
+                    output.write("\n")
 
                     # run named program on this test case
                     execute_command = [exe]
-                    command_line_args = line.split(" ")
+                    command_line_args = line.split(' ')
                     for arg in command_line_args:
                         execute_command.append(arg)
                     run_result = subprocess.run(
@@ -55,23 +63,29 @@ def main():
                     )
 
                     # print standard output
-                    print("Program Output:")
-                    print(run_result.stdout)
+                    output.write("Program Output:\n")
+                    output.write(run_result.stdout)
+                    output.write("\n")
 
                     # print error output
-                    print("Error Output:")
+                    output.write("Error Output:\n")
                     if run_result.stderr:
-                        print(run_result.stderr)
+                        output.write(run_result.stderr)
                     else:
-                        print("None.")
+                        output.write("None.")
+                    output.write("\n")
+                    output.write("\n")
                     
                     # print exit status
-                    print()
+                    output.write("Return Code:\n")
+                    output.write(str(run_result.returncode))
+                    output.write("\n")
+                    output.write("\n")
 
     except Exception as ex:
         parser.print_usage()
         print(f"{sys.argv[0]}: {ex}", file=sys.stderr)
         sys.exit(1)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
