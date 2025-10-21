@@ -30,3 +30,5 @@ print("qwen says:", qwen_agent("What is 2 + 3?"))
 
 claude_agent = Agent(model=claude_model, callback_handler=None)
 print("claude says:", claude_agent("What is 3 + 3?"))
+
+# to run, first activate: .venv\Scripts\activate
