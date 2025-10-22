@@ -49,6 +49,10 @@ def main():
                     test_case_identifier = "Test Case " + str(i + 1)
                     output.write(test_case_identifier)
                     output.write("\n")
+                    output.write("Command line arguments:\n")
+                    output.write(line.strip())
+                    output.write("\n")
+                    output.write("\n")
 
                     # run named program on this test case
                     execute_command = [exe]
@@ -77,7 +81,7 @@ def main():
                     output.write("\n")
                     
                     # print exit status
-                    output.write("Return Code:\n")
+                    output.write("Exit Status:\n")
                     output.write(str(run_result.returncode))
                     output.write("\n")
                     output.write("\n")

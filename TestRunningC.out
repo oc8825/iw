@@ -1,5 +1,8 @@
 ----------------
 Test Case 1
+Command line arguments:
+34
+
 Program Output:
 Argument 1: 34
 
@@ -11,6 +14,9 @@ Return Code:
 
 ----------------
 Test Case 2
+Command line arguments:
+56
+
 Program Output:
 Argument 1: 56
 
@@ -22,6 +28,9 @@ Return Code:
 
 ----------------
 Test Case 3
+Command line arguments:
+0
+
 Program Output:
 Argument 1: 0
 
@@ -33,6 +42,9 @@ Return Code:
 
 ----------------
 Test Case 4
+Command line arguments:
+
+
 Program Output:
 Argument 1: (null)
 
@@ -44,6 +56,9 @@ Return Code:
 
 ----------------
 Test Case 5
+Command line arguments:
+7
+
 Program Output:
 Argument 1: 7
 
