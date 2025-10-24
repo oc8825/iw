@@ -1,7 +1,8 @@
 import sys
 import argparse
-import subprocess
-import os
+import re
+#import subprocess
+#import os
 
 # set up argparse
 parser = argparse.ArgumentParser(
@@ -18,11 +19,63 @@ parser.add_argument("out2",
     help="the name of the second output file to compare"
 )
 
+def split_test_cases(full_out):
+    return [
+        test_case.strip() 
+        for test_case in re.split(r'-{16}', full_out.strip())
+        if test_case.strip()
+    ]
+
+def parse_test_case(test_case):
+    sections = {}
+    current_section = None
+    lines = test_case.splitlines()
+
+    for line in lines:
+        line = line.strip()
+
+        if line.endswith(':') and line [:-1] in [
+            "Command Line Arguments",
+            "Program Output",
+            "Error Output",
+            "Exit Status",
+        ]:
+            current_section = line[:-1]
+            sections[current_section] = ""
+        elif current_section:
+            sections[current_section] += line + "\n"
+        
+    return {
+        section_name: section_contents.strip()
+        for section_name, section_contents in sections.items()
+    }
+
+def compare_test_cases(test_case1, test_case2):
+    differing_sections = []
+    all_keys = set(test_case1.keys()).union(set(test_case2.keys()))
+
+    for key in all_keys:
+        test_case1_contents = test_case1.get(key, "").strip()
+        test_case2_contents = test_case2.get(key, "").strip()
+
+        if test_case1_contents != test_case2_contents:
+            differing_sections.append(key)
+    
+    return (len(differing_sections) == 0, differing_sections)
+
 def main():
     try:
         args = parser.parse_args()
-        print(args.out1)
-        print(args.out2)
+
+        with open(args.out1, 'r') as o1, open(args.out2, 'r') as o2:
+            out1 = o1.read()
+            out2 = o2.read()
+
+        out1_cases = split_test_cases(out1)
+        out2_cases = split_test_cases(out2)
+
+        if len(out1_cases) != len(out2_cases):
+            print("Number of test cases differ between outputs")
 
     except Exception as ex:
         parser.print_usage()
