@@ -1,8 +1,6 @@
 import sys
 import argparse
 import re
-#import subprocess
-#import os
 
 # set up argparse
 parser = argparse.ArgumentParser(
@@ -19,6 +17,8 @@ parser.add_argument("out2",
     help="the name of the second output file to compare"
 )
 
+# helper function to take full file with many output cases and return
+# seperate strings for each case
 def split_test_cases(full_out):
     return [
         test_case.strip() 
@@ -26,6 +26,8 @@ def split_test_cases(full_out):
         if test_case.strip()
     ]
 
+# take in string version of test case and process it into dict of 
+# sections and each section's content
 def parse_test_case(test_case):
     sections = {}
     current_section = None
@@ -33,7 +35,6 @@ def parse_test_case(test_case):
 
     for line in lines:
         line = line.strip()
-
         if line.endswith(':') and line [:-1] in [
             "Command Line Arguments",
             "Program Output",
@@ -50,6 +51,9 @@ def parse_test_case(test_case):
         for section_name, section_contents in sections.items()
     }
 
+# return a tuple, with the first element being a boolean of whether the
+# test cases match, and the second element is a list of the sections
+# they differ in
 def compare_test_cases(test_case1, test_case2):
     differing_sections = []
     all_keys = set(test_case1.keys()).union(set(test_case2.keys()))
@@ -74,8 +78,11 @@ def main():
         out1_cases = split_test_cases(out1)
         out2_cases = split_test_cases(out2)
 
+        # from executor module, shouldn't be the case that there are
+        # a different number of outputs, show warning
         if len(out1_cases) != len(out2_cases):
-            print("Warning: Number of test cases differ between outputs")
+            print("Warning: Number of test cases differ between "\
+            "outputs")
         
         with open("Comparator.out", 'w') as output:
             have_found_diff = False
@@ -86,9 +93,13 @@ def main():
                 match, differing_sections = compare_test_cases(
                     parsed_case1, parsed_case2)
                 if not match:
+                    # from executor module, shouldn't be the case that
+                    # command line arguments of corresponding cases
+                    # don't match, give warning
                     if "Command Line Arguments" in differing_sections:
-                        print("Warning: mismatching command line arguments"\
-                        " between supposedly matching cases")
+                        print("Warning: mismatching command line " \
+                        "arguments between supposedly matching cases")
+                    
                     if not have_found_diff:
                         output.write("Differing Output\n")
                         have_found_diff = True
@@ -99,7 +110,8 @@ def main():
                         output.write(section)
                         output.write("\n")
             
-            # finished looping through all test cases and no differences found
+            # finished looping through all test cases and
+            # no differences found
             if not have_found_diff:
                 output.write("Matching Output")
 
