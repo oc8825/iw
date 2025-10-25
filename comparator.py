@@ -75,7 +75,33 @@ def main():
         out2_cases = split_test_cases(out2)
 
         if len(out1_cases) != len(out2_cases):
-            print("Number of test cases differ between outputs")
+            print("Warning: Number of test cases differ between outputs")
+        
+        with open("Comparator.out", 'w') as output:
+            have_found_diff = False
+
+            for out1_case, out2_case in zip(out1_cases, out2_cases):
+                parsed_case1 = parse_test_case(out1_case)
+                parsed_case2 = parse_test_case(out2_case)
+                match, differing_sections = compare_test_cases(
+                    parsed_case1, parsed_case2)
+                if not match:
+                    if "Command Line Arguments" in differing_sections:
+                        print("Warning: mismatching command line arguments"\
+                        " between supposedly matching cases")
+                    if not have_found_diff:
+                        output.write("Differing Output\n")
+                        have_found_diff = True
+                    output.write("With command line arguments ")
+                    output.write(parsed_case1["Command Line Arguments"])
+                    output.write(", get differing output in:\n")
+                    for section in differing_sections:
+                        output.write(section)
+                        output.write("\n")
+            
+            # finished looping through all test cases and no differences found
+            if not have_found_diff:
+                output.write("Matching Output")
 
     except Exception as ex:
         parser.print_usage()
