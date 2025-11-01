@@ -41,9 +41,9 @@ def main():
 
             # verify success of compilation
             if compile_result.returncode != 0:
-                print("Unsucessful compile of", file_to_run)
-                print(compile_result.stderr)
-                sys.exit(1)
+                print("Unsucessful compile of", program_name)
+                print(compile_result.stderr, file=sys.stderr)
+                sys.exit(3)
             
             # print test cases to programname.out
             with open(output_file, 'w') as output:

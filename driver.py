@@ -2,6 +2,8 @@ import sys
 import argparse
 from strands import Agent
 from strands.models.openai import OpenAIModel
+import subprocess
+import re
 
 # set up connection to Qwen LLM
 qwen_model = OpenAIModel(
@@ -35,7 +37,7 @@ parser = argparse.ArgumentParser(
     "the code to be generated, and a file with the desired name of " \
     "this program and command line arguments to test the program " \
     "against. Through iteration with multiple LLMs, produces the " \
-    "C code an names the file it can be found in"
+    "C code and names the file it can be found in"
 )
 parser.add_argument("prompt",
     type=str,
@@ -46,6 +48,24 @@ parser.add_argument("testing",
     help="name of the file containing programname and test cases"
 )
 
+def extract_code(response):
+  response = response.strip()
+
+  # get rid of markdown fences by looking between ```
+  if "```" in response:
+    matches = re.findall(r"```(?:[a-zA-Z0-9]*)\n([\s\S]*?)```", response)
+    if matches:
+      response = max(matches, key=len).strip()
+    
+  # remove any explanations before the code
+  for anchor in ["#include", "int main("]:
+    if anchor in response:
+      start = response.find(anchor)
+      response = response[start:]
+      break
+  
+  return response.strip()
+
 def main():
     try:
         args = parser.parse_args()
@@ -53,6 +73,104 @@ def main():
         # connect to LLMs
         qwen_agent = Agent(model=qwen_model, callback_handler=None)
         claude_agent = Agent(model=claude_model, callback_handler=None)
+
+        # read in prompt and file name
+        with open(args.prompt, 'r', encoding="utf-8") as prompt_input:
+          prompt_string = prompt_input.read()
+        with open(args.testing, 'r', encoding="utf-8") as testing_input:
+          filename = testing_input.readline().strip()
+
+        # get Qwen's results
+        qwen_response = str(qwen_agent(prompt_string))
+        qwen_response = extract_code(qwen_response)
+        with open(filename, 'w', encoding="utf-8") as output:
+          output.write(qwen_response)
+
+        # try to run the code and continue reprompting until runs
+        # properly, or max of 10 times
+        successful_compile = False
+        max_attempts = 10
+        attempts = 0
+        while not successful_compile and attempts < max_attempts:
+          attempts += 1 
+          executor_result = subprocess.run(
+            ["python", "executor.py", args.testing, "Qwen"],
+            capture_output=True,
+            text=True
+          )
+          if executor_result.returncode == 3:
+            print("failed compile, reprompting Qwen")
+            reprompt = "I gave you this prompt:\n"
+            reprompt += prompt_string + "\n\n"
+            reprompt += "And you produced this code:\n"
+            reprompt += qwen_response + "\n"
+            reprompt += "But it doesn't compile. The compiler gave " \
+                        "these errors:\n"
+            reprompt += executor_result.stderr + "\n"
+            reprompt += "Please fix the code so it compiles successfully " \
+                        "and follows the same prompt given above. Return " \
+                        "only valid C code - no explanations or markdown " \
+                        "fences. Start your response directly with code."
+            qwen_response = str(qwen_agent(reprompt))
+            qwen_response = extract_code(qwen_response)
+            with open(filename, 'w', encoding="utf-8") as output:
+              output.write(qwen_response)
+          elif executor_result.returncode == 0:
+            print("successful compile")
+            successful_compile = True
+          else:
+            print("Executor failed with some other error")
+            sys.exit(1)
+
+        if not successful_compile:
+          print("Failed to compile successfully after 10 attempts")
+          sys.exit(1)
+
+        # get Claude's results
+        claude_response = str(claude_agent(prompt_string))
+        claude_response = extract_code(claude_response)
+        with open(filename, 'w', encoding="utf-8") as output:
+          output.write(claude_response)
+
+        # try to run the code and continue reprompting until runs
+        # properly, or max of 10 times
+        successful_compile = False
+        max_attempts = 10
+        attempts = 0
+        while not successful_compile and attempts < max_attempts:
+          attempts += 1 
+          executor_result = subprocess.run(
+            ["python", "executor.py", args.testing, "Claude"],
+            capture_output=True,
+            text=True
+          )
+          if executor_result.returncode == 3:
+            print("failed compile, reprompting Claude")
+            reprompt = "I gave you this prompt:\n"
+            reprompt += prompt_string + "\n\n"
+            reprompt += "And you produced this code:\n"
+            reprompt += claude_response + "\n"
+            reprompt += "But it doesn't compile. The compiler gave " \
+                        "these errors:\n"
+            reprompt += executor_result.stderr + "\n"
+            reprompt += "Please fix the code so it compiles successfully " \
+                        "and follows the same prompt given above. Return " \
+                        "only valid C code - no explanations or markdown " \
+                        "fences. Start your response directly with code."
+            claude_response = str(claude_agent(reprompt))
+            claude_response = extract_code(claude_response)
+            with open(filename, 'w', encoding="utf-8") as output:
+              output.write(claude_response)
+          elif executor_result.returncode == 0:
+            print("successful compile")
+            successful_compile = True
+          else:
+            print("Executor failed with some other error")
+            sys.exit(1)
+
+        if not successful_compile:
+          print("Failed to compile successfully after 10 attempts")
+          sys.exit(1)
     
     except Exception as ex:
         parser.print_usage()

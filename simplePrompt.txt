@@ -1,0 +1,13 @@
+Please implement an entire C file that, when run with a series of
+numbers as command line arguments, sorts these numbers and prints them
+to standard output in sorted order. Write each output number on the
+same line, with each one seperated by a space.
+
+For example, with the command line input:
+5 2 4 1 3
+The program should print:
+1 2 3 4 5
+
+Please write this code in C. Please write only the code itself, no
+explanation or other content, as I want to be able to copy the results
+directly into a file and run them.

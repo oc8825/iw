@@ -1,0 +1,42 @@
+----------------
+Test Case 1
+Command Line Arguments:
+55 1 7 90 78 100
+
+Program Output:
+1 7 55 78 90 100
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+7 45 29 88 200 1010
+
+Program Output:
+7 29 45 88 200 1010
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+1 5 2 3 8 4 7
+
+Program Output:
+1 2 3 4 5 7 8
+
+Error Output:
+None.
+
+Exit Status:
+0
+
