@@ -1,0 +1,70 @@
+----------------
+Test Case 1
+Command Line Arguments:
+34
+
+Program Output:
+Argument 1: 34
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+56
+
+Program Output:
+Argument 1: 56
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+0
+
+Program Output:
+Argument 1: 0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+
+
+Program Output:
+Argument 1: (null)
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+7
+
+Program Output:
+Argument 1: 7
+
+Error Output:
+None.
+
+Exit Status:
+0
+

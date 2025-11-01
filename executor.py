@@ -13,6 +13,10 @@ parser.add_argument("filename",
     type=str,
     help="name of the file containing programname and test cases"
 )
+parser.add_argument("source",
+    type=str,
+    help="name of LLM that generated this code: 'Claude' or 'Qwen'"
+)
 
 def main():
     try:
@@ -25,7 +29,7 @@ def main():
             # process first line, which provides programname
             program_name = input.readline().strip()
             program_name_short = program_name.split('.')[0].strip()
-            output_file = program_name_short + ".out"
+            output_file = program_name_short + args.source + ".out"
 
             # compile given program
             compile_result = subprocess.run(
