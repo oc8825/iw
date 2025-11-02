@@ -171,6 +171,12 @@ def main():
         if not successful_compile:
           print("Failed to compile successfully after 10 attempts")
           sys.exit(1)
+
+        qwen_out = filename.split('.')[0] + "Qwen.out"
+        claude_out = filename.split('.')[0] + "Claude.out"
+        comparator_result = subprocess.run(
+          ["python", "comparator.py", qwen_out, claude_out],
+        )
     
     except Exception as ex:
         parser.print_usage()
