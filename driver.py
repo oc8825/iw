@@ -81,9 +81,13 @@ def main():
           filename = testing_input.readline().strip()
         
         prompt_string = original_prompt
+        num_comparisons = 0
+        num_builds = 0
 
         have_match = False
-        while not have_match:
+        while not have_match and num_comparisons < 20:
+          num_comparisons += 1
+
           # get Qwen's results
           qwen_response = str(qwen_agent(prompt_string))
           qwen_response = extract_code(qwen_response)
@@ -96,7 +100,8 @@ def main():
           max_attempts = 10
           attempts = 0
           while not successful_compile and attempts < max_attempts:
-            attempts += 1 
+            attempts += 1
+            num_builds += 1
             executor_result = subprocess.run(
               ["python", "executor.py", args.testing, "Qwen"],
               capture_output=True,
@@ -142,7 +147,8 @@ def main():
           max_attempts = 10
           attempts = 0
           while not successful_compile and attempts < max_attempts:
-            attempts += 1 
+            attempts += 1
+            num_builds += 1
             executor_result = subprocess.run(
               ["python", "executor.py", args.testing, "Claude"],
               capture_output=True,
@@ -180,12 +186,19 @@ def main():
           claude_out = filename.split('.')[0] + "Claude.out"
           comparator_result = subprocess.run(
             ["python", "comparator.py", qwen_out, claude_out],
+            capture_output=True,
+            text=True
           )
+          if comparator_result.returncode != 0:
+            print("Comparator failed:", comparator_result.stderr)
+            sys.exit(1)
 
           with open("Comparator.out", 'r', encoding="utf-8") as comparator_input:
             status = comparator_input.readline().strip()
             if status == "Matching Output":
-              print("Claude and Qwen agree on", filename)
+              print("Claude and Qwen agree on the solution found in", filename)
+              print("Total number of program builds:", num_builds)
+              print("Total number of comparison iterations:", num_comparisons)
               have_match = True
             else:
               differing_feedback = comparator_input.read()
@@ -197,6 +210,9 @@ def main():
               "Given this information of the two solutions and where they differ, please write a new solution " \
               "that conforms to the original prompt repeated above. Return only valid C code - no explanations or markdown " \
               "fences. Start your response directly with code."
+        
+        if not have_match:
+          print("Failed to find agreement after 20 iterations")
     
     except Exception as ex:
         parser.print_usage()
