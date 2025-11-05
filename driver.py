@@ -80,6 +80,7 @@ def main():
           original_prompt = prompt_input.read()
         with open(os.path.join("testing", args.testing), 'r', encoding="utf-8") as testing_input:
           filename = testing_input.readline().strip()
+        filename_with_folder = "solutions/" + filename
         
         prompt_string = original_prompt
         num_comparisons = 0
@@ -92,7 +93,7 @@ def main():
           # get Qwen's results
           qwen_response = str(qwen_agent(prompt_string))
           qwen_response = extract_code(qwen_response)
-          with open(filename, 'w', encoding="utf-8") as output:
+          with open(filename_with_folder, 'w', encoding="utf-8") as output:
             output.write(qwen_response)
 
           # try to run the code and continue reprompting until runs
@@ -123,7 +124,7 @@ def main():
                           "fences. Start your response directly with code."
               qwen_response = str(qwen_agent(reprompt))
               qwen_response = extract_code(qwen_response)
-              with open(filename, 'w', encoding="utf-8") as output:
+              with open(filename_with_folder, 'w', encoding="utf-8") as output:
                 output.write(qwen_response)
             elif executor_result.returncode == 0:
               print("successful compile")
@@ -139,7 +140,7 @@ def main():
           # get Claude's results
           claude_response = str(claude_agent(prompt_string))
           claude_response = extract_code(claude_response)
-          with open(filename, 'w', encoding="utf-8") as output:
+          with open(filename_with_folder, 'w', encoding="utf-8") as output:
             output.write(claude_response)
 
           # try to run the code and continue reprompting until runs
@@ -170,7 +171,7 @@ def main():
                           "fences. Start your response directly with code."
               claude_response = str(claude_agent(reprompt))
               claude_response = extract_code(claude_response)
-              with open(filename, 'w', encoding="utf-8") as output:
+              with open(filename_with_folder, 'w', encoding="utf-8") as output:
                 output.write(claude_response)
             elif executor_result.returncode == 0:
               print("successful compile")
@@ -197,7 +198,7 @@ def main():
           with open("Comparator.out", 'r', encoding="utf-8") as comparator_input:
             status = comparator_input.readline().strip()
             if status == "Matching Output":
-              print("Claude and Qwen agree on the solution found in", filename)
+              print("Claude and Qwen agree on the solution found in", filename_with_folder)
               print("Total number of program builds:", num_builds)
               print("Total number of comparison iterations:", num_comparisons)
               have_match = True

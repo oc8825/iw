@@ -30,6 +30,7 @@ def main():
             program_name = input.readline().strip()
             program_name_short = program_name.split('.')[0].strip()
             output_file = "results/" + program_name_short + args.source + ".out"
+            program_name = "solutions/" + program_name
 
             # compile given program
             compile_result = subprocess.run(
