@@ -4,6 +4,7 @@ from strands import Agent
 from strands.models.openai import OpenAIModel
 import subprocess
 import re
+import os
 
 # set up connection to Qwen LLM
 qwen_model = OpenAIModel(
@@ -75,9 +76,9 @@ def main():
         claude_agent = Agent(model=claude_model, callback_handler=None)
 
         # read in prompt and file name
-        with open(args.prompt, 'r', encoding="utf-8") as prompt_input:
+        with open(os.path.join("prompts", args.prompt), 'r', encoding="utf-8") as prompt_input:
           original_prompt = prompt_input.read()
-        with open(args.testing, 'r', encoding="utf-8") as testing_input:
+        with open(os.path.join("testing", args.testing), 'r', encoding="utf-8") as testing_input:
           filename = testing_input.readline().strip()
         
         prompt_string = original_prompt

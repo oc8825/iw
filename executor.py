@@ -25,7 +25,7 @@ def main():
         exe = "execute.exe"
 
         # use filename as input
-        with open(args.filename, 'r') as input:
+        with open(os.path.join("testing", args.filename), 'r', encoding="utf-8") as input:
             # process first line, which provides programname
             program_name = input.readline().strip()
             program_name_short = program_name.split('.')[0].strip()
