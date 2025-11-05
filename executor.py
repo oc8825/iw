@@ -7,7 +7,7 @@ import os
 parser = argparse.ArgumentParser(
     description="Take in a file with a program name and test " \
     "cases to run that program against, print output to " \
-    "programname.out"
+    "results/programname.out"
 )
 parser.add_argument("filename",
     type=str,
@@ -29,7 +29,7 @@ def main():
             # process first line, which provides programname
             program_name = input.readline().strip()
             program_name_short = program_name.split('.')[0].strip()
-            output_file = program_name_short + args.source + ".out"
+            output_file = "results/" + program_name_short + args.source + ".out"
 
             # compile given program
             compile_result = subprocess.run(

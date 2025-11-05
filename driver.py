@@ -183,8 +183,8 @@ def main():
             print("Failed to compile successfully after 10 attempts")
             sys.exit(1)
 
-          qwen_out = filename.split('.')[0] + "Qwen.out"
-          claude_out = filename.split('.')[0] + "Claude.out"
+          qwen_out = "results/" + filename.split('.')[0] + "Qwen.out"
+          claude_out = "results/" + filename.split('.')[0] + "Claude.out"
           comparator_result = subprocess.run(
             ["python", "comparator.py", qwen_out, claude_out],
             capture_output=True,
