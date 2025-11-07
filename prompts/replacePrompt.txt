@@ -1,0 +1,19 @@
+Please implement an entire C file that takes in the following command line arguments:
+-First, a word to be replaced: wordToReplace
+-Second, the word to replace this word: replacementWord
+-Third, a string (that can include whitespace) in quotes: text
+The program must then:
+-Replace every occurrence of wordToReplace (as its own word, not as a substring of another word) with replacementWord in text. Print this updated text with replacements made to standard output
+-Replacements should be case-sensitive
+
+For example, with the command line input:
+oranges apples “I like to eat oranges more than bananas. Oranges aren’t good, but Bob likes oranges.”
+The program should print:
+I like to eat apples more than bananas. Oranges aren’t good, but Bob likes apples.
+
+Error Handling
+-If not exactly three command line arguments are provided, print the message: “Error: requires three command line arguments” to stderr and exit with returncode 1.
+-If any other unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
+-On success, do not print anything to stderr, and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
