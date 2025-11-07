@@ -1,0 +1,23 @@
+HeapSortWords.C
+fruit banana apple carrot grape
+a b c d e f g
+h&2_ =}h abc->67 43ab
+
+“”
+apple Banana BANANA
+banana Apple APPLE
+zebra yak xylophone walrus
+one two three four five six seven eight nine ten
+Word1 word2 Word3
+hello HELLO HeLLo
+A a B b C c
+@hello world
+123 abc def
+--abc zzz ---aaa
+ab ba aa bb aaa aab
+repeated repeated repeated
+mix3d words 42with numbers
+Z zzz a A
+wordWithVeryVeryLongName anotherExtremelyLongWord short
+_underscore _UnderScore
+mix@ed case@and#symbols

@@ -1,0 +1,24 @@
+Replace.C
+oranges apples “I like to eat oranges more than bananas. Oranges aren’t good, but Bob likes oranges.”
+pear apple "I like to eat oranges more than bananas."
+hi hey "hi there, how are you? I said hi."
+ha ho "ha ha ha! Hilarious!"
+
+x xyz "x marks the x-spot."
+testing t "testing testing 123 testing"
+apple banana "Apple apple APPLE aPpLe"
+remove "" "please remove this remove remove"
+word word "this word stays the same word word"
+an X "banana fan analysis"
+oranges apples "oranges, oranges! Do you like oranges?"
+cat !!! "The cat sat on the catmat, cat."
+" " _ "I like spaces in my text"
+"" a "test text"
+apple "missing one argument"
+apple pear "extra" "argument"
+dog cat ""
+word replacement "word word word word word word word word word word"
+a aa "a a a"
+aa a "aa aa aa"
+2 args
+1arg
