@@ -1,5 +1,5 @@
 Replace.C
-oranges apples “I like to eat oranges more than bananas. Oranges aren’t good, but Bob likes oranges.”
+oranges apples "I like to eat oranges more than bananas. Oranges aren’t good, but Bob likes oranges."
 pear apple "I like to eat oranges more than bananas."
 hi hey "hi there, how are you? I said hi."
 ha ho "ha ha ha! Hilarious!"

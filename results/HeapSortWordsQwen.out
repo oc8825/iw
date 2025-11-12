@@ -1,0 +1,323 @@
+----------------
+Test Case 1
+Command Line Arguments:
+fruit banana apple carrot grape
+
+Program Output:
+apple banana carrot fruit grape
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+a b c d e f g
+
+Program Output:
+a b c d e f g
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+h&2_ =}h abc->67 43ab
+
+Program Output:
+h
+
+Error Output:
+'2_' is not recognized as an internal or external command,
+operable program or batch file.
+
+
+Exit Status:
+1
+
+----------------
+Test Case 4
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+""
+
+Program Output:
+
+Error Output:
+Error: command line argument not a word
+
+
+Exit Status:
+1
+
+----------------
+Test Case 6
+Command Line Arguments:
+''
+
+Program Output:
+
+Error Output:
+Error: command line argument not a word
+
+
+Exit Status:
+1
+
+----------------
+Test Case 7
+Command Line Arguments:
+apple Banana BANANA
+
+Program Output:
+BANANA Banana apple
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+banana Apple APPLE
+
+Program Output:
+APPLE Apple banana
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+zebra yak xylophone walrus
+
+Program Output:
+walrus xylophone yak zebra
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+one two three four five six seven eight nine ten
+
+Program Output:
+eight five four nine one seven six ten three two
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+Word1 word2 Word3
+
+Program Output:
+Word1 Word3 word2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+hello HELLO HeLLo
+
+Program Output:
+HELLO HeLLo hello
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+A a B b C c
+
+Program Output:
+A B C a b c
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+@hello world
+
+Program Output:
+
+Error Output:
+Error: command line argument not a word
+
+
+Exit Status:
+1
+
+----------------
+Test Case 15
+Command Line Arguments:
+123 abc def
+
+Program Output:
+123 abc def
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 16
+Command Line Arguments:
+--abc zzz ---aaa
+
+Program Output:
+
+Error Output:
+Error: command line argument not a word
+
+
+Exit Status:
+1
+
+----------------
+Test Case 17
+Command Line Arguments:
+ab ba aa bb aaa aab
+
+Program Output:
+aa aaa aab ab ba bb
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 18
+Command Line Arguments:
+repeated repeated repeated
+
+Program Output:
+repeated repeated repeated
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 19
+Command Line Arguments:
+mix3d words 42with numbers
+
+Program Output:
+42with mix3d numbers words
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 20
+Command Line Arguments:
+Z zzz a A
+
+Program Output:
+A Z a zzz
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 21
+Command Line Arguments:
+wordWithVeryVeryLongName anotherExtremelyLongWord short
+
+Program Output:
+anotherExtremelyLongWord short wordWithVeryVeryLongName
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 22
+Command Line Arguments:
+_underscore _UnderScore
+
+Program Output:
+
+Error Output:
+Error: command line argument not a word
+
+
+Exit Status:
+1
+
+----------------
+Test Case 23
+Command Line Arguments:
+mix@ed case@and#symbols
+
+Program Output:
+
+Error Output:
+Error: command line argument not a word
+
+
+Exit Status:
+1
+

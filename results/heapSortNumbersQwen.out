@@ -1,0 +1,265 @@
+----------------
+Test Case 1
+Command Line Arguments:
+55 1 7 90 78 100
+
+Program Output:
+100 90 78 55 7 1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+7 45 29 88 200 1010
+
+Program Output:
+1010 200 88 45 29 7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+1 5 2 3 8 4 7
+
+Program Output:
+8 7 5 4 3 2 1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+1000 1001 1002 1003 1004 1005
+
+Program Output:
+1005 1004 1003 1002 1001 1000
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+67
+
+Program Output:
+67
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+Bob phil
+
+Program Output:
+
+Error Output:
+Error: command line argument not an integer
+
+
+Exit Status:
+1
+
+----------------
+Test Case 8
+Command Line Arguments:
+“”
+
+Program Output:
+
+Error Output:
+Error: command line argument not an integer
+
+
+Exit Status:
+1
+
+----------------
+Test Case 9
+Command Line Arguments:
+-5 0 5 10 -10 3
+
+Program Output:
+10 5 3 0 -5 -10
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+999999999 1000000000 888888888
+
+Program Output:
+1000000000 999999999 888888888
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+12 12 12 12
+
+Program Output:
+12 12 12 12
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+3 2 1 0
+
+Program Output:
+3 2 1 0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+3
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+a 4 5
+
+Program Output:
+
+Error Output:
+Error: command line argument not an integer
+
+
+Exit Status:
+1
+
+----------------
+Test Case 15
+Command Line Arguments:
+3.14 2 1
+
+Program Output:
+
+Error Output:
+Error: command line argument not an integer
+
+
+Exit Status:
+1
+
+----------------
+Test Case 16
+Command Line Arguments:
+4 5 six 7
+
+Program Output:
+
+Error Output:
+Error: command line argument not an integer
+
+
+Exit Status:
+1
+
+----------------
+Test Case 17
+Command Line Arguments:
+-1 0 1
+
+Program Output:
+1 0 -1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 18
+Command Line Arguments:
+-2147483648 2147483647
+
+Program Output:
+2147483647 -2147483648
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 19
+Command Line Arguments:
+-1
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+

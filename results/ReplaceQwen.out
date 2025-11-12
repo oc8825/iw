@@ -1,0 +1,322 @@
+----------------
+Test Case 1
+Command Line Arguments:
+oranges apples "I like to eat oranges more than bananas. Oranges aren’t good, but Bob likes oranges."
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 2
+Command Line Arguments:
+pear apple "I like to eat oranges more than bananas."
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 3
+Command Line Arguments:
+hi hey "hi there, how are you? I said hi."
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 4
+Command Line Arguments:
+ha ho "ha ha ha! Hilarious!"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 5
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 6
+Command Line Arguments:
+x xyz "x marks the x-spot."
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 7
+Command Line Arguments:
+testing t "testing testing 123 testing"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 8
+Command Line Arguments:
+apple banana "Apple apple APPLE aPpLe"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 9
+Command Line Arguments:
+remove "" "please remove this remove remove"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 10
+Command Line Arguments:
+word word "this word stays the same word word"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 11
+Command Line Arguments:
+an X "banana fan analysis"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 12
+Command Line Arguments:
+oranges apples "oranges, oranges! Do you like oranges?"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 13
+Command Line Arguments:
+cat !!! "The cat sat on the catmat, cat."
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 14
+Command Line Arguments:
+" " _ "I like spaces in my text"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 15
+Command Line Arguments:
+"" a "test text"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 16
+Command Line Arguments:
+apple "missing one argument"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 17
+Command Line Arguments:
+apple pear "extra" "argument"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 18
+Command Line Arguments:
+dog cat ""
+
+Program Output:
+""
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 19
+Command Line Arguments:
+word replacement "word word word word word word word word word word"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 20
+Command Line Arguments:
+a aa "a a a"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 21
+Command Line Arguments:
+aa a "aa aa aa"
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 22
+Command Line Arguments:
+2 args
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 23
+Command Line Arguments:
+1arg
+
+Program Output:
+
+Error Output:
+Error: requires three command line arguments
+
+
+Exit Status:
+1
+
