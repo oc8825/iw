@@ -29,6 +29,7 @@ int compare_freq(const void *a, const void *b) {
     if (ia->frequency != ib->frequency) {
         return ib->frequency - ia->frequency;
     }
+    
     return ia->value - ib->value;
 }
 
@@ -53,7 +54,7 @@ int main(int argc, char *argv[]) {
     }
     
     for (int i = 2; i < argc; i++) {
-        if (!is_valid_integer(argv[i], &numbers[i-2])) {
+        if (!is_valid_integer(argv[i], &numbers[i - 2])) {
             fprintf(stderr, "Error: command line argument not an integer\n");
             free(numbers);
             return 1;

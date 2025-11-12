@@ -40,13 +40,10 @@ parser = argparse.ArgumentParser(
     "against. Through iteration with multiple LLMs, produces the " \
     "C code and names the file it can be found in"
 )
-parser.add_argument("prompt",
+parser.add_argument("name",
     type=str,
-    help="name of the file containing code prompt"
-)
-parser.add_argument("testing",
-    type=str,
-    help="name of the file containing filename and test cases"
+    help="name of this test case - will look for namePrompt.txt and " \
+    "nameTesting.txt"
 )
 
 def extract_code(response):
@@ -76,9 +73,13 @@ def main():
         claude_agent = Agent(model=claude_model, callback_handler=None)
 
         # read in prompt and file name
-        with open(os.path.join("prompts", args.prompt), 'r', encoding="utf-8") as prompt_input:
+        prompt_name = "prompts/" + args.name + "Prompt.txt"
+        testing_name = "testing/" + args.name + "Testing.txt"
+        to_execute = args.name + "Testing.txt"
+
+        with open(prompt_name, 'r', encoding="utf-8") as prompt_input:
           original_prompt = prompt_input.read()
-        with open(os.path.join("testing", args.testing), 'r', encoding="utf-8") as testing_input:
+        with open(testing_name, 'r', encoding="utf-8") as testing_input:
           filename = testing_input.readline().strip()
         filename_with_folder = "solutions/" + filename
         
@@ -105,7 +106,7 @@ def main():
             attempts += 1
             num_builds += 1
             executor_result = subprocess.run(
-              ["python", "executor.py", args.testing, "Qwen"],
+              ["python", "executor.py", to_execute, "Qwen"],
               capture_output=True,
               text=True
             )
@@ -152,7 +153,7 @@ def main():
             attempts += 1
             num_builds += 1
             executor_result = subprocess.run(
-              ["python", "executor.py", args.testing, "Claude"],
+              ["python", "executor.py", to_execute, "Claude"],
               capture_output=True,
               text=True
             )
