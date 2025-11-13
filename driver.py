@@ -82,6 +82,7 @@ def main():
         with open(testing_name, 'r', encoding="utf-8") as testing_input:
           filename = testing_input.readline().strip()
         filename_with_folder = "solutions/" + filename
+        short_filename = filename.split('.')[0]
         
         prompt_string = original_prompt
         num_comparisons = 0
@@ -113,8 +114,8 @@ def main():
             if executor_result.returncode == 3:
               print("failed compile, reprompting Qwen")
               reprompt = "I gave you this prompt:\n"
-              reprompt += prompt_string + "\n\n"
-              reprompt += "And you produced this code:\n"
+              reprompt += original_prompt + "\n\n"
+              reprompt += "And you produced this code:\n\n"
               reprompt += qwen_response + "\n"
               reprompt += "But it doesn't compile. The compiler gave " \
                           "these errors:\n"
@@ -123,6 +124,9 @@ def main():
                           "and follows the same prompt given above. Return " \
                           "only valid C code - no explanations or markdown " \
                           "fences. Start your response directly with code."
+              qwen_intermediate_file = 'intermediateResults/' + short_filename + "Qwen_" + str(num_comparisons) + "_" + str(attempts) + ".txt"
+              with open(qwen_intermediate_file, 'w', encoding="utf-8") as output:
+                output.write(reprompt)
               qwen_response = str(qwen_agent(reprompt))
               qwen_response = extract_code(qwen_response)
               with open(filename_with_folder, 'w', encoding="utf-8") as output:
@@ -160,8 +164,8 @@ def main():
             if executor_result.returncode == 3:
               print("failed compile, reprompting Claude")
               reprompt = "I gave you this prompt:\n"
-              reprompt += prompt_string + "\n\n"
-              reprompt += "And you produced this code:\n"
+              reprompt += original_prompt + "\n\n"
+              reprompt += "And you produced this code:\n\n"
               reprompt += claude_response + "\n"
               reprompt += "But it doesn't compile. The compiler gave " \
                           "these errors:\n"
@@ -170,6 +174,9 @@ def main():
                           "and follows the same prompt given above. Return " \
                           "only valid C code - no explanations or markdown " \
                           "fences. Start your response directly with code."
+              claude_intermediate_file = 'intermediateResults/' + short_filename + "Claude_" + str(num_comparisons) + "_" + str(attempts) + ".txt"
+              with open(claude_intermediate_file, 'w', encoding="utf-8") as output:
+                output.write(reprompt)
               claude_response = str(claude_agent(reprompt))
               claude_response = extract_code(claude_response)
               with open(filename_with_folder, 'w', encoding="utf-8") as output:
@@ -185,8 +192,8 @@ def main():
             print("Failed to compile successfully after 10 attempts")
             sys.exit(1)
 
-          qwen_out = "results/" + filename.split('.')[0] + "Qwen.out"
-          claude_out = "results/" + filename.split('.')[0] + "Claude.out"
+          qwen_out = "results/" + short_filename + "Qwen.out"
+          claude_out = "results/" + short_filename + "Claude.out"
           comparator_result = subprocess.run(
             ["python", "comparator.py", qwen_out, claude_out],
             capture_output=True,
@@ -206,13 +213,16 @@ def main():
             else:
               differing_feedback = comparator_input.read()
               print("Results didn't match, reprompting both with feedback")
-              prompt_string = "I originally gave you, and one other LLM, the prompt outlined below: \n"  + original_prompt + \
-              "One given solution was: \n" + qwen_response + \
-              "The other provided solution was: \n" + claude_response + \
-              "However, after running these two solutions, the output differed in these sections: \n" + differing_feedback + \
+              prompt_string = "I originally gave you, and one other LLM, the prompt outlined below: \n" + original_prompt + "\n" + \
+              "One given solution was: \n" + qwen_response + "\n\n" + \
+              "The other provided solution was: \n" + claude_response + "\n\n" + \
+              "However, after running these two solutions, the output differed in these sections: \n" + differing_feedback + "\n" + \
               "Given this information of the two solutions and where they differ, please write a new solution " \
               "that conforms to the original prompt repeated above. Return only valid C code - no explanations or markdown " \
               "fences. Start your response directly with code."
+              intermediate_comparison_file = 'intermediateResults/' + short_filename + "Comparison" + str(num_comparisons) + ".txt"
+              with open(intermediate_comparison_file, 'w', encoding="utf-8") as output:
+                output.write(prompt_string)
         
         if not have_match:
           print("Failed to find agreement after 20 iterations")

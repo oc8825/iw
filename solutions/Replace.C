@@ -44,15 +44,19 @@ int main(int argc, char *argv[]) {
                 resultPos += replacementWordLen;
                 i += wordToReplaceLen;
             } else {
-                result[resultPos++] = text[i++];
+                result[resultPos] = text[i];
+                resultPos++;
+                i++;
             }
         } else {
-            result[resultPos++] = text[i++];
+            result[resultPos] = text[i];
+            resultPos++;
+            i++;
         }
     }
     
     result[resultPos] = '\0';
-    printf("%s\n", result);
+    printf("%s", result);
     
     free(result);
     exit(0);

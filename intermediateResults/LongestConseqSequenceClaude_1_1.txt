@@ -1,0 +1,95 @@
+I gave you this prompt:
+Please implement an entire C file that takes in the following command line arguments:
+-An unspecified number of integers
+The program must then:
+-Print a single integer followed by a newline. This printed integer is the length of the longest consecutive sequence of integers that can be formed. A consecutive sequence is a sequence of elements in which each element is exactly 1 greater than the previous element. The elements do not have to be consecutive in the original array.
+
+For example, with the command line input:
+2 20 4 10 3 4 5
+The program should print:
+4
+Explanation: the longest consecutive sequence is 2 3 4 5
+
+Error handling
+-If no command line arguments are provided, print 0 and exit with returncode 0.
+-If any command line argument is not a valid integer, print the message: “Error: command line argument not an integer” to stderr and exit with returncode 1.
+-If any other unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
+-On success, do not print anything to stderr, and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
+
+
+And you produced this code:
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include <limits.h>
+
+int compare(const void *a, const void *b) {
+    int ia = *(const int*)a;
+    int ib = *(const int*)b;
+    return (ia > ib) - (ia < ib);
+}
+
+int main(int argc, char *argv[]) {
+    if (argc == 1) {
+        printf("0\n");
+        return 0;
+    }
+    
+    int *numbers = malloc((argc - 1) * sizeof(int));
+    if (!numbers) {
+        exit(2);
+    }
+    
+    for (int i = 1; i < argc; i++) {
+        char *endptr;
+        errno = 0;
+        long val = strtol(argv[i], &endptr, 10);
+        
+        if (errno != 0 || *endptr != '\0' || val > INT_MAX || val < INT_MIN) {
+            fprintf(stderr, "Error: command line argument not an integer\n");
+            free(numbers);
+            exit(1);
+        }
+        
+        numbers[i-1] = (int)val;
+    }
+    
+    qsort(numbers, argc - 1, sizeof(int), compare);
+    
+    int max_length = 1;
+    int current_length = 1;
+    
+    for (int i = 1; i < argc - 1; i++) {
+        if (numbers[i] == numbers[i-1]) {
+            continue;
+        } else if (numbers[i] == numbers[i-1] + 1) {
+            current_length++;
+        } else {
+            if (current_length > max_length) {
+                max_length = current_length;
+            }
+            current_length = 1;
+        }
+    }
+    
+    if (current_length > max_length) {
+        max_length = current_length;
+    }
+    
+    printf("%d\n", max_length);
+    free(numbers);
+    return 0;
+}
+But it doesn't compile. The compiler gave these errors:
+solutions/LongestConseqSequence.C: In function 'int main(int, char**)':
+solutions/LongestConseqSequence.C:19:26: error: invalid conversion from 'void*' to 'int*' [-fpermissive]
+   19 |     int *numbers = malloc((argc - 1) * sizeof(int));
+      |                    ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                          |
+      |                          void*
+
+
+Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

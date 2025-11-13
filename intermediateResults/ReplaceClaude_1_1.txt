@@ -1,0 +1,96 @@
+I gave you this prompt:
+Please implement an entire C file that takes in the following command line arguments:
+-First, a word to be replaced: wordToReplace
+-Second, the word to replace this word: replacementWord
+-Third, a string (that can include whitespace) in quotes: text
+The program must then:
+-Replace every occurrence of wordToReplace (as its own word, not as a substring of another word) with replacementWord in text. Print this updated text with replacements made to standard output
+-Replacements should be case-sensitive
+
+For example, with the command line input:
+oranges apples “I like to eat oranges more than bananas. Oranges aren’t good, but Bob likes oranges.”
+The program should print:
+I like to eat apples more than bananas. Oranges aren’t good, but Bob likes apples.
+
+Error Handling
+-If not exactly three command line arguments are provided, print the message: “Error: requires three command line arguments” to stderr and exit with returncode 1.
+-If any other unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
+-On success, do not print anything to stderr, and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
+
+
+And you produced this code:
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+int is_word_boundary(char c) {
+    return isspace(c) || ispunct(c) || c == '\0';
+}
+
+int main(int argc, char *argv[]) {
+    if (argc != 4) {
+        fprintf(stderr, "Error: requires three command line arguments\n");
+        exit(1);
+    }
+    
+    char *wordToReplace = argv[1];
+    char *replacementWord = argv[2];
+    char *text = argv[3];
+    
+    int wordToReplaceLen = strlen(wordToReplace);
+    int replacementWordLen = strlen(replacementWord);
+    int textLen = strlen(text);
+    
+    if (wordToReplaceLen == 0) {
+        printf("%s", text);
+        exit(0);
+    }
+    
+    char *result = malloc(textLen * 2 + replacementWordLen * 100);
+    if (!result) {
+        exit(2);
+    }
+    
+    int resultPos = 0;
+    int i = 0;
+    
+    while (i < textLen) {
+        if (strncmp(&text[i], wordToReplace, wordToReplaceLen) == 0) {
+            int prevBoundary = (i == 0) || is_word_boundary(text[i-1]);
+            int nextBoundary = is_word_boundary(text[i + wordToReplaceLen]);
+            
+            if (prevBoundary && nextBoundary) {
+                strcpy(&result[resultPos], replacementWord);
+                resultPos += replacementWordLen;
+                i += wordToReplaceLen;
+            } else {
+                result[resultPos] = text[i];
+                resultPos++;
+                i++;
+            }
+        } else {
+            result[resultPos] = text[i];
+            resultPos++;
+            i++;
+        }
+    }
+    
+    result[resultPos] = '\0';
+    printf("%s", result);
+    
+    free(result);
+    exit(0);
+}
+But it doesn't compile. The compiler gave these errors:
+solutions/Replace.C: In function 'int main(int, char**)':
+solutions/Replace.C:29:26: error: invalid conversion from 'void*' to 'char*' [-fpermissive]
+   29 |     char *result = malloc(textLen * 2 + replacementWordLen * 100);
+      |                    ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                          |
+      |                          void*
+
+
+Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

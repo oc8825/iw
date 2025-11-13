@@ -4,7 +4,7 @@ Command Line Arguments:
 55 1 7 90 78 100
 
 Program Output:
-100 90 78 55 7 1
+100 90 78 55 7 1 
 
 Error Output:
 None.
@@ -18,7 +18,7 @@ Command Line Arguments:
 7 45 29 88 200 1010
 
 Program Output:
-1010 200 88 45 29 7
+1010 200 88 45 29 7 
 
 Error Output:
 None.
@@ -32,7 +32,7 @@ Command Line Arguments:
 1 5 2 3 8 4 7
 
 Program Output:
-8 7 5 4 3 2 1
+8 7 5 4 3 2 1 
 
 Error Output:
 None.
@@ -59,7 +59,7 @@ Command Line Arguments:
 1000 1001 1002 1003 1004 1005
 
 Program Output:
-1005 1004 1003 1002 1001 1000
+1005 1004 1003 1002 1001 1000 
 
 Error Output:
 None.
@@ -73,7 +73,7 @@ Command Line Arguments:
 67
 
 Program Output:
-67
+67 
 
 Error Output:
 None.
@@ -115,7 +115,7 @@ Command Line Arguments:
 -5 0 5 10 -10 3
 
 Program Output:
-10 5 3 0 -5 -10
+10 5 3 0 -5 -10 
 
 Error Output:
 None.
@@ -129,7 +129,7 @@ Command Line Arguments:
 999999999 1000000000 888888888
 
 Program Output:
-1000000000 999999999 888888888
+1000000000 999999999 888888888 
 
 Error Output:
 None.
@@ -143,7 +143,7 @@ Command Line Arguments:
 12 12 12 12
 
 Program Output:
-12 12 12 12
+12 12 12 12 
 
 Error Output:
 None.
@@ -157,7 +157,7 @@ Command Line Arguments:
 3 2 1 0
 
 Program Output:
-3 2 1 0
+3 2 1 0 
 
 Error Output:
 None.
@@ -171,7 +171,7 @@ Command Line Arguments:
 3
 
 Program Output:
-3
+3 
 
 Error Output:
 None.
@@ -227,7 +227,7 @@ Command Line Arguments:
 -1 0 1
 
 Program Output:
-1 0 -1
+1 0 -1 
 
 Error Output:
 None.
@@ -241,7 +241,7 @@ Command Line Arguments:
 -2147483648 2147483647
 
 Program Output:
-2147483647 -2147483648
+2147483647 -2147483648 
 
 Error Output:
 None.
@@ -255,7 +255,7 @@ Command Line Arguments:
 -1
 
 Program Output:
--1
+-1 
 
 Error Output:
 None.

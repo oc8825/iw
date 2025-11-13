@@ -1,24 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <limits.h>
 #include <errno.h>
+#include <limits.h>
 
 typedef struct {
     int value;
     int frequency;
 } IntFreq;
 
-int is_valid_integer(const char *str, int *result) {
+int is_valid_integer(const char *str) {
     char *endptr;
     errno = 0;
     long val = strtol(str, &endptr, 10);
     
-    if (errno != 0 || *endptr != '\0' || val > INT_MAX || val < INT_MIN) {
+    if (errno == ERANGE || val > INT_MAX || val < INT_MIN) {
         return 0;
     }
     
-    *result = (int)val;
+    if (endptr == str || *endptr != '\0') {
+        return 0;
+    }
+    
     return 1;
 }
 
@@ -38,11 +41,12 @@ int main(int argc, char *argv[]) {
         return 0;
     }
     
-    int k;
-    if (!is_valid_integer(argv[1], &k)) {
+    if (!is_valid_integer(argv[1])) {
         fprintf(stderr, "Error: command line argument not an integer\n");
         return 1;
     }
+    
+    int k = atoi(argv[1]);
     
     if (argc <= 2) {
         return 0;
@@ -54,11 +58,12 @@ int main(int argc, char *argv[]) {
     }
     
     for (int i = 2; i < argc; i++) {
-        if (!is_valid_integer(argv[i], &numbers[i - 2])) {
+        if (!is_valid_integer(argv[i])) {
             fprintf(stderr, "Error: command line argument not an integer\n");
             free(numbers);
             return 1;
         }
+        numbers[i - 2] = atoi(argv[i]);
     }
     
     int num_count = argc - 2;
@@ -79,6 +84,7 @@ int main(int argc, char *argv[]) {
                 break;
             }
         }
+        
         if (!found) {
             freq_array[unique_count].value = numbers[i];
             freq_array[unique_count].frequency = 1;
@@ -91,9 +97,12 @@ int main(int argc, char *argv[]) {
     int output_count = (k < unique_count) ? k : unique_count;
     
     for (int i = 0; i < output_count; i++) {
-        if (i > 0) printf(" ");
         printf("%d", freq_array[i].value);
+        if (i < output_count - 1) {
+            printf(" ");
+        }
     }
+    
     if (output_count > 0) {
         printf("\n");
     }

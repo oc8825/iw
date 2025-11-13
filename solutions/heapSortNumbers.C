@@ -58,7 +58,9 @@ int pop() {
     int max = heap[0];
     heap[0] = heap[heap_size - 1];
     heap_size--;
-    heapify_down(0);
+    if (heap_size > 0) {
+        heapify_down(0);
+    }
     return max;
 }
 
