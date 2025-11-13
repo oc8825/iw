@@ -61,13 +61,13 @@ Command Line Arguments:
 ""
 
 Program Output:
+""
 
 Error Output:
-Error: command line argument not a word
-
+None.
 
 Exit Status:
-1
+0
 
 ----------------
 Test Case 6
@@ -75,13 +75,13 @@ Command Line Arguments:
 ''
 
 Program Output:
+''
 
 Error Output:
-Error: command line argument not a word
-
+None.
 
 Exit Status:
-1
+0
 
 ----------------
 Test Case 7
@@ -187,13 +187,13 @@ Command Line Arguments:
 @hello world
 
 Program Output:
+@hello world
 
 Error Output:
-Error: command line argument not a word
-
+None.
 
 Exit Status:
-1
+0
 
 ----------------
 Test Case 15
@@ -215,13 +215,13 @@ Command Line Arguments:
 --abc zzz ---aaa
 
 Program Output:
+---aaa --abc zzz
 
 Error Output:
-Error: command line argument not a word
-
+None.
 
 Exit Status:
-1
+0
 
 ----------------
 Test Case 17
@@ -313,11 +313,11 @@ Command Line Arguments:
 mix@ed case@and#symbols
 
 Program Output:
+case@and#symbols mix@ed
 
 Error Output:
-Error: command line argument not a word
-
+None.
 
 Exit Status:
-1
+0
 

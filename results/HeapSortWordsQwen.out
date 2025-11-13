@@ -4,7 +4,7 @@ Command Line Arguments:
 fruit banana apple carrot grape
 
 Program Output:
-apple banana carrot fruit grape
+apple banana carrot fruit grape 
 
 Error Output:
 None.
@@ -18,7 +18,7 @@ Command Line Arguments:
 a b c d e f g
 
 Program Output:
-a b c d e f g
+a b c d e f g 
 
 Error Output:
 None.
@@ -32,7 +32,7 @@ Command Line Arguments:
 h&2_ =}h abc->67 43ab
 
 Program Output:
-h
+h 
 
 Error Output:
 '2_' is not recognized as an internal or external command,
@@ -61,13 +61,13 @@ Command Line Arguments:
 ""
 
 Program Output:
+"" 
 
 Error Output:
-Error: command line argument not a word
-
+None.
 
 Exit Status:
-1
+0
 
 ----------------
 Test Case 6
@@ -75,13 +75,13 @@ Command Line Arguments:
 ''
 
 Program Output:
+'' 
 
 Error Output:
-Error: command line argument not a word
-
+None.
 
 Exit Status:
-1
+0
 
 ----------------
 Test Case 7
@@ -89,7 +89,7 @@ Command Line Arguments:
 apple Banana BANANA
 
 Program Output:
-BANANA Banana apple
+BANANA Banana apple 
 
 Error Output:
 None.
@@ -103,7 +103,7 @@ Command Line Arguments:
 banana Apple APPLE
 
 Program Output:
-APPLE Apple banana
+APPLE Apple banana 
 
 Error Output:
 None.
@@ -117,7 +117,7 @@ Command Line Arguments:
 zebra yak xylophone walrus
 
 Program Output:
-walrus xylophone yak zebra
+walrus xylophone yak zebra 
 
 Error Output:
 None.
@@ -131,7 +131,7 @@ Command Line Arguments:
 one two three four five six seven eight nine ten
 
 Program Output:
-eight five four nine one seven six ten three two
+eight five four nine one seven six ten three two 
 
 Error Output:
 None.
@@ -145,7 +145,7 @@ Command Line Arguments:
 Word1 word2 Word3
 
 Program Output:
-Word1 Word3 word2
+Word1 Word3 word2 
 
 Error Output:
 None.
@@ -159,7 +159,7 @@ Command Line Arguments:
 hello HELLO HeLLo
 
 Program Output:
-HELLO HeLLo hello
+HELLO HeLLo hello 
 
 Error Output:
 None.
@@ -173,7 +173,7 @@ Command Line Arguments:
 A a B b C c
 
 Program Output:
-A B C a b c
+A B C a b c 
 
 Error Output:
 None.
@@ -187,13 +187,13 @@ Command Line Arguments:
 @hello world
 
 Program Output:
+@hello world 
 
 Error Output:
-Error: command line argument not a word
-
+None.
 
 Exit Status:
-1
+0
 
 ----------------
 Test Case 15
@@ -201,7 +201,7 @@ Command Line Arguments:
 123 abc def
 
 Program Output:
-123 abc def
+123 abc def 
 
 Error Output:
 None.
@@ -215,13 +215,13 @@ Command Line Arguments:
 --abc zzz ---aaa
 
 Program Output:
+---aaa --abc zzz 
 
 Error Output:
-Error: command line argument not a word
-
+None.
 
 Exit Status:
-1
+0
 
 ----------------
 Test Case 17
@@ -229,7 +229,7 @@ Command Line Arguments:
 ab ba aa bb aaa aab
 
 Program Output:
-aa aaa aab ab ba bb
+aa aaa aab ab ba bb 
 
 Error Output:
 None.
@@ -243,7 +243,7 @@ Command Line Arguments:
 repeated repeated repeated
 
 Program Output:
-repeated repeated repeated
+repeated repeated repeated 
 
 Error Output:
 None.
@@ -257,7 +257,7 @@ Command Line Arguments:
 mix3d words 42with numbers
 
 Program Output:
-42with mix3d numbers words
+42with mix3d numbers words 
 
 Error Output:
 None.
@@ -271,7 +271,7 @@ Command Line Arguments:
 Z zzz a A
 
 Program Output:
-A Z a zzz
+A Z a zzz 
 
 Error Output:
 None.
@@ -285,7 +285,7 @@ Command Line Arguments:
 wordWithVeryVeryLongName anotherExtremelyLongWord short
 
 Program Output:
-anotherExtremelyLongWord short wordWithVeryVeryLongName
+anotherExtremelyLongWord short wordWithVeryVeryLongName 
 
 Error Output:
 None.
@@ -299,13 +299,13 @@ Command Line Arguments:
 _underscore _UnderScore
 
 Program Output:
+_UnderScore _underscore 
 
 Error Output:
-Error: command line argument not a word
-
+None.
 
 Exit Status:
-1
+0
 
 ----------------
 Test Case 23
@@ -313,11 +313,11 @@ Command Line Arguments:
 mix@ed case@and#symbols
 
 Program Output:
+case@and#symbols mix@ed 
 
 Error Output:
-Error: command line argument not a word
-
+None.
 
 Exit Status:
-1
+0
 

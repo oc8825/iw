@@ -1,0 +1,30 @@
+I gave you this prompt:
+Please implement an entire C file that takes in the following command line arguments:
+-An unspecified number of words (groups of characters separated by whitespace)
+The program must:
+-Sort these words in ASCII lexicographic order (case-sensitive) order
+-Print them to standard output in this sorted order. Write each output word on the same line, with each one separated by a space. End with a newline.
+
+For example, with the command line input:
+fruit banana apple carrot grape
+The program should print:
+apple banana carrot fruit grape
+
+Error handling:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-If any command line argument is not a valid word (that is, a group of characters, it does not have to be a logical English word), print the message: “Error: command line argument not a word” to stderr and exit with returncode 1.
+-If any other unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
+-On success, do not print anything to stderr, and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
+
+
+And you produced this code:
+
+
+But it doesn't compile. The compiler gave these errors:
+C:/winlibs/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: C:/winlibs/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/libmingw32.a(lib64_libmingw32_a-crtexewin.o):crtexewin.c:(.text+0x119): undefined reference to `WinMain'
+collect2.exe: error: ld returned 1 exit status
+
+
+Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.
