@@ -12,8 +12,8 @@ int main(int argc, char *argv[]) {
     }
     
     char **words = (char **)malloc((argc - 1) * sizeof(char *));
-    if (!words) {
-        return 2;
+    if (words == NULL) {
+        exit(2);
     }
     
     for (int i = 1; i < argc; i++) {

@@ -29,7 +29,7 @@ Exit Status:
 ----------------
 Test Case 3
 Command Line Arguments:
-h&2_ =}h abc->67 43ab
+h&2_ =}h "abc->67" 43ab
 
 Program Output:
 h 
