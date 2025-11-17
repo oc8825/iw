@@ -1,0 +1,11 @@
+PointerSplit.C
+apple,banana,carrot ,
+hello|world|test |
+oneArg
+three different arguments
+secondArg notOneChar
+
+abc:def:ghi :
+"one two three" " "
+no_delimiters_here x
+"abc->67" "7"

@@ -17,7 +17,7 @@ k = 3, so the program should print:
 3 4 5
 
 Error handling
--If zero or one (just k) command line arguments are provided, print nothing and exit with returncode 0.
+-If zero or one command line arguments are provided, print nothing and exit with returncode 0.
 -If any command line argument is not a valid integer, print the message: “Error: command line argument not an integer” to stderr and exit with returncode 1.
 -If any other unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
 -On success, do not print anything to stderr, and exit with returncode 0.

@@ -1,0 +1,8 @@
+PointerLinkedList.C
+a b c d
+hello world
+"" ''
+mix3d words 42with numbers
+symbols !@#$%^
+supercalifragilisticexpialidocious tiny
+"abc->67"

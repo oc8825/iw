@@ -1,0 +1,35 @@
+Please implement an entire C file that takes in the following command line arguments:
+-An unspecified number of words
+
+Definition of a word:
+A "word" is any non-empty sequence of characters that does not contain whitespace. All characters are permitted, including digits, punctuation, and symbols. The program must not reject arguments based on their contents.
+All command line arguments should be treated literally. Characters such as ", ', \, and : are ordinary characters and do not create empty strings or special cases.
+Examples of valid words:
+apple, BANANA, mix3d, 42with, %weird*chars!, "" (two double-quote characters), '' (two single-quote characters)
+
+The program must:
+– Allocate a deep copy of all the argument strings, using pointers-to-pointers (char **dst)
+– Every string must be duplicated using manual pointer traversal (no strlen, no strcpy)
+– After copying, print all duplicated strings in reverse order, separated by spaces and followed by a newline
+– Free all allocated memory
+
+Constraints:
+– Copying must use pointer arithmetic, dereferencing, loops on pointers
+– No indexing with [] during the copy logic
+
+For example, with the command line input:
+apple banana cherry
+The program should print:
+cherry banana apple
+
+As another example, with the command line input:
+mix3d 42with %weird*chars!
+The program should print:
+%weird*chars! 42with mix3d
+
+Error handling:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-If any unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
+-On success, do not print anything to stderr, and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.

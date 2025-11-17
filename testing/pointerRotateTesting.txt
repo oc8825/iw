@@ -1,0 +1,8 @@
+PointerRotate.C
+a b c d e
+hello world test
+"" ''
+mix3d words 42with numbers
+X Y Z
+apple banana carrot
+"abc->67"

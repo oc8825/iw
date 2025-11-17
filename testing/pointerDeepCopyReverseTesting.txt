@@ -1,0 +1,9 @@
+DeepCopyReverse.C
+hello world
+"" ''
+a bb ccc dddd
+
+mix3d words 42with numbers
+symbols @#$% !!!
+super longword anotherone verylongwordthatjustkeepsgoingtoseehowitishandled
+"abc->67"

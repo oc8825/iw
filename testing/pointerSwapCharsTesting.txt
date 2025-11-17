@@ -1,0 +1,8 @@
+PointerSwapChars.C
+hello world
+a bb ccc dddd
+"" ''
+racecar rotor kayak
+@123 456!
+mix3d words 42with numbers
+"abc->67"

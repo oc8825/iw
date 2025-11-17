@@ -1,0 +1,40 @@
+Please implement an entire C file that takes in the following command line arguments:
+-An unspecified number of words
+
+Definition of a word:
+A "word" is any non-empty sequence of characters that does not contain whitespace. All characters are permitted, including digits, punctuation, and symbols. The program must not reject arguments based on their contents.
+All command line arguments should be treated literally. Characters such as ", ', \, and : are ordinary characters and do not create empty strings or special cases.
+Examples of valid words:
+apple, BANANA, mix3d, 42with, %weird*chars!, "" (two double-quote characters), '' (two single-quote characters)
+
+The program must:
+– Dynamically build a singly linked list, where each node contains:
+    > a deep-copied string
+    > a pointer to the next node
+– Insert each new word at the head of the list
+– After constructing the list, traverse it (using only pointers) and print all stored words separated by spaces, followed by a newline
+- Because of head insertion, output must be in reverse order of the input
+
+Constraints:
+– Must use pointer manipulation for all list operations
+– Must malloc each node and each string
+– Must free the entire list afterward
+
+For example, with the command line input:
+fruit banana apple carrot grape
+The program should print:
+grape carrot apple banana fruit
+
+As another example, with the command line input:
+mix3d words 42with numbers
+The program should print:
+numbers 42with words mix3d
+
+And it MUST do this using a Linked List.
+
+Error handling:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-If any unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
+-On success, do not print anything to stderr, and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
