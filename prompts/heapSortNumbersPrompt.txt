@@ -1,6 +1,7 @@
 Please implement an entire C file that takes in the following command line arguments:
 -An unspecified number of integers
-The program must then:
+
+The program must:
 -Maintain a max-heap as a global variable (declared outside of any function)
 -Implement push and pop functions that operate on the global heap array and maintain max-heap order
 -Push each integer command line argument to the heap
@@ -16,7 +17,7 @@ And it MUST do this by maintaining a max-heap, defining push and pop methods, an
 
 Error handling:
 -If no command line arguments are provided, print nothing and exit with returncode 0.
--If any command line argument is not a valid integer, print the message: “Error: command line argument not an integer” to stderr and exit with returncode 1.
+-If any command line argument is not a valid integer (supports optional leading + or –), print the message: “Error: command line argument not an integer” to stderr and exit with returncode 1.
 -If any other unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
 -On success, do not print anything to stderr, and exit with returncode 0.
 

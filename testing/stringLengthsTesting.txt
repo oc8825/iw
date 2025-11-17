@@ -1,0 +1,15 @@
+StringLength.C
+hello world
+
+""
+''
+"" ''
+abc def ghi jkl
+"@!!@" "12345"
+a bb ccc dddd
+mix@ed symbols#$%
+supercalifragilisticexpialidocious
+"abc->67"
+A a B b C c
+" " "" "__"
+dog catmouse bird

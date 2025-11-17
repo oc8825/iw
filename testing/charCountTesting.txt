@@ -1,0 +1,16 @@
+CountChar.C
+a banana
+a 'banan\a"
+
+1arg
+three different arguments
+b bobbuyblueballoons
+! "!!!wow!!!"
+"" abcdefghijk
+x ""
+hello "test"
+z nozhere
+? ???????
+0 010101010
+"'" "'''''hello'''''"
+c CccCc
