@@ -1,0 +1,12 @@
+DynDedup.C
+a a a a
+
+""
+''
+hello hello world world hello
+"" '' "" ''
+abc ABC abc ABC
+mix3d mix3d words words 42with
+longlongword anotherlongword longlongword
+"weird#chars" "weird#chars" "diff"
+A B A B C C a b a b

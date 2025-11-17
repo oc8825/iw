@@ -1,0 +1,31 @@
+Please implement an entire C file that takes in the following command line arguments:
+-An unspecified number of words
+
+Definition of a word:
+A "word" is any non-empty sequence of characters that does not contain whitespace. All characters are permitted, including digits, punctuation, and symbols. The program must not reject arguments based on their contents.
+All command line arguments should be treated literally. Characters such as ", ', \, and : are ordinary characters and do not create empty strings or special cases.
+Examples of valid words:
+apple, BANANA, mix3d, 42with, %weird*chars!, "" (two double-quote characters), '' (two single-quote characters)
+
+The program must:
+– Dynamically build an array of all words whose first character is the same as the first character of the first argument
+– Must resize this array repeatedly using realloc
+– Sort the collected words in ASCII lexicographic order
+– Print them separated by spaces and ending with a newline
+
+For example, with the command line input:
+apple ant bear aardvark grape
+The program should print:
+aardvark ant apple
+
+As another example, with the command line input:
+mix3d mash words mash 42with numbers
+The program should print:
+mash mash mix3d
+
+Error handling:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-If any unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
+-On success, do not print anything to stderr, and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.

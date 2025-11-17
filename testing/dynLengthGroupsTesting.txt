@@ -1,0 +1,9 @@
+LengthGroups.C
+hi to you
+"" ''
+abc aa bbb c de fghi
+
+mix3d words 42with numbers
+supercalifragilisticexpialidocious tiny big medium
+A a BB bb CCC ccc
+"abc->67" "x" "yz"

@@ -1,0 +1,10 @@
+ConcatenateSort.C
+hi there friend
+"" ''
+
+a bb ccc dddd
+mix3d words 42with numbers
+super longwordwithmanycharacters anotherlongword yetanotherlongword
+"@sym!" "#$%" "&and"
+dog catmouse bird
+"abc->67"

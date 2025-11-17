@@ -1,0 +1,35 @@
+Please implement an entire C file that takes in the following command line arguments:
+-An unspecified number of words
+
+Definition of a word:
+A "word" is any non-empty sequence of characters that does not contain whitespace. All characters are permitted, including digits, punctuation, and symbols. The program must not reject arguments based on their contents.
+All command line arguments should be treated literally. Characters such as ", ', \, and : are ordinary characters and do not create empty strings or special cases.
+Examples of valid words:
+apple, BANANA, mix3d, 42with, %weird*chars!, "" (two double-quote characters), '' (two single-quote characters)
+
+The program must:
+– Compute the byte-length of each word
+– Dynamically group words by their length
+– Each "bucket" of words (same length) must be allocated dynamically and grown via realloc
+– After grouping, print groups in strictly increasing length order
+– Within each group, print words in the order they originally appeared
+– Formatting:
+For each distinct length, print:
+<length>: word1 word2 word3
+Print each group on its own line and end with a newline character.
+
+For example, with the command line input:
+a bb ccc bb a
+The program should print:
+1: a a
+2: bb bb
+3: ccc
+
+And it MUST do this by computing byte lengths and dynamically grouping words using the process specified above.
+
+Error handling:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-If any unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
+-On success, do not print anything to stderr, and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
