@@ -1,0 +1,115 @@
+I gave you this prompt:
+Please implement an entire C file that takes in the following command line arguments:
+–First, a word containing arbitrary characters: s
+-Second, a one-byte long word representing a delimiter character: delim
+
+Definition of a word:
+A "word" is any non-empty sequence of characters that does not contain whitespace. All characters are permitted, including digits, punctuation, and symbols. The program must not reject arguments based on their contents.
+All command line arguments should be treated literally. Characters such as ", ', \, and : are ordinary characters and do not create empty strings or special cases.
+Examples of valid words:
+apple, BANANA, mix3d, 42with, %weird*chars!, "" (two double-quote characters), '' (two single-quote characters)
+
+The program must:
+– Using pointer arithmetic, scan s and extract all substrings separated by delim
+– Store substrings in a dynamically allocated char ** array using pointers.
+– Print all extracted substrings separated by spaces in their original order they appeared in s, then newline.
+
+Constraints:
+– All scanning, finding boundaries, and copying substrings must be done using pointer arithmetic (no indexing).
+– Solutions must allocate memory manually for each substring.
+
+For example, with the command line input:
+apple,banana,carrot ,
+The program should print:
+apple banana carrot
+
+As another example, with the command line input:
+mix3d:words:42with:numbers :
+The program should print:
+42with mix3d numbers words
+
+Error handling:
+– If not exactly two command line arguments are provided, print the message: "Error: requires two command line arguments" to stderr and exit with returncode 1.
+– If the second argument is not exactly one character long, print the message: "Error: delim must be one character" to stderr and exit with returncode 1.
+– If any unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
+– On success, do not print anything to stderr, and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
+
+And you produced this code:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        fprintf(stderr, "Error: requires two command line arguments\n");
+        return 1;
+    }
+
+    char *s = argv[1];
+    char *delim = argv[2];
+
+    if (strlen(delim) != 1) {
+        fprintf(stderr, "Error: delim must be one character\n");
+        return 1;
+    }
+
+    char **substrings = NULL;
+    int count = 0;
+    char *start = s;
+    char *end = s;
+
+    while (*end) {
+        if (*end == *delim) {
+            int len = end - start;
+            substrings = realloc(substrings, (count + 1) * sizeof(char *));
+            substrings[count] = (char *)malloc((len + 1) * sizeof(char));
+            memcpy(substrings[count], start, len);
+            substrings[count][len] = '\0';
+            count++;
+            start = end + 1;
+        }
+        end++;
+    }
+
+    if (start != end) {
+        int len = end - start;
+        substrings = realloc(substrings, (count + 1) * sizeof(char *));
+        substrings[count] = (char *)malloc((len + 1) * sizeof(char));
+        memcpy(substrings[count], start, len);
+        substrings[count][len] = '\0';
+        count++;
+    }
+
+    for (int i = 0; i < count; i++) {
+        printf("%s", substrings[i]);
+        if (i < count - 1) {
+            printf(" ");
+        }
+    }
+    printf("\n");
+
+    for (int i = 0; i < count; i++) {
+        free(substrings[i]);
+    }
+    free(substrings);
+
+    return 0;
+}
+But it doesn't compile. The compiler gave these errors:
+solutions/PointerSplit.C: In function 'int main(int, char**)':
+solutions/PointerSplit.C:27:33: error: invalid conversion from 'void*' to 'char**' [-fpermissive]
+   27 |             substrings = realloc(substrings, (count + 1) * sizeof(char *));
+      |                          ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                 |
+      |                                 void*
+solutions/PointerSplit.C:39:29: error: invalid conversion from 'void*' to 'char**' [-fpermissive]
+   39 |         substrings = realloc(substrings, (count + 1) * sizeof(char *));
+      |                      ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                             |
+      |                             void*
+
+
+Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

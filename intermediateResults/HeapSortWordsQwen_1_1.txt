@@ -40,9 +40,8 @@ And you produced this code:
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
-#define MAX_HEAP_SIZE 1000000
+#define MAX_HEAP_SIZE 1000
 
 char **heap;
 int heap_size = 0;
@@ -57,24 +56,25 @@ void push(char *word) {
     if (heap_size >= MAX_HEAP_SIZE) {
         exit(2);
     }
-    heap[heap_size] = word;
+    heap[heap_size] = strdup(word);
     int i = heap_size;
     heap_size++;
-    while (i > 0) {
-        int parent = (i - 1) / 2;
-        if (strcmp(heap[i], heap[parent]) >= 0) break;
-        swap(i, parent);
-        i = parent;
+    while (i > 0 && strcmp(heap[(i - 1) / 2], heap[i]) > 0) {
+        swap(i, (i - 1) / 2);
+        i = (i - 1) / 2;
     }
 }
 
 void pop() {
-    if (heap_size == 0) return;
-    char *min = heap[0];
+    if (heap_size == 0) {
+        return;
+    }
+    printf("%s ", heap[0]);
+    free(heap[0]);
     heap[0] = heap[heap_size - 1];
     heap_size--;
     int i = 0;
-    while (true) {
+    while (2 * i + 1 < heap_size) {
         int left = 2 * i + 1;
         int right = 2 * i + 2;
         int smallest = i;
@@ -91,7 +91,6 @@ void pop() {
             break;
         }
     }
-    printf("%s ", min);
 }
 
 int main(int argc, char *argv[]) {
@@ -99,9 +98,6 @@ int main(int argc, char *argv[]) {
         return 0;
     }
     heap = malloc(MAX_HEAP_SIZE * sizeof(char *));
-    if (heap == NULL) {
-        exit(2);
-    }
     for (int i = 1; i < argc; i++) {
         push(argv[i]);
     }
@@ -114,8 +110,8 @@ int main(int argc, char *argv[]) {
 }
 But it doesn't compile. The compiler gave these errors:
 solutions/HeapSortWords.C: In function 'int main(int, char**)':
-solutions/HeapSortWords.C:62:18: error: invalid conversion from 'void*' to 'char**' [-fpermissive]
-   62 |     heap = malloc(MAX_HEAP_SIZE * sizeof(char *));
+solutions/HeapSortWords.C:61:18: error: invalid conversion from 'void*' to 'char**' [-fpermissive]
+   61 |     heap = malloc(MAX_HEAP_SIZE * sizeof(char *));
       |            ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       |                  |
       |                  void*

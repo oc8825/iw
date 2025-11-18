@@ -1,0 +1,195 @@
+----------------
+Test Case 1
+Command Line Arguments:
+hello world
+
+Program Output:
+olleh dlrow
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+""
+
+Program Output:
+""
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+''
+
+Program Output:
+''
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+abc def ghi
+
+Program Output:
+cba fed ihg
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+racecar level noon
+
+Program Output:
+racecar level noon
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+"@#%" "(){}"
+
+Program Output:
+"%#@" "}{)("
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+a bb ccc dddd
+
+Program Output:
+a bb ccc dddd
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+"hello!" "?!?"
+
+Program Output:
+"!olleh" "?!?"
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+mix3d w0rd5 symb0l$
+
+Program Output:
+d3xim 5dr0w $l0bmys
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+"abc->67" "zzz!"
+
+Program Output:
+"76>-cba" "!zzz"
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+"" ''
+
+Program Output:
+"" ''
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+A a B b
+
+Program Output:
+A a B b
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+RePeAt RePeAt RePeAt
+
+Program Output:
+tAePeR tAePeR tAePeR
+
+Error Output:
+None.
+
+Exit Status:
+0
+

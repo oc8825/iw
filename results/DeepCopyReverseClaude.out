@@ -1,0 +1,111 @@
+----------------
+Test Case 1
+Command Line Arguments:
+hello world
+
+Program Output:
+world hello
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+"" ''
+
+Program Output:
+'' ""
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+a bb ccc dddd
+
+Program Output:
+dddd ccc bb a
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+mix3d words 42with numbers
+
+Program Output:
+numbers 42with words mix3d
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+symbols @#$% !!!
+
+Program Output:
+!!! @#$% symbols
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+super longword anotherone verylongwordthatjustkeepsgoingtoseehowitishandled
+
+Program Output:
+verylongwordthatjustkeepsgoingtoseehowitishandled anotherone longword super
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+"abc->67"
+
+Program Output:
+"abc->67"
+
+Error Output:
+None.
+
+Exit Status:
+0
+

@@ -17,6 +17,7 @@ Error handling:
 -On success, do not print anything to stderr, and exit with returncode 0.
 
 Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
+
 One given solution was: 
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,7 +41,7 @@ int main(int argc, char *argv[]) {
     for (int i = 1; i < argc; i++) {
         char *end;
         long num = strtol(argv[i], &end, 10);
-        if (*end != '\0' || num < INT_MIN || num > INT_MAX) {
+        if (end == argv[i] || *end != '\0' || num < INT_MIN || num > INT_MAX) {
             fprintf(stderr, "Error: command line argument not an integer\n");
             valid = false;
             break;
@@ -65,7 +66,9 @@ int main(int argc, char *argv[]) {
 
     free(numbers);
     return 0;
-}The other provided solution was: 
+}
+
+The other provided solution was: 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -84,8 +87,8 @@ int main(int argc, char *argv[]) {
     }
     
     int *numbers = (int*)malloc((argc - 1) * sizeof(int));
-    if (!numbers) {
-        return 2;
+    if (numbers == NULL) {
+        exit(2);
     }
     
     for (int i = 1; i < argc; i++) {
@@ -96,7 +99,7 @@ int main(int argc, char *argv[]) {
         if (errno != 0 || *endptr != '\0' || val > INT_MAX || val < INT_MIN) {
             fprintf(stderr, "Error: command line argument not an integer\n");
             free(numbers);
-            return 1;
+            exit(1);
         }
         
         numbers[i - 1] = (int)val;
@@ -105,14 +108,19 @@ int main(int argc, char *argv[]) {
     qsort(numbers, argc - 1, sizeof(int), compare);
     
     for (int i = 0; i < argc - 1; i++) {
-        if (i > 0) printf(" ");
         printf("%d", numbers[i]);
+        if (i < argc - 2) {
+            printf(" ");
+        }
     }
     printf("\n");
     
     free(numbers);
     return 0;
-}However, after running these two solutions, the output differed in these sections: 
+}
+
+However, after running these two solutions, the output differed in these sections: 
 With command line arguments -2147483648 2147483647, get differing output in:
 Program Output
+
 Given this information of the two solutions and where they differ, please write a new solution that conforms to the original prompt repeated above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

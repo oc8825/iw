@@ -1,0 +1,195 @@
+----------------
+Test Case 1
+Command Line Arguments:
+apple banana apple carrot
+
+Program Output:
+apple banana carrot
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+one two three two one
+
+Program Output:
+one three two
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+A a A a
+
+Program Output:
+A a
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+""
+
+Program Output:
+""
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+''
+
+Program Output:
+''
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+"" '' ""
+
+Program Output:
+"" ''
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+dog cat dog cat dog
+
+Program Output:
+cat dog
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+abc ABC abc ABC
+
+Program Output:
+ABC abc
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+hello hello hello hello
+
+Program Output:
+hello
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+mix@ed mix@ed symbols symbols
+
+Program Output:
+mix@ed symbols
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+"abc->67" "abc->67" zzz
+
+Program Output:
+"abc->67" zzz
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+repeat repeated repeat repeated
+
+Program Output:
+repeat repeated
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+X Y Z X Y Z
+
+Program Output:
+X Y Z
+
+Error Output:
+None.
+
+Exit Status:
+0
+

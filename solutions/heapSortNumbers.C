@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <errno.h>
-#include <limits.h>
+#include <ctype.h>
 
 #define MAX_SIZE 1000
 
@@ -58,10 +57,25 @@ int pop() {
     int max = heap[0];
     heap[0] = heap[heap_size - 1];
     heap_size--;
-    if (heap_size > 0) {
-        heapify_down(0);
-    }
+    heapify_down(0);
     return max;
+}
+
+int is_valid_integer(char *str) {
+    if (str == NULL || *str == '\0') return 0;
+    
+    int i = 0;
+    if (str[0] == '+' || str[0] == '-') {
+        i = 1;
+        if (str[1] == '\0') return 0;
+    }
+    
+    while (str[i] != '\0') {
+        if (!isdigit(str[i])) return 0;
+        i++;
+    }
+    
+    return 1;
 }
 
 int main(int argc, char *argv[]) {
@@ -70,11 +84,14 @@ int main(int argc, char *argv[]) {
     }
     
     for (int i = 1; i < argc; i++) {
-        char *endptr;
-        errno = 0;
-        long val = strtol(argv[i], &endptr, 10);
+        if (!is_valid_integer(argv[i])) {
+            fprintf(stderr, "Error: command line argument not an integer\n");
+            return 1;
+        }
         
-        if (errno != 0 || *endptr != '\0' || val > INT_MAX || val < INT_MIN) {
+        char *endptr;
+        long val = strtol(argv[i], &endptr, 10);
+        if (*endptr != '\0') {
             fprintf(stderr, "Error: command line argument not an integer\n");
             return 1;
         }
@@ -83,8 +100,10 @@ int main(int argc, char *argv[]) {
     }
     
     for (int i = 0; i < argc - 1; i++) {
-        if (i > 0) printf(" ");
         printf("%d", pop());
+        if (i < argc - 2) {
+            printf(" ");
+        }
     }
     printf("\n");
     

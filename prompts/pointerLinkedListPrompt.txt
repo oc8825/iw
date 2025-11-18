@@ -13,7 +13,7 @@ The program must:
     > a pointer to the next node
 – Insert each new word at the head of the list
 – After constructing the list, traverse it (using only pointers) and print all stored words separated by spaces, followed by a newline
-- Because of head insertion, output must be in reverse order of the input
+- Because of head insertion, output MUST BE IN REVERSE ORDER of the input
 
 Constraints:
 – Must use pointer manipulation for all list operations

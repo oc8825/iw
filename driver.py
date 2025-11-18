@@ -218,7 +218,9 @@ def main():
               "The other provided solution was: \n" + claude_response + "\n\n" + \
               "However, after running these two solutions, the output differed in these sections: \n" + differing_feedback + "\n" + \
               "Given this information of the two solutions and where they differ, please write a new solution " \
-              "that conforms to the original prompt repeated above. Return only valid C code - no explanations or markdown " \
+              "that conforms to the original prompt repeated above. " \
+              "Prioritize the solution that actually behaves according to the specified prompt. " \
+              "Return only valid C code - no explanations or markdown " \
               "fences. Start your response directly with code."
               intermediate_comparison_file = 'intermediateResults/' + short_filename + "Comparison" + str(num_comparisons) + ".txt"
               with open(intermediate_comparison_file, 'w', encoding="utf-8") as output:

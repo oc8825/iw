@@ -1,0 +1,125 @@
+----------------
+Test Case 1
+Command Line Arguments:
+hi there friend
+
+Program Output:
+friend hi there
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+"" ''
+
+Program Output:
+"" ''
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+a bb ccc dddd
+
+Program Output:
+a bb ccc dddd
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+mix3d words 42with numbers
+
+Program Output:
+42with mix3d numbers words
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+super longwordwithmanycharacters anotherlongword yetanotherlongword
+
+Program Output:
+anotherlongword longwordwithmanycharacters super yetanotherlongword
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+"@sym!" "#$%" "&and"
+
+Program Output:
+"#$%" "&and" "@sym!"
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+dog catmouse bird
+
+Program Output:
+bird catmouse dog
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+"abc->67"
+
+Program Output:
+"abc->67"
+
+Error Output:
+None.
+
+Exit Status:
+0
+

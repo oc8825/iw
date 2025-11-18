@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
             exit(1);
         }
         
-        numbers[i-1] = (int)val;
+        numbers[i - 1] = (int)val;
     }
     
     qsort(numbers, argc - 1, sizeof(int), compare);
@@ -41,9 +41,9 @@ int main(int argc, char *argv[]) {
     int current_length = 1;
     
     for (int i = 1; i < argc - 1; i++) {
-        if (numbers[i] == numbers[i-1]) {
+        if (numbers[i] == numbers[i - 1]) {
             continue;
-        } else if (numbers[i] == numbers[i-1] + 1) {
+        } else if (numbers[i] == numbers[i - 1] + 1) {
             current_length++;
         } else {
             if (current_length > max_length) {

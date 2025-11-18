@@ -1,0 +1,98 @@
+----------------
+Test Case 1
+Command Line Arguments:
+a b c d e
+
+Program Output:
+b c d e a
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+hello world test
+
+Program Output:
+world test hello
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+"" ''
+
+Program Output:
+'' ""
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+mix3d words 42with numbers
+
+Program Output:
+words 42with numbers mix3d
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+X Y Z
+
+Program Output:
+Y Z X
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+apple banana carrot
+
+Program Output:
+banana carrot apple
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+"abc->67"
+
+Program Output:
+"abc->67"
+
+Error Output:
+None.
+
+Exit Status:
+0
+

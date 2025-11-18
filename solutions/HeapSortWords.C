@@ -32,6 +32,7 @@ void heapify_down(int index) {
     if (left < heap_size && strcmp(heap[left], heap[smallest]) < 0) {
         smallest = left;
     }
+    
     if (right < heap_size && strcmp(heap[right], heap[smallest]) < 0) {
         smallest = right;
     }
@@ -42,7 +43,7 @@ void heapify_down(int index) {
     }
 }
 
-void push(char* word) {
+void push(const char* word) {
     if (heap_size >= MAX_HEAP_SIZE) {
         exit(2);
     }
@@ -77,9 +78,12 @@ int main(int argc, char* argv[]) {
         push(argv[i]);
     }
     
-    for (int i = 0; i < argc - 1; i++) {
-        if (i > 0) printf(" ");
-        printf("%s", pop());
+    for (int i = 1; i < argc; i++) {
+        char* word = pop();
+        printf("%s", word);
+        if (i < argc - 1) {
+            printf(" ");
+        }
     }
     printf("\n");
     

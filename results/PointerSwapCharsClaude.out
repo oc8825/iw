@@ -1,0 +1,98 @@
+----------------
+Test Case 1
+Command Line Arguments:
+hello world
+
+Program Output:
+olleh dlrow
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+a bb ccc dddd
+
+Program Output:
+a bb ccc dddd
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+"" ''
+
+Program Output:
+"" ''
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+racecar rotor kayak
+
+Program Output:
+racecar rotor kayak
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+@123 456!
+
+Program Output:
+321@ !654
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+mix3d words 42with numbers
+
+Program Output:
+d3xim sdrow htiw24 srebmun
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+"abc->67"
+
+Program Output:
+"76>-cba"
+
+Error Output:
+None.
+
+Exit Status:
+0
+

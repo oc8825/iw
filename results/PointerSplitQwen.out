@@ -1,0 +1,140 @@
+----------------
+Test Case 1
+Command Line Arguments:
+apple,banana,carrot ,
+
+Program Output:
+apple banana carrot
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+hello|world|test |
+
+Program Output:
+
+Error Output:
+The syntax of the command is incorrect.
+
+
+Exit Status:
+1
+
+----------------
+Test Case 3
+Command Line Arguments:
+oneArg
+
+Program Output:
+
+Error Output:
+Error: requires two command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 4
+Command Line Arguments:
+three different arguments
+
+Program Output:
+
+Error Output:
+Error: requires two command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 5
+Command Line Arguments:
+secondArg notOneChar
+
+Program Output:
+
+Error Output:
+Error: delim must be one character
+
+
+Exit Status:
+1
+
+----------------
+Test Case 6
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+Error: requires two command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 7
+Command Line Arguments:
+abc:def:ghi :
+
+Program Output:
+abc def ghi
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+"one two three" " "
+
+Program Output:
+
+Error Output:
+Error: requires two command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 9
+Command Line Arguments:
+no_delimiters_here x
+
+Program Output:
+no_delimiters_here
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+"abc->67" "7"
+
+Program Output:
+
+Error Output:
+Error: delim must be one character
+
+
+Exit Status:
+1
+

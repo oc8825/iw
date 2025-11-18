@@ -1,0 +1,210 @@
+----------------
+Test Case 1
+Command Line Arguments:
+a banana
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+a 'banan\a"
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+Error: requires two command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 4
+Command Line Arguments:
+1arg
+
+Program Output:
+
+Error Output:
+Error: requires two command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 5
+Command Line Arguments:
+three different arguments
+
+Program Output:
+
+Error Output:
+Error: requires two command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 6
+Command Line Arguments:
+b bobbuyblueballoons
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+! "!!!wow!!!"
+
+Program Output:
+6
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+"" abcdefghijk
+
+Program Output:
+
+Error Output:
+Error: target must be one character
+
+
+Exit Status:
+1
+
+----------------
+Test Case 9
+Command Line Arguments:
+x ""
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+hello "test"
+
+Program Output:
+
+Error Output:
+Error: target must be one character
+
+
+Exit Status:
+1
+
+----------------
+Test Case 11
+Command Line Arguments:
+z nozhere
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+? ???????
+
+Program Output:
+
+Error Output:
+Error: requires two command line arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 13
+Command Line Arguments:
+0 010101010
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+"'" "'''''hello'''''"
+
+Program Output:
+
+Error Output:
+Error: target must be one character
+
+
+Exit Status:
+1
+
+----------------
+Test Case 15
+Command Line Arguments:
+c CccCc
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+

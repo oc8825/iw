@@ -1,0 +1,195 @@
+----------------
+Test Case 1
+Command Line Arguments:
+1 2 3 4 5
+
+Program Output:
+15
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+10 -5 20 -10
+
+Program Output:
+15
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+0 0 0 0
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+-1 -2 -3
+
+Program Output:
+-6
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
++5 +10 +15
+
+Program Output:
+30
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+999999 1
+
+Program Output:
+1000000
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+-1000 500 250 250
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+three 4 5
+
+Program Output:
+
+Error Output:
+Error: command line argument not an integer
+
+
+Exit Status:
+1
+
+----------------
+Test Case 9
+Command Line Arguments:
+1 a 3
+
+Program Output:
+
+Error Output:
+Error: command line argument not an integer
+
+
+Exit Status:
+1
+
+----------------
+Test Case 10
+Command Line Arguments:
+"10" "20" "30"
+
+Program Output:
+
+Error Output:
+Error: command line argument not an integer
+
+
+Exit Status:
+1
+
+----------------
+Test Case 11
+Command Line Arguments:
+5
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
++0 -0
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+1000000000 2000000000
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+2
+
+----------------
+Test Case 14
+Command Line Arguments:
+-2147483648 0 2147483647
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+

@@ -1,0 +1,195 @@
+----------------
+Test Case 1
+Command Line Arguments:
+hello world
+
+Program Output:
+5 5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+""
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+''
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+"" ''
+
+Program Output:
+2 2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+abc def ghi jkl
+
+Program Output:
+3 3 3 3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+"@!!@" "12345"
+
+Program Output:
+6 7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+a bb ccc dddd
+
+Program Output:
+1 2 3 4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+mix@ed symbols#$%
+
+Program Output:
+6 10
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+supercalifragilisticexpialidocious
+
+Program Output:
+34
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+"abc->67"
+
+Program Output:
+9
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+A a B b C c
+
+Program Output:
+1 1 1 1 1 1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+" " "" "__"
+
+Program Output:
+1 1 2 4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+dog catmouse bird
+
+Program Output:
+3 4 8
+
+Error Output:
+None.
+
+Exit Status:
+0
+

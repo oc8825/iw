@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     }
     
     char **words = (char **)malloc((argc - 1) * sizeof(char *));
-    if (words == NULL) {
+    if (!words) {
         exit(2);
     }
     
@@ -23,12 +23,22 @@ int main(int argc, char *argv[]) {
     qsort(words, argc - 1, sizeof(char *), compare_strings);
     
     for (int i = 0; i < argc - 1; i++) {
-        printf("%s", words[i]);
+        if (printf("%s", words[i]) < 0) {
+            free(words);
+            exit(2);
+        }
         if (i < argc - 2) {
-            printf(" ");
+            if (printf(" ") < 0) {
+                free(words);
+                exit(2);
+            }
         }
     }
-    printf("\n");
+    
+    if (printf("\n") < 0) {
+        free(words);
+        exit(2);
+    }
     
     free(words);
     return 0;
