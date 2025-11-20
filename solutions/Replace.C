@@ -4,7 +4,7 @@
 #include <ctype.h>
 
 int is_word_boundary(char c) {
-    return !isalnum(c) && c != '_';
+    return isspace(c) || ispunct(c) || c == '\0';
 }
 
 int main(int argc, char *argv[]) {
@@ -37,21 +37,17 @@ int main(int argc, char *argv[]) {
     while (i < textLen) {
         if (strncmp(&text[i], wordToReplace, wordToReplaceLen) == 0) {
             int prevBoundary = (i == 0) || is_word_boundary(text[i-1]);
-            int nextBoundary = (i + wordToReplaceLen >= textLen) || is_word_boundary(text[i + wordToReplaceLen]);
+            int nextBoundary = is_word_boundary(text[i + wordToReplaceLen]);
             
             if (prevBoundary && nextBoundary) {
                 strcpy(&result[resultPos], replacementWord);
                 resultPos += replacementWordLen;
                 i += wordToReplaceLen;
             } else {
-                result[resultPos] = text[i];
-                resultPos++;
-                i++;
+                result[resultPos++] = text[i++];
             }
         } else {
-            result[resultPos] = text[i];
-            resultPos++;
-            i++;
+            result[resultPos++] = text[i++];
         }
     }
     

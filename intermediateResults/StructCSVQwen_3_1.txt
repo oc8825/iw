@@ -1,0 +1,168 @@
+I gave you this prompt:
+Please implement an entire C file that takes in the following command line arguments:
+-The first argument is a column name to sort by (one word, e.g., age or name).
+-The remaining arguments are an unspecified number of CSV rows, each row being a comma-separated list of fields with identical column order (e.g., Alice,30,Engineer).
+-No header row is provided in argv. Instead, the program must determine the header from the first CSV row by treating that row’s field names as the column names to sort by.
+
+Definition of a word:
+A "word" is any non-empty sequence of characters that does not contain whitespace.
+CSV rows are single command-line arguments (commas are part of the argument).
+
+The program must:
+-If no command line arguments beyond the column name are provided, print nothing and exit with returncode 0.
+-Parse the first CSV row into a header array (char **headers) by splitting on commas. These are the column names.
+-Find the index of the requested sort column. If the column name (first argv) is not in the header, print Error: unknown column to stderr and exit with returncode 1.
+-Parse every subsequent CSV row into fields by splitting on commas, allocating deep copies.
+-Represent each parsed row as:
+struct Record {
+    char **fields;
+    size_t n_fields;
+};
+-Validate that every row has the same number of fields as the header. If not, print "Error: inconsistent row" to stderr and exit with returncode 1.
+-Sort the Record array stably by the target column using lexicographic ASCII ordering.
+-After sorting, print each CSV row (fields joined with commas), one per line, ending with a final newline.
+-Free all allocated memory.
+-If any unexpected error occurs (allocation failure, etc.), print nothing to stderr and exit with returncode 2.
+-On success, print nothing to stderr and exit with returncode 0.
+
+And you produced this code:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Record {
+    char **fields;
+    size_t n_fields;
+};
+
+size_t split(const char *str, char delimiter, char ***result) {
+    size_t count = 0;
+    char *token, *str_copy = strdup(str);
+    if (str_copy == NULL) {
+        return 0;
+    }
+
+    *result = NULL;
+    token = strtok(str_copy, &delimiter);
+    while (token) {
+        char *field = strdup(token);
+        if (field == NULL) {
+            free(str_copy);
+            return 0;
+        }
+        *result = (char **)realloc(*result, (count + 1) * sizeof(char *));
+        if (*result == NULL) {
+            free(str_copy);
+            return 0;
+        }
+        (*result)[count++] = field;
+        token = strtok(NULL, &delimiter);
+    }
+    free(str_copy);
+    return count;
+}
+
+void free_fields(char **fields, size_t n_fields) {
+    for (size_t i = 0; i < n_fields; i++) {
+        free(fields[i]);
+    }
+    free(fields);
+}
+
+void free_records(struct Record *records, size_t n_records) {
+    for (size_t i = 0; i < n_records; i++) {
+        free_fields(records[i].fields, records[i].n_fields);
+    }
+    free(records);
+}
+
+int find_column_index(const char *column_name, char **headers, size_t n_headers) {
+    for (size_t i = 0; i < n_headers; i++) {
+        if (strcmp(headers[i], column_name) == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int compare_records(const void *a, const void *b, void *arg) {
+    const struct Record *record_a = (const struct Record *)a;
+    const struct Record *record_b = (const struct Record *)b;
+    int index = *(int *)arg;
+    return strcmp(record_a->fields[index], record_b->fields[index]);
+}
+
+int main(int argc, char *argv[]) {
+    if (argc < 3) {
+        return 0;
+    }
+
+    char **headers;
+    size_t n_headers = split(argv[2], ',', &headers);
+    if (n_headers == 0) {
+        return 2;
+    }
+
+    int sort_column_index = find_column_index(argv[1], headers, n_headers);
+    if (sort_column_index == -1) {
+        fprintf(stderr, "Error: unknown column\n");
+        free_fields(headers, n_headers);
+        return 1;
+    }
+
+    struct Record *records = (struct Record *)malloc((argc - 3) * sizeof(struct Record));
+    if (records == NULL) {
+        free_fields(headers, n_headers);
+        return 2;
+    }
+
+    size_t n_records = 0;
+    for (int i = 3; i < argc; i++) {
+        char **fields;
+        size_t n_fields = split(argv[i], ',', &fields);
+        if (n_fields == 0) {
+            free_records(records, n_records);
+            free_fields(headers, n_headers);
+            return 2;
+        }
+
+        if (n_fields != n_headers) {
+            free_fields(fields, n_fields);
+            free_records(records, n_records);
+            free_fields(headers, n_headers);
+            fprintf(stderr, "Error: inconsistent row\n");
+            return 1;
+        }
+
+        records[n_records].fields = fields;
+        records[n_records].n_fields = n_fields;
+        n_records++;
+    }
+
+    qsort_r(records, n_records, sizeof(struct Record), compare_records, (void *)&sort_column_index);
+
+    for (size_t i = 0; i < n_records; i++) {
+        for (size_t j = 0; j < records[i].n_fields; j++) {
+            if (j > 0) {
+                printf(",");
+            }
+            printf("%s", records[i].fields[j]);
+        }
+        printf("\n");
+    }
+
+    free_records(records, n_records);
+    free_fields(headers, n_headers);
+
+    return 0;
+}
+But it doesn't compile. The compiler gave these errors:
+solutions/StructCSV.C: In function 'int main(int, char**)':
+solutions/StructCSV.C:114:5: error: 'qsort_r' was not declared in this scope; did you mean 'qsort_s'?
+  114 |     qsort_r(records, n_records, sizeof(struct Record), compare_records, (void *)&sort_column_index);
+      |     ^~~~~~~
+      |     qsort_s
+
+
+Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

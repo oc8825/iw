@@ -1,0 +1,207 @@
+I gave you this prompt:
+Please implement an entire C file that takes in the following command line arguments:
+-An unspecified number of arguments where each argument encodes a directed edge as u->v (both u and v are node labels: non-empty strings without - or >). Example: A->B, node1->node2.
+
+The program must:
+-Parse each u->v token
+-Build a graph represented by an array (or other dynamically allocated container) of struct Node elements. Each struct Node must contain a char *label; and a dynamically allocated array of char * pointers for outgoing neighbors. Node labels must be deep-copied into allocated memory. The graph must contain one struct Node per distinct label encountered (either as source or destination). The adjacency lists must be dynamically resized as needed. Use malloc/realloc/free.
+-After parsing all edges, for consistent output, sort the nodes by their label in ASCII lexicographic order. Also sort each node's adjacency list by neighbor label in ASCII order. Sorting must operate on the arrays inside struct Node or the node array.
+-Print the adjacency list: one line per node in sorted node order, formatted as label: nb1 nb2 nb3 (neighbors separated by spaces). If a node has no outgoing edges, print label: followed by a newline. End output with a newline.
+-Free all allocated memory.
+
+For example, with the command line input:
+A->B A->C B->C D->A
+The program should print:
+A: B C
+B: C
+C:
+D: A
+
+And it MUST do this by defining struct Node { char *label; char **neighbors; size_t ndegs; size_t cap; };, dynamically building nodes and adjacency arrays, sorting nodes and adjacency lists, printing adjacency lists, and freeing memory.
+
+Error handling:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-If any token does not contain the exact substring -> separating non-empty u and v, print "Error: invalid edge" to stderr and exit with returncode 1. Node labels may include punctuation but not whitespace.
+-If any unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
+-On success, print nothing to stderr and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
+
+And you produced this code:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Node {
+    char *label;
+    char **neighbors;
+    size_t ndegs;
+    size_t cap;
+};
+
+int compare_strings(const void *a, const void *b) {
+    return strcmp(*(const char **)a, *(const char **)b);
+}
+
+int compare_nodes(const void *a, const void *b) {
+    const struct Node *na = (const struct Node *)a;
+    const struct Node *nb = (const struct Node *)b;
+    return strcmp(na->label, nb->label);
+}
+
+struct Node *find_or_create_node(struct Node **nodes, size_t *num_nodes, size_t *nodes_cap, const char *label) {
+    for (size_t i = 0; i < *num_nodes; i++) {
+        if (strcmp((*nodes)[i].label, label) == 0) {
+            return &(*nodes)[i];
+        }
+    }
+    
+    if (*num_nodes >= *nodes_cap) {
+        *nodes_cap = (*nodes_cap == 0) ? 1 : *nodes_cap * 2;
+        *nodes = realloc(*nodes, *nodes_cap * sizeof(struct Node));
+        if (!*nodes) exit(2);
+    }
+    
+    struct Node *new_node = &(*nodes)[*num_nodes];
+    new_node->label = malloc(strlen(label) + 1);
+    if (!new_node->label) exit(2);
+    strcpy(new_node->label, label);
+    new_node->neighbors = NULL;
+    new_node->ndegs = 0;
+    new_node->cap = 0;
+    (*num_nodes)++;
+    
+    return new_node;
+}
+
+void add_edge(struct Node *from_node, const char *to_label) {
+    for (size_t i = 0; i < from_node->ndegs; i++) {
+        if (strcmp(from_node->neighbors[i], to_label) == 0) {
+            return;
+        }
+    }
+    
+    if (from_node->ndegs >= from_node->cap) {
+        from_node->cap = (from_node->cap == 0) ? 1 : from_node->cap * 2;
+        from_node->neighbors = realloc(from_node->neighbors, from_node->cap * sizeof(char *));
+        if (!from_node->neighbors) exit(2);
+    }
+    
+    from_node->neighbors[from_node->ndegs] = malloc(strlen(to_label) + 1);
+    if (!from_node->neighbors[from_node->ndegs]) exit(2);
+    strcpy(from_node->neighbors[from_node->ndegs], to_label);
+    from_node->ndegs++;
+}
+
+int parse_edge(const char *arg, char **from, char **to) {
+    const char *arrow = strstr(arg, "->");
+    if (!arrow) return 0;
+    
+    size_t from_len = arrow - arg;
+    if (from_len == 0) return 0;
+    
+    const char *to_start = arrow + 2;
+    if (strlen(to_start) == 0) return 0;
+    
+    *from = malloc(from_len + 1);
+    if (!*from) exit(2);
+    strncpy(*from, arg, from_len);
+    (*from)[from_len] = '\0';
+    
+    *to = malloc(strlen(to_start) + 1);
+    if (!*to) {
+        free(*from);
+        exit(2);
+    }
+    strcpy(*to, to_start);
+    
+    return 1;
+}
+
+int main(int argc, char *argv[]) {
+    if (argc == 1) {
+        return 0;
+    }
+    
+    struct Node *nodes = NULL;
+    size_t num_nodes = 0;
+    size_t nodes_cap = 0;
+    
+    for (int i = 1; i < argc; i++) {
+        char *from, *to;
+        if (!parse_edge(argv[i], &from, &to)) {
+            fprintf(stderr, "Error: invalid edge\n");
+            return 1;
+        }
+        
+        struct Node *from_node = find_or_create_node(&nodes, &num_nodes, &nodes_cap, from);
+        find_or_create_node(&nodes, &num_nodes, &nodes_cap, to);
+        add_edge(from_node, to);
+        
+        free(from);
+        free(to);
+    }
+    
+    qsort(nodes, num_nodes, sizeof(struct Node), compare_nodes);
+    
+    for (size_t i = 0; i < num_nodes; i++) {
+        qsort(nodes[i].neighbors, nodes[i].ndegs, sizeof(char *), compare_strings);
+    }
+    
+    for (size_t i = 0; i < num_nodes; i++) {
+        printf("%s:", nodes[i].label);
+        for (size_t j = 0; j < nodes[i].ndegs; j++) {
+            printf(" %s", nodes[i].neighbors[j]);
+        }
+        printf("\n");
+    }
+    
+    for (size_t i = 0; i < num_nodes; i++) {
+        free(nodes[i].label);
+        for (size_t j = 0; j < nodes[i].ndegs; j++) {
+            free(nodes[i].neighbors[j]);
+        }
+        free(nodes[i].neighbors);
+    }
+    free(nodes);
+    
+    return 0;
+}
+But it doesn't compile. The compiler gave these errors:
+solutions/GraphAdjList.C: In function 'Node* find_or_create_node(Node**, size_t*, size_t*, const char*)':
+solutions/GraphAdjList.C:31:25: error: invalid conversion from 'void*' to 'Node*' [-fpermissive]
+   31 |         *nodes = realloc(*nodes, *nodes_cap * sizeof(struct Node));
+      |                  ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                         |
+      |                         void*
+solutions/GraphAdjList.C:36:29: error: invalid conversion from 'void*' to 'char*' [-fpermissive]
+   36 |     new_node->label = malloc(strlen(label) + 1);
+      |                       ~~~~~~^~~~~~~~~~~~~~~~~~~
+      |                             |
+      |                             void*
+solutions/GraphAdjList.C: In function 'void add_edge(Node*, const char*)':
+solutions/GraphAdjList.C:56:39: error: invalid conversion from 'void*' to 'char**' [-fpermissive]
+   56 |         from_node->neighbors = realloc(from_node->neighbors, from_node->cap * sizeof(char *));
+      |                                ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                       |
+      |                                       void*
+solutions/GraphAdjList.C:60:52: error: invalid conversion from 'void*' to 'char*' [-fpermissive]
+   60 |     from_node->neighbors[from_node->ndegs] = malloc(strlen(to_label) + 1);
+      |                                              ~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+      |                                                    |
+      |                                                    void*
+solutions/GraphAdjList.C: In function 'int parse_edge(const char*, char**, char**)':
+solutions/GraphAdjList.C:76:19: error: invalid conversion from 'void*' to 'char*' [-fpermissive]
+   76 |     *from = malloc(from_len + 1);
+      |             ~~~~~~^~~~~~~~~~~~~~
+      |                   |
+      |                   void*
+solutions/GraphAdjList.C:81:17: error: invalid conversion from 'void*' to 'char*' [-fpermissive]
+   81 |     *to = malloc(strlen(to_start) + 1);
+      |           ~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+      |                 |
+      |                 void*
+
+
+Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

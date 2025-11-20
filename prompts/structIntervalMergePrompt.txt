@@ -1,0 +1,25 @@
+Please implement an entire C file that takes in the following command line arguments:
+-An unspecified number of arguments, where each argument encodes a closed integer interval in the form start-end (both inclusive). start and end are integers in base-10. Example: 2-5 or 10-10.
+
+The program must:
+-Parse each start-end token into a struct Interval { int start; int end; };
+-Dynamically allocate an array of struct Interval (using malloc/realloc) to hold all parsed intervals.
+-Sort the intervals by start (ascending), breaking ties by end ascending. Sorting must operate on the struct array.
+-Merge overlapping or adjacent intervals (two intervals [a,b] and [c,d] should be merged if c <= b+1) into a minimal list of disjoint intervals. The merging logic must operate on struct Interval elements.
+-Print merged intervals in ascending order, each as start-end separated by a single space, ending with a newline. Example output for merged intervals: 1-5 7-10 12-12
+-Free all allocated memory.
+
+For example, with the command line input:
+1-3 2-6 8-10 15-15 14-16
+The program should print:
+1-6 8-10 14-16
+
+And it MUST do this by defining struct Interval, parsing into an array of intervals, sorting the struct array, merging intervals via in-place or new array of struct Interval, printing merged ranges, and freeing memory.
+
+Error handling:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-If any interval token is malformed or start > end, print "Error: invalid interval" to stderr and exit with returncode 1.
+-If any unexpected error occurs, print nothing to stderr and exit with returncode 2.
+-On success, print nothing to stderr and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.

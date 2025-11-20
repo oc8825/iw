@@ -1,0 +1,111 @@
+----------------
+Test Case 1
+Command Line Arguments:
+A->B A->C B->C D->A
+
+Program Output:
+
+Error Output:
+Error: invalid edge
+
+
+Exit Status:
+1
+
+----------------
+Test Case 2
+Command Line Arguments:
+node1->node2 node2->node3 node1->node3
+
+Program Output:
+
+Error Output:
+Error: invalid edge
+
+
+Exit Status:
+1
+
+----------------
+Test Case 3
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+x->y y->z z->x
+
+Program Output:
+
+Error Output:
+Error: invalid edge
+
+
+Exit Status:
+1
+
+----------------
+Test Case 5
+Command Line Arguments:
+single->single
+
+Program Output:
+
+Error Output:
+Error: invalid edge
+
+
+Exit Status:
+1
+
+----------------
+Test Case 6
+Command Line Arguments:
+""->a a->""
+
+Program Output:
+
+Error Output:
+The filename, directory name, or volume label syntax is incorrect.
+
+
+Exit Status:
+1
+
+----------------
+Test Case 7
+Command Line Arguments:
+badformat
+
+Program Output:
+
+Error Output:
+Error: invalid edge
+
+
+Exit Status:
+1
+
+----------------
+Test Case 8
+Command Line Arguments:
+u->v v->u u->w v->w w->x
+
+Program Output:
+
+Error Output:
+Error: invalid edge
+
+
+Exit Status:
+1
+

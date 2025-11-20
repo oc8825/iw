@@ -1,0 +1,116 @@
+----------------
+Test Case 1
+Command Line Arguments:
+age name,age,role Alice,30,Engineer Bob,25,Designer Carol,30,Manager
+
+Program Output:
+Bob,25,Designer
+Alice,30,Engineer
+Carol,30,Manager
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+name a,b,c z,2,x a,1,y m,3,z
+
+Program Output:
+
+Error Output:
+Error: unknown column
+
+
+Exit Status:
+1
+
+----------------
+Test Case 3
+Command Line Arguments:
+role name,age,role John,40,Dev Jane,35,QA Jake,28,DevOps
+
+Program Output:
+John,40,Dev
+Jake,28,DevOps
+Jane,35,QA
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+age name,age,title One,NotANumber,Title Two,50,Title
+
+Program Output:
+Two,50,Title
+One,NotANumber,Title
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+age name,age,role Alice,30,Engineer Bob,25
+
+Program Output:
+
+Error Output:
+Error: inconsistent row
+
+
+Exit Status:
+1
+
+----------------
+Test Case 6
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+Usage: execute.exe <column> <header> <row1> <row2> ...
+
+
+Exit Status:
+1
+
+----------------
+Test Case 7
+Command Line Arguments:
+age name,age,role
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+unknowncol a,b,c 1,2,3
+
+Program Output:
+
+Error Output:
+Error: unknown column
+
+
+Exit Status:
+1
+

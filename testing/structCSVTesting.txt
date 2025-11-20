@@ -1,0 +1,9 @@
+StructCSV.C
+age name,age,role Alice,30,Engineer Bob,25,Designer Carol,30,Manager
+name a,b,c z,2,x a,1,y m,3,z
+role name,age,role John,40,Dev Jane,35,QA Jake,28,DevOps
+age name,age,title One,NotANumber,Title Two,50,Title
+age name,age,role Alice,30,Engineer Bob,25
+
+age name,age,role
+unknowncol a,b,c 1,2,3

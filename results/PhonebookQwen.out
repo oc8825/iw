@@ -1,0 +1,93 @@
+----------------
+Test Case 1
+Command Line Arguments:
+Alice 555-1234 Bob 999-0000 carol 12345
+
+Program Output:
+Alice: 555-1234
+Bob: 999-0000
+carol: 12345
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+z Z 1 2
+
+Program Output:
+1: 2
+z: Z
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+john +1-800-555-0199 jane +44-20-7946-0958
+
+Program Output:
+jane: +44-20-7946-0958
+john: +1-800-555-0199
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+"" "123" '' "456"
+
+Program Output:
+"": "123"
+'': "456"
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+nameOnly
+
+Program Output:
+
+Error Output:
+Error: requires pairs of name and number
+
+
+Exit Status:
+1
+
+----------------
+Test Case 6
+Command Line Arguments:
+A a B b C c D d E e\
+
+Program Output:
+A: a
+B: b
+C: c
+D: d
+E: e\
+
+Error Output:
+None.
+
+Exit Status:
+0
+

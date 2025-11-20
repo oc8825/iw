@@ -1,0 +1,36 @@
+I gave you this prompt:
+Please implement an entire C file that takes in the following command line arguments:
+-First, a one-word column name to sort by (for example, age)
+-Second, a header row showing the name of each column in the arguments that will follow (for example, name,age,role)
+-An unspeficied number of CSV rows, where each element is a comma-seperated list of fields matching the structure of the second argument (for example, Alice,30,Engineer).
+
+Definition of a word:
+A "word" is any non-empty sequence of characters that does not contain whitespace.
+CSV rows are single command-line arguments (commas are part of the argument).
+
+The program must:
+-Parse the name of the column to sort on
+-Parse the first CSV row into a header array (char **headers) by splitting on commas. These are the column names.
+-Find the index of the requested sort column. If the column name (first argv) is not in the header, print "Error: unknown column" to stderr and exit with returncode 1.
+-Parse every subsequent CSV row into fields by splitting on commas, allocating deep copies.
+-Represent each parsed row as:
+struct Record {
+    char **fields;
+    size_t n_fields;
+};
+-Validate that every row has the same number of fields as the header. If not, print "Error: inconsistent row" to stderr and exit with returncode 1.
+-Sort the Record array stably by the target column using lexicographic ASCII ordering.
+-After sorting, print each CSV row (fields joined with commas), one per line, ending with a final newline.
+-Free all allocated memory.
+-If any unexpected error occurs (allocation failure, etc.), print nothing to stderr and exit with returncode 2.
+-On success, print nothing to stderr and exit with returncode 0.
+
+And you produced this code:
+
+
+But it doesn't compile. The compiler gave these errors:
+C:/winlibs/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: C:/winlibs/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/libmingw32.a(lib64_libmingw32_a-crtexewin.o):crtexewin.c:(.text+0x119): undefined reference to `WinMain'
+collect2.exe: error: ld returned 1 exit status
+
+
+Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

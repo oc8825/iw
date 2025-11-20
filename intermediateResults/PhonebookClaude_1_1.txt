@@ -1,0 +1,127 @@
+I gave you this prompt:
+Please implement an entire C file that takes in the following command line arguments:
+-An unspecified even number of words representing alternating name and phone-number pairs: name1 number1 name2 number2 ...
+
+Definition of a word:
+A "word" is any non-empty sequence of characters that does not contain whitespace. All characters are permitted, including digits, punctuation, and symbols. The program must not reject arguments based on their contents.
+All command line arguments should be treated literally. Characters such as ", ', \, and : are ordinary characters and do not create empty strings or special cases.
+Examples of valid words:
+apple, BANANA, mix3d, 42with, %weird*chars!, "" (two double-quote characters), '' (two single-quote characters)
+The phone numbers can be words as well, they do not have to be valid phone numbers.
+
+The program must:
+-Build a dynamic array of struct Entry where each Entry contains two dynamically allocated C-strings: char *name; char *phone;. You must allocate the array of structs with malloc (or calloc) and expand it via realloc if desired.
+-Copy each name and phone into freshly malloc-ed memory (deep copy). Copying can use strlen/strcpy or pointer loops.
+-Sort the array of Entry structs by name in ASCII lexicographic (case-sensitive) order. The sorting MUST operate on the array of struct Entry (e.g., swapping structs or swapping pointers to structs).
+-Print each entry on its own line as name: phone (without extra spaces), ending output with a newline after the last line.
+-Free all allocated memory before exiting.
+
+For example, with the command line input:
+Alice 555-1234 Bob 999-0000 carol 12345
+The program should print:
+Alice: 555-1234
+Bob: 999-0000
+carol: 12345
+
+As another example, with the command line input:
+mix3d words 42with numbers
+The program should print:
+mix3d: words
+42with: numbers
+
+MUST do this by defining a struct Entry { char *name; char *phone; }; and allocating an array of struct Entry dynamically, populating each struct with deep-copied strings, sorting the structs by the .name field, printing, and freeing all memory.
+
+Error handling:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-If an odd number of arguments is provided, print "Error: requires pairs of name and number" to stderr and exit with returncode 1.
+-If any  unexpected error occurs, print nothing to stderr and exit with returncode 2.
+-On success, print nothing to stderr and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
+
+And you produced this code:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Entry {
+    char *name;
+    char *phone;
+};
+
+int compare_entries(const void *a, const void *b) {
+    const struct Entry *entry_a = (const struct Entry *)a;
+    const struct Entry *entry_b = (const struct Entry *)b;
+    return strcmp(entry_a->name, entry_b->name);
+}
+
+char *duplicate_string(const char *str) {
+    size_t len = strlen(str);
+    char *copy = malloc(len + 1);
+    if (!copy) {
+        return NULL;
+    }
+    strcpy(copy, str);
+    return copy;
+}
+
+void free_entries(struct Entry *entries, int count) {
+    for (int i = 0; i < count; i++) {
+        free(entries[i].name);
+        free(entries[i].phone);
+    }
+    free(entries);
+}
+
+int main(int argc, char *argv[]) {
+    if (argc == 1) {
+        return 0;
+    }
+    
+    if ((argc - 1) % 2 != 0) {
+        fprintf(stderr, "Error: requires pairs of name and number\n");
+        return 1;
+    }
+    
+    int num_pairs = (argc - 1) / 2;
+    struct Entry *entries = malloc(num_pairs * sizeof(struct Entry));
+    if (!entries) {
+        exit(2);
+    }
+    
+    for (int i = 0; i < num_pairs; i++) {
+        entries[i].name = duplicate_string(argv[1 + i * 2]);
+        entries[i].phone = duplicate_string(argv[1 + i * 2 + 1]);
+        
+        if (!entries[i].name || !entries[i].phone) {
+            free_entries(entries, i + 1);
+            exit(2);
+        }
+    }
+    
+    qsort(entries, num_pairs, sizeof(struct Entry), compare_entries);
+    
+    for (int i = 0; i < num_pairs; i++) {
+        printf("%s: %s\n", entries[i].name, entries[i].phone);
+    }
+    
+    free_entries(entries, num_pairs);
+    return 0;
+}
+But it doesn't compile. The compiler gave these errors:
+solutions/Phonebook.C: In function 'char* duplicate_string(const char*)':
+solutions/Phonebook.C:18:24: error: invalid conversion from 'void*' to 'char*' [-fpermissive]
+   18 |     char *copy = malloc(len + 1);
+      |                  ~~~~~~^~~~~~~~~
+      |                        |
+      |                        void*
+solutions/Phonebook.C: In function 'int main(int, char**)':
+solutions/Phonebook.C:45:35: error: invalid conversion from 'void*' to 'Entry*' [-fpermissive]
+   45 |     struct Entry *entries = malloc(num_pairs * sizeof(struct Entry));
+      |                             ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                   |
+      |                                   void*
+
+
+Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

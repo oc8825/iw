@@ -1,0 +1,9 @@
+StudentAverages.C
+Alice:90,80,85 Bob:100,95 Carol:70,75,80,85
+John:60 Mary:60,60
+Sam:100,100,100
+BadRecord
+EmptyScores:
+Alice:90,abc
+"Name-With-Symbols":10,20,30
+One:1 Two:2 Three:3 Four:4 Five:5

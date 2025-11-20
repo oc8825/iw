@@ -1,0 +1,193 @@
+I gave you this prompt:
+Please implement an entire C file that takes in the following command line arguments:
+-First, a one-word column name to sort by (for example, age)
+-Second, a header row showing the name of each column in the arguments that will follow (for example, name,age,role)
+-An unspeficied number of CSV rows, where each element is a comma-seperated list of fields matching the structure of the second argument (for example, Alice,30,Engineer).
+
+Definition of a word:
+A "word" is any non-empty sequence of characters that does not contain whitespace.
+CSV rows are single command-line arguments (commas are part of the argument).
+
+The program must:
+-Parse the name of the column to sort on
+-Parse the first CSV row into a header array (char **headers) by splitting on commas. These are the column names.
+-Find the index of the requested sort column. If the column name (first argv) is not in the header, print "Error: unknown column" to stderr and exit with returncode 1.
+-Parse every subsequent CSV row into fields by splitting on commas, allocating deep copies.
+-Represent each parsed row as:
+struct Record {
+    char **fields;
+    size_t n_fields;
+};
+-Validate that every row has the same number of fields as the header. If not, print "Error: inconsistent row" to stderr and exit with returncode 1.
+-Sort the Record array stably by the target column using lexicographic ASCII ordering.
+-After sorting, print each CSV row (fields joined with commas), one per line, ending with a final newline.
+-Free all allocated memory.
+-If any unexpected error occurs (allocation failure, etc.), print nothing to stderr and exit with returncode 2.
+-On success, print nothing to stderr and exit with returncode 0.
+
+And you produced this code:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+
+#define MAX_LINE_LENGTH 1024
+
+struct Record {
+    char **fields;
+    size_t n_fields;
+};
+
+void split_csv(const char *str, char ***fields, size_t *n_fields) {
+    *n_fields = 0;
+    *fields = NULL;
+
+    const char *delim = ",";
+    char *token;
+    char *str_copy = strdup(str);
+    if (!str_copy) {
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(2);
+    }
+
+    token = strtok(str_copy, delim);
+    while (token) {
+        *n_fields += 1;
+        *fields = realloc(*fields, *n_fields * sizeof(char *));
+        if (!*fields) {
+            fprintf(stderr, "Memory allocation failed\n");
+            free(str_copy);
+            exit(2);
+        }
+        (*fields)[*n_fields - 1] = strdup(token);
+        if (!(*fields)[*n_fields - 1]) {
+            fprintf(stderr, "Memory allocation failed\n");
+            free(str_copy);
+            for (size_t i = 0; i < *n_fields - 1; i++) {
+                free((*fields)[i]);
+            }
+            free(*fields);
+            exit(2);
+        }
+        token = strtok(NULL, delim);
+    }
+
+    free(str_copy);
+}
+
+void free_record(struct Record *record) {
+    for (size_t i = 0; i < record->n_fields; i++) {
+        free(record->fields[i]);
+    }
+    free(record->fields);
+}
+
+int compare_records(const void *a, const void *b, void *arg) {
+    struct Record *record_a = (struct Record *)a;
+    struct Record *record_b = (struct Record *)b;
+    size_t sort_index = (size_t)arg;
+
+    return strcmp(record_a->fields[sort_index], record_b->fields[sort_index]);
+}
+
+int main(int argc, char *argv[]) {
+    if (argc < 3) {
+        fprintf(stderr, "Usage: %s <column> <header> <row1> <row2> ...\n", argv[0]);
+        return 1;
+    }
+
+    const char *sort_column = argv[1];
+    const char *header = argv[2];
+
+    char **headers;
+    size_t n_headers;
+    split_csv(header, &headers, &n_headers);
+
+    size_t sort_index = -1;
+    for (size_t i = 0; i < n_headers; i++) {
+        if (strcmp(headers[i], sort_column) == 0) {
+            sort_index = i;
+            break;
+        }
+    }
+
+    if (sort_index == -1) {
+        fprintf(stderr, "Error: unknown column\n");
+        for (size_t i = 0; i < n_headers; i++) {
+            free(headers[i]);
+        }
+        free(headers);
+        return 1;
+    }
+
+    struct Record *records = malloc((argc - 3) * sizeof(struct Record));
+    if (!records) {
+        fprintf(stderr, "Memory allocation failed\n");
+        for (size_t i = 0; i < n_headers; i++) {
+            free(headers[i]);
+        }
+        free(headers);
+        return 2;
+    }
+
+    for (size_t i = 0; i < argc - 3; i++) {
+        split_csv(argv[i + 3], &records[i].fields, &records[i].n_fields);
+        if (records[i].n_fields != n_headers) {
+            fprintf(stderr, "Error: inconsistent row\n");
+            for (size_t j = 0; j < i; j++) {
+                free_record(&records[j]);
+            }
+            free(records);
+            for (size_t j = 0; j < n_headers; j++) {
+                free(headers[j]);
+            }
+            free(headers);
+            return 1;
+        }
+    }
+
+    qsort_r(records, argc - 3, sizeof(struct Record), compare_records, (void *)sort_index);
+
+    for (size_t i = 0; i < argc - 3; i++) {
+        for (size_t j = 0; j < records[i].n_fields; j++) {
+            if (j > 0) {
+                printf(",");
+            }
+            printf("%s", records[i].fields[j]);
+        }
+        printf("\n");
+    }
+
+    for (size_t i = 0; i < argc - 3; i++) {
+        free_record(&records[i]);
+    }
+    free(records);
+
+    for (size_t i = 0; i < n_headers; i++) {
+        free(headers[i]);
+    }
+    free(headers);
+
+    return 0;
+}
+But it doesn't compile. The compiler gave these errors:
+solutions/StructCSV.C: In function 'void split_csv(const char*, char***, size_t*)':
+solutions/StructCSV.C:28:26: error: invalid conversion from 'void*' to 'char**' [-fpermissive]
+   28 |         *fields = realloc(*fields, *n_fields * sizeof(char *));
+      |                   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                          |
+      |                          void*
+solutions/StructCSV.C: In function 'int main(int, char**)':
+solutions/StructCSV.C:95:36: error: invalid conversion from 'void*' to 'Record*' [-fpermissive]
+   95 |     struct Record *records = malloc((argc - 3) * sizeof(struct Record));
+      |                              ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    void*
+solutions/StructCSV.C:121:5: error: 'qsort_r' was not declared in this scope; did you mean 'qsort_s'?
+  121 |     qsort_r(records, argc - 3, sizeof(struct Record), compare_records, (void *)sort_index);
+      |     ^~~~~~~
+      |     qsort_s
+
+
+Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

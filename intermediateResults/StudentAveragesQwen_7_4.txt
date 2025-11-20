@@ -1,0 +1,41 @@
+I gave you this prompt:
+Please implement an entire C file that takes in the following command line arguments:
+-An unspecified number of words. Each word is a student record encoded as Name:score1,score2,score3,... where Name contains no colons or commas. Example: Alice:90,80,70
+
+Definition of a word:
+A "word" is any non-empty sequence of characters that does not contain whitespace. All characters are permitted. Command line arguments are treated literally.
+
+The program must:
+-For each argument, parse the Name and the comma-separated integer scores.
+-Represent each student as a struct Student with fields: char *name; int *scores; size_t n_scores; double average;. Allocate memory for the name and for the scores array dynamically (use malloc/realloc/calloc as needed). Compute the average as a double.
+-After parsing all students, sort the array of struct Student in descending order of average (highest average first). If two students have identical averages, sort them by name in ASCII lexicographic order.
+-Print each student on its own line as: Name average n_scores where average is printed with two decimal places (e.g., 87.50) and n_scores is the integer count of scores. Example: Alice 87.50 4
+-Free all allocated memory before exiting.
+
+For example, with the command line input:
+Alice:90,80,85 Bob:100,95 Carol:70,75,80,85
+The program should print:
+Bob 97.50 2
+Alice 85.00 3
+Carol 77.50 4
+
+And it MUST do this by defining struct Student as specified, dynamically allocating per-student arrays for scores and name copies, computing averages, sorting the struct Student array, printing, and freeing memory.
+
+Error handling:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-If any argument is malformed (missing colon, missing scores) print "Error: invalid record" to stderr and exit with returncode 1.
+-If any score cannot be parsed as an integer (base-10, optional leading +/-), print "Error: invalid score" to stderr and exit with returncode 1.
+-If any unexpected error occurs, print nothing to stderr and exit with returncode 2.
+-On success, print nothing to stderr and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
+
+And you produced this code:
+
+
+But it doesn't compile. The compiler gave these errors:
+C:/winlibs/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: C:/winlibs/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/15.2.0/../../../../x86_64-w64-mingw32/lib/../lib/libmingw32.a(lib64_libmingw32_a-crtexewin.o):crtexewin.c:(.text+0x119): undefined reference to `WinMain'
+collect2.exe: error: ld returned 1 exit status
+
+
+Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

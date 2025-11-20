@@ -1,0 +1,119 @@
+----------------
+Test Case 1
+Command Line Arguments:
+Alice:90,80,85 Bob:100,95 Carol:70,75,80,85
+
+Program Output:
+Alice 85.00 3
+Carol 77.50 4
+Bob 97.50 2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+John:60 Mary:60,60
+
+Program Output:
+John 60.00 1
+Mary 60.00 2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+Sam:100,100,100
+
+Program Output:
+Sam 100.00 3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+BadRecord
+
+Program Output:
+
+Error Output:
+Error: invalid record
+
+
+Exit Status:
+1
+
+----------------
+Test Case 5
+Command Line Arguments:
+EmptyScores:
+
+Program Output:
+
+Error Output:
+Error: invalid record
+
+
+Exit Status:
+1
+
+----------------
+Test Case 6
+Command Line Arguments:
+Alice:90,abc
+
+Program Output:
+
+Error Output:
+Error: invalid record
+
+
+Exit Status:
+1
+
+----------------
+Test Case 7
+Command Line Arguments:
+"Name-With-Symbols":10,20,30
+
+Program Output:
+"Name-With-Symbols" 20.00 3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+One:1 Two:2 Three:3 Four:4 Five:5
+
+Program Output:
+One 1.00 1
+Three 3.00 1
+Two 2.00 1
+Five 5.00 1
+Four 4.00 1
+
+Error Output:
+None.
+
+Exit Status:
+0
+

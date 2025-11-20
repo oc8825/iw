@@ -1,0 +1,9 @@
+GraphAdjList.C
+"A->B" "A->C" "B->C" "D->A"
+"node1->node2" "node2->node3" "node1->node3"
+
+"x->y" "y->z" "z->x"
+"single->single"
+""->a a->""
+badformat
+"u->v" "v->u" "u->w" "v->w" "w->x"

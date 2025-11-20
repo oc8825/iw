@@ -37,11 +37,11 @@ int main(int argc, char *argv[]) {
     const char *replacementWord = argv[2];
     const char *text = argv[3];
 
-    int wordLen = strlen(wordToReplace);
-    int replaceLen = strlen(replacementWord);
-    int textLen = strlen(text);
+    size_t textLen = strlen(text);
+    size_t wordLen = strlen(wordToReplace);
+    size_t replaceLen = strlen(replacementWord);
 
-    char *result = malloc(textLen * 2 + 1); // Allocate enough space for the worst case
+    char *result = malloc(textLen * sizeof(char) + 1);
     if (result == NULL) {
         return 2;
     }
@@ -51,8 +51,8 @@ int main(int argc, char *argv[]) {
 
     while (*textPtr) {
         if (strncasecmp(textPtr, wordToReplace, wordLen) == 0) {
-            // Check if the word is a standalone word
-            if ((textPtr == text || !isalnum(textPtr[-1])) && (textPtr[wordLen] == '\0' || !isalnum(textPtr[wordLen]))) {
+            if ((textPtr == text || !isalnum(*(textPtr - 1))) &&
+                (textPtr[wordLen] == '\0' || !isalnum(textPtr[wordLen]))) {
                 strcpy(resultPtr, replacementWord);
                 resultPtr += replaceLen;
                 textPtr += wordLen;
@@ -64,15 +64,14 @@ int main(int argc, char *argv[]) {
     *resultPtr = '\0';
 
     printf("%s\n", result);
-
     free(result);
     return 0;
 }
 But it doesn't compile. The compiler gave these errors:
 solutions/Replace.C: In function 'int main(int, char**)':
 solutions/Replace.C:20:26: error: invalid conversion from 'void*' to 'char*' [-fpermissive]
-   20 |     char *result = malloc(textLen * 2 + 1); // Allocate enough space for the worst case
-      |                    ~~~~~~^~~~~~~~~~~~~~~~~
+   20 |     char *result = malloc(textLen * sizeof(char) + 1);
+      |                    ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
       |                          |
       |                          void*
 
