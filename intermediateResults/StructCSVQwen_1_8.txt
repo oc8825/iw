@@ -52,7 +52,7 @@ void split_csv(const char *csv, char ***fields, size_t *n_fields) {
     char *token = strtok(line, ",");
     while (token) {
         *n_fields += 1;
-        *fields = realloc(*fields, *n_fields * sizeof(char *));
+        *fields = (char **)realloc(*fields, *n_fields * sizeof(char *));
         if (!*fields) {
             perror("realloc");
             free(line);
@@ -81,11 +81,10 @@ void free_record(struct Record *record) {
     free(record->fields);
 }
 
-int compare_records(const void *a, const void *b, void *arg) {
+int compare_records(const void *a, const void *b) {
     struct Record *record_a = (struct Record *)a;
     struct Record *record_b = (struct Record *)b;
-    size_t sort_index = *(size_t *)arg;
-
+    static size_t sort_index = 0;
     return strcmp(record_a->fields[sort_index], record_b->fields[sort_index]);
 }
 
@@ -119,7 +118,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    struct Record *records = malloc((argc - 3) * sizeof(struct Record));
+    struct Record *records = (struct Record *)malloc((argc - 3) * sizeof(struct Record));
     if (!records) {
         perror("malloc");
         for (size_t i = 0; i < n_headers; i++) {
@@ -145,7 +144,10 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    qsort_r(records, argc - 3, sizeof(struct Record), compare_records, &sort_index);
+    // Set the sort index for the comparison function
+    ((int (*)(const void *, const void *))compare_records)(NULL, NULL) = sort_index;
+
+    qsort(records, argc - 3, sizeof(struct Record), compare_records);
 
     for (size_t i = 0; i < argc - 3; i++) {
         for (size_t j = 0; j < records[i].n_fields; j++) {
@@ -170,22 +172,10 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 But it doesn't compile. The compiler gave these errors:
-solutions/StructCSV.C: In function 'void split_csv(const char*, char***, size_t*)':
-solutions/StructCSV.C:26:26: error: invalid conversion from 'void*' to 'char**' [-fpermissive]
-   26 |         *fields = realloc(*fields, *n_fields * sizeof(char *));
-      |                   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                          |
-      |                          void*
 solutions/StructCSV.C: In function 'int main(int, char**)':
-solutions/StructCSV.C:93:36: error: invalid conversion from 'void*' to 'Record*' [-fpermissive]
-   93 |     struct Record *records = malloc((argc - 3) * sizeof(struct Record));
-      |                              ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                    |
-      |                                    void*
-solutions/StructCSV.C:119:5: error: 'qsort_r' was not declared in this scope; did you mean 'qsort_s'?
-  119 |     qsort_r(records, argc - 3, sizeof(struct Record), compare_records, &sort_index);
-      |     ^~~~~~~
-      |     qsort_s
+solutions/StructCSV.C:119:59: error: lvalue required as left operand of assignment
+  119 |     ((int (*)(const void *, const void *))compare_records)(NULL, NULL) = sort_index;
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
 
 
 Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

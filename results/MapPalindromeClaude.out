@@ -1,0 +1,83 @@
+----------------
+Test Case 1
+Command Line Arguments:
+racecar hello level world noon
+
+Program Output:
+racecar 1
+hello 0
+level 1
+world 0
+noon 1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+"A" "aa" "ab" "aba" "abba"
+
+Program Output:
+"A" 1
+"aa" 1
+"ab" 0
+"aba" 1
+"abba" 1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+"%$%" "%$$%" "!!" "!a!"
+
+Program Output:
+"%$%" 1
+"%$$%" 1
+"!!" 1
+"!a!" 1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+123321 12321 123421
+
+Program Output:
+123321 1
+12321 1
+123421 0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+""
+
+Program Output:
+"" 1
+
+Error Output:
+None.
+
+Exit Status:
+0
+

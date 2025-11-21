@@ -1,0 +1,91 @@
+----------------
+Test Case 1
+Command Line Arguments:
+apple banana carrot
+
+Program Output:
+apple 4
+banana 3
+carrot 5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+"aaaa" "abc" "aAaA"
+
+Program Output:
+"aaaa" 2
+"abc" 4
+"aAaA" 3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+"%$%$" "%$#" "XYZ"
+
+Program Output:
+"%$%$" 3
+"%$#" 4
+"XYZ" 4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+"hello" "world" "!!"
+
+Program Output:
+"hello" 5
+"world" 6
+"!!" 2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+""
+
+Program Output:
+"" 1
+
+Error Output:
+None.
+
+Exit Status:
+0
+

@@ -1,0 +1,217 @@
+I originally gave you, and one other LLM, the prompt outlined below: 
+Please implement a complete C file that:
+-Takes any number of command-line arguments (words; non-empty; no whitespace).
+-If no arguments, print nothing and exit returncode 0.
+-Deep copy each word using pointer-only traversal (no strlen, no strcpy, no indexing).
+-Create a map-like structure of parallel arrays: char **keys and size_t *distinct_counts.
+-For each word, compute the number of distinct ASCII characters it contains:
+
+Implement this manually using dynamic storage (e.g., a small array or map) that tracks which characters have been seen.
+
+Detection of duplicates must use pointer-based scanning of the tracking structure, not indexing into a lookup table.
+
+All comparisons must use pointer dereferencing.
+-Print each pair exactly as:
+word distinct_count
+(one per line, ending with a trailing newline)
+-Free all allocated memory.
+-On unexpected error, print nothing to stderr and exit returncode 2.
+-On success, print nothing to stderr and exit returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
+
+One given solution was: 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char *deep_copy(const char *src) {
+    char *dest = malloc(strlen(src) + 1);
+    if (dest == NULL) {
+        exit(2);
+    }
+    char *p = dest;
+    while (*src) {
+        *p++ = *src++;
+    }
+    *p = '\0';
+    return dest;
+}
+
+int is_duplicate(char *seen, char c) {
+    while (*seen) {
+        if (*seen == c) {
+            return 1;
+        }
+        seen++;
+    }
+    return 0;
+}
+
+void add_char(char **seen, char c) {
+    char *new_seen = realloc(*seen, strlen(*seen) + 2);
+    if (new_seen == NULL) {
+        exit(2);
+    }
+    *seen = new_seen;
+    *seen[strlen(*seen)] = c;
+    *seen[strlen(*seen) + 1] = '\0';
+}
+
+int count_distinct_chars(const char *word) {
+    char *seen = malloc(1);
+    seen[0] = '\0';
+    int count = 0;
+    while (*word) {
+        if (!is_duplicate(seen, *word)) {
+            add_char(&seen, *word);
+            count++;
+        }
+        word++;
+    }
+    free(seen);
+    return count;
+}
+
+int main(int argc, char *argv[]) {
+    if (argc == 1) {
+        return 0;
+    }
+
+    char **keys = malloc((argc - 1) * sizeof(char *));
+    size_t *distinct_counts = malloc((argc - 1) * sizeof(size_t));
+    if (keys == NULL || distinct_counts == NULL) {
+        exit(2);
+    }
+
+    for (int i = 1; i < argc; i++) {
+        keys[i - 1] = deep_copy(argv[i]);
+        distinct_counts[i - 1] = count_distinct_chars(argv[i]);
+    }
+
+    for (int i = 0; i < argc - 1; i++) {
+        printf("%s %zu\n", keys[i], distinct_counts[i]);
+        free(keys[i]);
+    }
+
+    free(keys);
+    free(distinct_counts);
+    return 0;
+}
+
+The other provided solution was: 
+#include <stdio.h>
+#include <stdlib.h>
+
+char* deep_copy_word(char* word) {
+    char* p = word;
+    size_t len = 0;
+    while (*p) {
+        len++;
+        p++;
+    }
+    
+    char* copy = malloc(len + 1);
+    if (!copy) return NULL;
+    
+    char* src = word;
+    char* dst = copy;
+    while (*src) {
+        *dst = *src;
+        src++;
+        dst++;
+    }
+    *dst = '\0';
+    
+    return copy;
+}
+
+size_t count_distinct_chars(char* word) {
+    char seen[256];
+    char* seen_end = seen;
+    
+    char* p = word;
+    while (*p) {
+        char current = *p;
+        
+        char* check = seen;
+        int found = 0;
+        while (check < seen_end) {
+            if (*check == current) {
+                found = 1;
+                break;
+            }
+            check++;
+        }
+        
+        if (!found) {
+            *seen_end = current;
+            seen_end++;
+        }
+        
+        p++;
+    }
+    
+    return seen_end - seen;
+}
+
+int main(int argc, char** argv) {
+    if (argc <= 1) {
+        return 0;
+    }
+    
+    char** keys = malloc((argc - 1) * sizeof(char*));
+    if (!keys) return 2;
+    
+    size_t* distinct_counts = malloc((argc - 1) * sizeof(size_t));
+    if (!distinct_counts) {
+        free(keys);
+        return 2;
+    }
+    
+    for (int i = 1; i < argc; i++) {
+        char* word_copy = deep_copy_word(*(argv + i));
+        if (!word_copy) {
+            for (int j = 1; j < i; j++) {
+                free(*(keys + j - 1));
+            }
+            free(keys);
+            free(distinct_counts);
+            return 2;
+        }
+        
+        *(keys + i - 1) = word_copy;
+        *(distinct_counts + i - 1) = count_distinct_chars(word_copy);
+    }
+    
+    for (int i = 0; i < argc - 1; i++) {
+        printf("%s %zu\n", *(keys + i), *(distinct_counts + i));
+    }
+    
+    for (int i = 0; i < argc - 1; i++) {
+        free(*(keys + i));
+    }
+    free(keys);
+    free(distinct_counts);
+    
+    return 0;
+}
+
+However, after running these two solutions, the output differed in these sections: 
+With command line arguments apple banana carrot, get differing output in:
+Program Output
+Exit Status
+With command line arguments "aaaa" "abc" "aAaA", get differing output in:
+Program Output
+Exit Status
+With command line arguments "%$%$" "%$#" "XYZ", get differing output in:
+Program Output
+Exit Status
+With command line arguments "hello" "world" "!!", get differing output in:
+Program Output
+Exit Status
+With command line arguments "", get differing output in:
+Program Output
+Exit Status
+
+Given this information of the two solutions and where they differ, please write a new solution that conforms to the original prompt repeated above. Prioritize the solution that actually behaves according to the specified prompt. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

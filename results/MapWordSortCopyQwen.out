@@ -1,0 +1,104 @@
+----------------
+Test Case 1
+Command Line Arguments:
+cba banana ZzAa
+
+Program Output:
+cba abc
+banana aaabnn
+ZzAa AZaz
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+"321" "aaa" "CBA"
+
+Program Output:
+"321" ""123
+"aaa" ""aaa
+"CBA" ""ABC
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+"%$a" "@@@@" "xyZ"
+
+Program Output:
+"%$a" ""$%a
+"@@@@" ""@@@@
+"xyZ" ""Zxy
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+"hello" "world"
+
+Program Output:
+"hello" ""ehllo
+"world" ""dlorw
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+""
+
+Program Output:
+"" ""
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+''
+
+Program Output:
+'' ''
+
+Error Output:
+None.
+
+Exit Status:
+0
+

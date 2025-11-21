@@ -52,7 +52,7 @@ void split_csv(const char *csv, char ***fields, size_t *n_fields) {
     char *token = strtok(line, ",");
     while (token) {
         *n_fields += 1;
-        *fields = realloc(*fields, *n_fields * sizeof(char *));
+        *fields = (char **)realloc(*fields, *n_fields * sizeof(char *));
         if (!*fields) {
             perror("realloc");
             free(line);
@@ -119,7 +119,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    struct Record *records = malloc((argc - 3) * sizeof(struct Record));
+    struct Record *records = (struct Record *)malloc((argc - 3) * sizeof(struct Record));
     if (!records) {
         perror("malloc");
         for (size_t i = 0; i < n_headers; i++) {
@@ -145,7 +145,8 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    qsort_r(records, argc - 3, sizeof(struct Record), compare_records, &sort_index);
+    size_t sort_index_copy = sort_index;
+    qsort(records, argc - 3, sizeof(struct Record), (int (*)(const void *, const void *))compare_records, &sort_index_copy);
 
     for (size_t i = 0; i < argc - 3; i++) {
         for (size_t j = 0; j < records[i].n_fields; j++) {
@@ -170,22 +171,16 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 But it doesn't compile. The compiler gave these errors:
-solutions/StructCSV.C: In function 'void split_csv(const char*, char***, size_t*)':
-solutions/StructCSV.C:26:26: error: invalid conversion from 'void*' to 'char**' [-fpermissive]
-   26 |         *fields = realloc(*fields, *n_fields * sizeof(char *));
-      |                   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                          |
-      |                          void*
 solutions/StructCSV.C: In function 'int main(int, char**)':
-solutions/StructCSV.C:93:36: error: invalid conversion from 'void*' to 'Record*' [-fpermissive]
-   93 |     struct Record *records = malloc((argc - 3) * sizeof(struct Record));
-      |                              ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                    |
-      |                                    void*
-solutions/StructCSV.C:119:5: error: 'qsort_r' was not declared in this scope; did you mean 'qsort_s'?
-  119 |     qsort_r(records, argc - 3, sizeof(struct Record), compare_records, &sort_index);
-      |     ^~~~~~~
-      |     qsort_s
+solutions/StructCSV.C:120:10: error: too many arguments to function 'void qsort(void*, size_t, size_t, int (*)(const void*, const void*))'
+  120 |     qsort(records, argc - 3, sizeof(struct Record), (int (*)(const void *, const void *))compare_records, &sort_index_copy);
+      |     ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from C:/winlibs/mingw64/include/c++/15.2.0/cstdlib:83,
+                 from C:/winlibs/mingw64/include/c++/15.2.0/stdlib.h:36,
+                 from solutions/StructCSV.C:2:
+C:/winlibs/mingw64/x86_64-w64-mingw32/include/stdlib.h:327:16: note: declared here
+  327 |   void __cdecl qsort(void *_Base,size_t _NumOfElements,size_t _SizeOfElements,int (__cdecl *_PtFuncCompare)(const void *,const void *));
+      |                ^~~~~
 
 
 Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

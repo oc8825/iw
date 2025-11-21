@@ -1,0 +1,108 @@
+----------------
+Test Case 1
+Command Line Arguments:
+apple BANANA CarRot
+
+Program Output:
+apple 0
+BANANA 6
+CarRot 2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+A a B b C c
+
+Program Output:
+A 1
+a 0
+B 1
+b 0
+C 1
+c 0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+"%%%ABC%%" "lower" "MixedUP"
+
+Program Output:
+"%%%ABC%%" 3
+"lower" 0
+"MixedUP" 3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+"Z" "ZZZ" "zzz"
+
+Program Output:
+"Z" 1
+"ZZZ" 3
+"zzz" 0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+""
+
+Program Output:
+"" 0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+''
+
+Program Output:
+'' 0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
