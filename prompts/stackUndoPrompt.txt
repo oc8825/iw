@@ -1,0 +1,19 @@
+Write a complete C file that:
+-Accepts an unspecified number of command-line arguments, each representing an "action" word (non-empty, no whitespace).
+-Implements an undo system using a stack of char *.
+-The stack must be dynamically allocated and grow via realloc.
+-For each command-line argument:
+
+If the argument is the literal word undo:
+-Pop the most recent action (not including other undo commands) and discard it.
+-If no previous action exists to undo, print Error: nothing to undo to stderr and exit returncode 1.
+
+Otherwise:
+-Deep copy the word using pointer arithmetic only (no strlen, no strcpy, no indexing).
+-Push it as a new action onto the stack.
+-After processing all arguments, print all remaining actions from bottom to top, one per line, ending with a newline.
+-Free all allocated memory.
+-On unexpected error, print nothing to stderr and exit returncode 2.
+-On success, no stderr output and exit returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.

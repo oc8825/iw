@@ -1,0 +1,9 @@
+StackReverseWords.c
+apple banana carrot
+a b c d e
+"Hello" "World"
+''
+"@@@" "###" "$$$"
+longword anotherlongword s
+
+""

@@ -1,0 +1,18 @@
+Please implement an entire C file that takes in an unspecified number of command-line arguments. Each argument is a "word", defined as any non-empty sequence of characters that contains no whitespace. All characters are allowed literally.
+
+The program must:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-Concatenate all command-line arguments into one continuous sequence in the exact order they appear. Do not add spaces or separators.
+-Use a stack of characters, implemented manually as a dynamically allocated array that grows using realloc when needed. The stack must support push and pop operations.
+-The program checks if the concatenated character stream contains balanced brackets. The only bracket types to consider are (), [], {}. Every opening bracket must be matched with the correct closing bracket in the correct order.
+-Characters that are not brackets are ignored.
+-If the brackets are balanced, the program must print:
+balanced
+If the brackets are not balanced, it must print:
+unbalanced
+-Print exactly one of the above words, followed by a newline.
+-Free all allocated memory, including any stack memory.
+-If any unexpected error occurs (allocation failure, etc.), print nothing to stderr and exit with returncode 2.
+-On success, print nothing to stderr and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.

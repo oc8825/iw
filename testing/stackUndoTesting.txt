@@ -1,0 +1,8 @@
+StackUndo.c
+open save close
+open save undo close
+undo
+a b c undo undo undo
+
+one two undo three
+alpha undo beta undo gamma undo

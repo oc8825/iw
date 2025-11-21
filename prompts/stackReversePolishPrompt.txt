@@ -1,0 +1,24 @@
+Implement a complete C file that takes an unspecified number of command-line arguments. Each argument is either:
+
+an integer literal (possibly negative, e.g., -3), or
+
+one of the operators: +, -, *, /
+
+All arguments are treated as tokens in a Reverse Polish Notation (RPN) expression.
+
+The program must:
+-If zero arguments are provided, print nothing and exit returncode 0.
+-Implement a stack of integers using a dynamically allocated array that grows via realloc.
+-Process tokens left to right:
+
+If the token is an integer, push its integer value.
+
+If the token is an operator, pop the top two integers (right operand first, then left operand), apply the operator using integer arithmetic, and push the result.
+-If at any point an operator is encountered but fewer than two integers exist on the stack, print Error: invalid expression to stderr and exit returncode 1.
+-After processing all tokens, if the stack does not contain exactly one integer, print Error: invalid expression to stderr and exit returncode 1.
+-Otherwise print the integer result, followed by a newline.
+-Free all allocated memory.
+-On unexpected error, print nothing to stderr and exit returncode 2.
+-On success, no stderr output and exit returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.

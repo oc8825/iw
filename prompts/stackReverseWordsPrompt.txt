@@ -1,0 +1,16 @@
+Write a complete C file that accepts any number of command-line words (each word: non-empty, no whitespace).
+
+The program must:
+-If there are zero arguments, print nothing and exit returncode 0.
+-Implement a stack of char * pointers. The stack must be dynamically allocated and must grow via realloc when pushing.
+-For each command-line argument:
+
+Make a deep copy of the word using only pointer dereferencing (no array indexing or library copy functions).
+
+Push the deep-copied pointer onto the stack.
+-After all pushes, pop words from the stack until empty, printing them each separated by a single space, and finish with a newline. This reverses the input order.
+-Free all allocated strings and the stack storage.
+-On any unexpected error (allocation failure, etc.), print nothing to stderr and exit returncode 2.
+-On success, print nothing to stderr and exit returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.

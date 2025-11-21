@@ -1,0 +1,11 @@
+StackTags.c
+"<a><b></b></a>"
+"<html><body></body></html>"
+"<a><b></a></b>"
+"<a></a><b></b>"
+"<a><b></b>"
+"</a>"
+"<a></a"
+"<A><B></B></A>"
+"<a><1></1></a>"
+"<tag><subtag></subtag></tag>"

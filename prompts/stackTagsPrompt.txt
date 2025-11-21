@@ -1,0 +1,22 @@
+Write a full C file that:
+-Takes any number of command-line arguments, each a "word" (non-empty, no whitespace).
+-Concatenate all arguments with no separators into a single character stream.
+-Treat sequences of the form <tag> and </tag> as opening and closing tags. A tag is any non-empty sequence of ASCII letters (A–Z, a–z) only.
+-Any malformed tag (missing angle brackets, empty tag name, invalid characters, etc.) must be treated as an error.
+-Implement a stack of tag-name strings:
+
+Opening tag "<abc>" pushes "abc" (deep-copied).
+
+Closing tag "</abc>" must match the most recent opening tag. If mismatched or if the stack is empty, print Error: invalid structure to stderr and exit returncode 1.
+-If any malformed tag is found, print Error: invalid structure to stderr and exit returncode 1.
+-After processing the entire stream:
+
+If the stack is not empty, print Error: invalid structure to stderr and exit returncode 1.
+
+Otherwise print valid followed by a newline.
+-All string duplication must be done using pointer-only traversal (no indexing, no strlen, no library functions).
+-Free all allocated memory.
+-On unexpected error, print nothing to stderr and exit returncode 2.
+-On success, no stderr output and exit returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.
