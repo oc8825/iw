@@ -1,0 +1,124 @@
+----------------
+Test Case 1
+Command Line Arguments:
+2 3 +
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+2 3 + 4 *
+
+Program Output:
+
+Error Output:
+Error: invalid expression
+
+
+Exit Status:
+1
+
+----------------
+Test Case 3
+Command Line Arguments:
+5 1 2 + 4 * + 3 -
+
+Program Output:
+
+Error Output:
+Error: invalid expression
+
+
+Exit Status:
+1
+
+----------------
+Test Case 4
+Command Line Arguments:
+3 +
+
+Program Output:
+
+Error Output:
+Error: invalid expression
+
+
+Exit Status:
+1
+
+----------------
+Test Case 5
+Command Line Arguments:
++
+
+Program Output:
+
+Error Output:
+Error: invalid expression
+
+
+Exit Status:
+1
+
+----------------
+Test Case 6
+Command Line Arguments:
+10 0 /
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225620
+
+----------------
+Test Case 7
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+-2 -3 +
+
+Program Output:
+-5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+4 2 / 3 1 - +
+
+Program Output:
+4
+
+Error Output:
+None.
+
+Exit Status:
+0
+

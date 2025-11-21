@@ -1,0 +1,99 @@
+----------------
+Test Case 1
+Command Line Arguments:
+open save close
+
+Program Output:
+open
+save
+close
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+open save undo close
+
+Program Output:
+open
+close
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+undo
+
+Program Output:
+
+Error Output:
+Error: nothing to undo
+
+
+Exit Status:
+1
+
+----------------
+Test Case 4
+Command Line Arguments:
+a b c undo undo undo
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+one two undo three
+
+Program Output:
+one
+three
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+alpha undo beta undo gamma undo
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+

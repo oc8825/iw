@@ -1,0 +1,153 @@
+----------------
+Test Case 1
+Command Line Arguments:
+()
+
+Program Output:
+balanced
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+([{}])
+
+Program Output:
+balanced
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+([)]
+
+Program Output:
+unbalanced
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+abc def ghi
+
+Program Output:
+balanced
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+"( [ { x } ] )"
+
+Program Output:
+balanced
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+"((("
+
+Program Output:
+unbalanced
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+"()" "[]" "{}"
+
+Program Output:
+balanced
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+"{[()]}xyz"
+
+Program Output:
+balanced
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+"{[()]}}"
+
+Program Output:
+unbalanced
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+""
+
+Program Output:
+balanced
+
+Error Output:
+None.
+
+Exit Status:
+0
+

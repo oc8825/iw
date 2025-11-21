@@ -1,0 +1,140 @@
+----------------
+Test Case 1
+Command Line Arguments:
+"<a><b></b></a>"
+
+Program Output:
+valid
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+"<html><body></body></html>"
+
+Program Output:
+valid
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+"<a><b></a></b>"
+
+Program Output:
+
+Error Output:
+Error: invalid structure
+
+
+Exit Status:
+1
+
+----------------
+Test Case 4
+Command Line Arguments:
+"<a></a><b></b>"
+
+Program Output:
+valid
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+"<a><b></b>"
+
+Program Output:
+
+Error Output:
+Error: invalid structure
+
+
+Exit Status:
+1
+
+----------------
+Test Case 6
+Command Line Arguments:
+"</a>"
+
+Program Output:
+
+Error Output:
+Error: invalid structure
+
+
+Exit Status:
+1
+
+----------------
+Test Case 7
+Command Line Arguments:
+"<a></a"
+
+Program Output:
+
+Error Output:
+Error: invalid structure
+
+
+Exit Status:
+1
+
+----------------
+Test Case 8
+Command Line Arguments:
+"<A><B></B></A>"
+
+Program Output:
+valid
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+"<a><1></1></a>"
+
+Program Output:
+
+Error Output:
+Error: invalid structure
+
+
+Exit Status:
+1
+
+----------------
+Test Case 10
+Command Line Arguments:
+"<tag><subtag></subtag></tag>"
+
+Program Output:
+valid
+
+Error Output:
+None.
+
+Exit Status:
+0
+

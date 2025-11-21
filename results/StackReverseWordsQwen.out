@@ -1,0 +1,111 @@
+----------------
+Test Case 1
+Command Line Arguments:
+apple banana carrot
+
+Program Output:
+carrot banana apple
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+a b c d e
+
+Program Output:
+e d c b a
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+"Hello" "World"
+
+Program Output:
+"World" "Hello"
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+''
+
+Program Output:
+''
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+"@@@" "###" "$$$"
+
+Program Output:
+"$$$" "###" "@@@"
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+longword anotherlongword s
+
+Program Output:
+s anotherlongword longword
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+""
+
+Program Output:
+""
+
+Error Output:
+None.
+
+Exit Status:
+0
+
