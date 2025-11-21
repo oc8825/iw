@@ -1,0 +1,8 @@
+MapUppercase.c
+apple BANANA CarRot
+A a B b C c
+"%%%ABC%%" "lower" "MixedUP"
+"Z" "ZZZ" "zzz"
+""
+
+''

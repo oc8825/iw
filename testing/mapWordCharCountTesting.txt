@@ -1,0 +1,8 @@
+MapWordCharCount.c
+apple banana apple carrot
+a a a a
+
+"ABC" "A" "ABC" "XYZ"
+"%$#" "%$#" "@@" "longword"
+""
+''

@@ -1,0 +1,19 @@
+Please implement a complete C file that takes in an unspecified number of command-line arguments, each argument being a "word" (non-empty, no whitespace, all characters allowed).
+
+The program must:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-Store each word into a map-like structure, where:
+
+keys[i] is a deep-copied version of the original argument, duplicated using pointer-only traversal (no strlen, strcpy, indexing, or library helpers),
+
+values[i] is a separate deep-copied string containing the same characters but sorted in ascending ASCII order.
+-The map structure must maintain insertion order. You may not reorder entries except by sorting individual value strings.
+-Character sorting must be done manually and must swap characters using pointer dereferencing, not indexing. You may use any O(n²) sort algorithm.
+-After all pairs are created, print each result exactly as:
+original sorted
+(one per line, ending with a newline)
+-Free all allocated memory: both key strings, value strings, and any storage arrays.
+-On any unexpected error, print nothing to stderr and exit with returncode 2.
+-On success, print nothing to stderr and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.

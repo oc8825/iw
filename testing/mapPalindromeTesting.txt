@@ -1,0 +1,6 @@
+MapPalindrome.c
+racecar hello level world noon
+"A" "aa" "ab" "aba" "abba"
+"%$%" "%$$%" "!!" "!a!"
+123321 12321 123421
+""

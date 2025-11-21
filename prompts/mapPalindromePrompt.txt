@@ -1,0 +1,16 @@
+Write an entire C file that:
+-Accepts an unspecified number of command-line arguments, each a word (non-empty, no whitespace).
+-If zero arguments are provided, print nothing and exit returncode 0.
+-Deep copy each word using pointer arithmetic and dereferencing. No strlen, no strcpy, no indexing.
+-Construct a parallel-array map:
+keys[i] = deep-copied word
+values[i] = 1 if the word is a palindrome, 0 otherwise
+-Palindrome detection must compare characters using only pointers walking inward from both ends.
+-After building the map, print each entry using:
+word result
+(where result is 1 or 0), one per line, ending with a newline.
+-Free all allocated memory.
+-On any allocation failure or unexpected error, print nothing to stderr and exit returncode 2.
+-On success, print nothing to stderr and exit returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.

@@ -1,0 +1,23 @@
+Please implement an entire C file that takes in an unspecified number of command-line arguments, each argument being a "word".
+A "word" is any non-empty sequence of characters without whitespace. All characters are permitted literally and must be treated as ordinary characters.
+
+The program must:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-Create a hash map whose:
+
+Keys are deep-copied strings.
+
+Values are the total number of characters seen across all occurrences of that key. For example: if the input includes "apple" twice, the stored value should be 5 + 5 = 10.
+
+Collisions must be handled using separate chaining with linked lists. Each element in the chain must be dynamically allocated.
+-String duplication must be performed using pointer-only traversal. You may not use strlen, strcpy, strdup, indexing syntax (s[i]), or library string copy helpers. Only pointer arithmetic and dereferencing are allowed.
+-Hashing must be implemented manually by walking the characters of the key using pointers.
+-The map must maintain insertion order of first appearance. That is, when you print results, you must print keys in the order that the key first appeared in the input (not the order of the final hash table layout).
+-After inserting all arguments, print each key and its numeric value. Use the format:
+key value
+(one pair per line; finish with a trailing newline after the final line)
+-Free all allocated memory, including key strings, linked list nodes, and the insertion-order array.
+-On any unexpected error such as allocation failure, print nothing to stderr, free nothing beyond what was already successfully allocated, and exit with returncode 2.
+-On success, print nothing to stderr and exit with returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.

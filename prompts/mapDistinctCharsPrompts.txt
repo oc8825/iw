@@ -1,0 +1,20 @@
+Please implement a complete C file that:
+-Takes any number of command-line arguments (words; non-empty; no whitespace).
+-If no arguments, print nothing and exit returncode 0.
+-Deep copy each word using pointer-only traversal (no strlen, no strcpy, no indexing).
+-Create a map-like structure of parallel arrays: char **keys and size_t *distinct_counts.
+-For each word, compute the number of distinct ASCII characters it contains:
+
+Implement this manually using dynamic storage (e.g., a small array or map) that tracks which characters have been seen.
+
+Detection of duplicates must use pointer-based scanning of the tracking structure, not indexing into a lookup table.
+
+All comparisons must use pointer dereferencing.
+-Print each pair exactly as:
+word distinct_count
+(one per line, ending with a trailing newline)
+-Free all allocated memory.
+-On unexpected error, print nothing to stderr and exit returncode 2.
+-On success, print nothing to stderr and exit returncode 0.
+
+Please write this code in C. Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run them.

@@ -1,0 +1,7 @@
+MapDistinctChars.c
+apple banana carrot
+"aaaa" "abc" "aAaA"
+"%$%$" "%$#" "XYZ"
+"hello" "world" "!!"
+
+""
