@@ -1,1 +1,13 @@
-Matching Output
+Differing Output
+With command line arguments a b c d, get differing output in:
+Program Output
+With command line arguments hello world, get differing output in:
+Program Output
+With command line arguments "" '', get differing output in:
+Program Output
+With command line arguments mix3d words 42with numbers, get differing output in:
+Program Output
+With command line arguments symbols !@#$%^, get differing output in:
+Program Output
+With command line arguments supercalifragilisticexpialidocious tiny, get differing output in:
+Program Output
