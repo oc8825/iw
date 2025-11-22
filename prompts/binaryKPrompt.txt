@@ -1,0 +1,115 @@
+Write a complete C program that reads exactly two command-line arguments and prints the shortest contiguous substring of a binary string that contains exactly k occurrences of the character '1', using the precise rules below.
+
+Command-line arguments and invocation rules
+
+The program must be invoked with exactly two command-line arguments after the program name:
+
+s — the binary string (may be empty; each character must be either '0' or '1').
+
+k — a natural number (k >= 0) written in base-10 with no extra characters.
+
+If the program is invoked with no command-line arguments (argc == 1), the program must print nothing to stdout and exit with return code 0.
+
+If the program is invoked with a number of arguments other than exactly two (i.e., argc != 3 and argc != 1), the program must:
+
+Print exactly the following to stderr:
+Error: expected 2 arguments
+
+Exit with return code 1.
+
+Print nothing else.
+
+Parsing rules and error messages
+
+The first argument s is allowed to be the empty string (the shell can pass an empty argument like "" if desired). Otherwise s must consist exclusively of the characters '0' and '1'.
+
+If s contains any character other than '0' or '1', the program must:
+
+Print exactly the following to stderr:
+Error: invalid binary string
+
+Exit with return code 1.
+
+Print nothing else.
+
+The second argument k must parse as a non-negative integer written in decimal (optionally with a leading plus sign '+' allowed by your parser); a leading minus sign or any non-digit characters (other than an optional leading '+') are invalid.
+
+If k is not a valid non-negative integer according to the above rule, the program must:
+
+Print exactly the following to stderr:
+Error: invalid k
+
+Exit with return code 1.
+
+Print nothing else.
+
+Definitions and problem statement
+
+A substring for this problem is defined as any contiguous, non-empty sequence of characters of s. (Substring length must be >= 1.)
+
+Among all non-empty substrings of s that contain exactly k occurrences of the character '1', the program must choose the substring with the smallest length.
+
+If multiple substrings have the same smallest length, the program must choose the lexicographically smallest substring among them, using standard bytewise/ASCII lexicographic order.
+
+If no non-empty substring of s contains exactly k ones, the result is the empty string. The program must then print an empty line (i.e., print a single newline character) — see Output section below.
+
+The program must not modify s.
+
+Output requirements
+
+On success, the program must print exactly one line to stdout:
+
+If a substring is found: print that substring followed by a single newline.
+
+If no substring exists: print a single newline (an empty line).
+
+The program must print nothing to stderr on success and must exit with return code 0.
+
+Special cases and tie-breakers (explicit)
+
+If k == 0:
+
+Consider only non-empty substrings that contain zero '1' characters — equivalently, contiguous runs of one or more '0' characters.
+
+Among such substrings, choose the shortest length (which will be 1 if s contains at least one '0'); if multiple substrings of that length exist, choose the lexicographically smallest (which will be "0"). If s contains no '0' characters, there is no valid substring and the program must print an empty line.
+
+Example of lexicographic tie-breaking: between "001" and "010" of equal length, "001" < "010" in ASCII lexicographic order.
+
+Runtime and memory
+
+You may implement any correct algorithm. The implementation may assume s length fits in memory. No additional error message is required for performance or memory usage; if an unexpected failure (e.g., allocation failure) occurs, see Unexpected failures below.
+
+Unexpected failures
+
+If any unexpected failure occurs (for example internal allocation failure), the program must:
+
+Print nothing to stdout and nothing to stderr.
+
+Exit with return code 2.
+
+Examples (two example I/O pairs)
+Example 1:
+Command-line arguments:
+101001 2
+Explanation: s = "101001", k = 2.
+All non-empty substrings with exactly 2 ones include: "10" (positions 0-1), "101" (0-2), "01" (1-2), "100" (2-4) ... The shortest length among substrings with exactly 2 ones is 2. The substrings of length 2 with exactly 2 ones are: "11" (if present) — here none; substrings length 2 with exactly 2 ones are "10" and "01" depending on positions. Among length-2 substrings with 2 ones, the lexicographically smallest is "01" < "10". For this example, the program should output:
+01
+
+Example 2:
+Command-line arguments:
+000 0
+s = "000", k = 0.
+All non-empty substrings with zero ones are any non-empty substring that consists entirely of zeros. The shortest length is 1; substrings of length 1 with zero ones are "0". The lexicographically smallest among them is "0". The program should output:
+0
+
+(If no substring exists, the program should print just a newline.)
+
+Implementation constraints and requirements summary
+
+The program must be a single C source file that reads its inputs from argv as specified.
+
+Exact error messages and exit codes described above must be used.
+
+The printed substring result must follow the rules above exactly.
+
+The program must print nothing else (no debug text, no prompts).

@@ -1,0 +1,62 @@
+Please implement an entire C file that takes in the following command line arguments:
+
+-An unspecified number of integers (each command-line argument after the program name must represent a single integer in standard base-10 notation, possibly with a leading minus sign).
+-Each argument must be parsed using strtol.
+-Arguments must not contain any non-numeric characters other than an optional leading minus sign.
+-If any argument fails to parse as a valid integer (e.g., contains letters, symbols, or is empty), the program must print exactly the following error message to stderr:
+Error: All arguments must be valid integers.
+Then exit with returncode 1.
+
+Definition of input:
+The integers represent a sequence. You must compute the maximum subarray sum using Kadane’s Algorithm.
+At least one integer must be provided. If zero integers are provided (argc == 1), the program must print nothing to stdout, must not print any errors, and must exit with returncode 0.
+
+Kadane’s Algorithm requirements:
+Let sequence[0], sequence[1], ..., sequence[n-1] be the parsed input integers.
+
+Initialize:
+cur = sequence[0]
+maxSoFar = sequence[0]
+
+For each i from 1 to n-1:
+cur = max(sequence[i], cur + sequence[i])
+maxSoFar = max(maxSoFar, cur)
+
+After processing all elements, print maxSoFar followed by a newline.
+
+Constraints:
+-The program must not modify the input arguments.
+-The program must not use any external libraries beyond standard C libraries.
+-The program must not allocate more memory than necessary.
+-The program must not print anything except:
+(1) the exact integer result followed by a newline
+OR
+(2) the exact error message shown above
+OR
+(3) nothing (if no arguments were given)
+
+Error handling rules (must be followed exactly):
+-If no command line arguments are provided (argc == 1): print nothing to stdout or stderr, exit with returncode 0.
+-If any argument is not a valid integer according to the definition above: print the exact error message (to stderr), exit with returncode 1.
+-If any unexpected internal error occurs, print nothing to stderr, and exit with returncode 2.
+-On success, print the result to stdout, print nothing to stderr, and exit with returncode 0.
+
+Example I/O:
+
+Example 1:
+Command line input:
+3 -2 5 -1
+Processing:
+Maximum subarray sum is 6 (subarray 3, -2, 5)
+Program output:
+6
+
+Example 2:
+Command line input:
+-4 -2 -7 -1
+Processing:
+Maximum subarray sum is -1
+Program output:
+-1
+
+Please write this in C. Please write only the code itself, with no explanations, comments, or markdown, as I want to paste directly into a file.

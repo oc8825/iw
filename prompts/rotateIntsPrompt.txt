@@ -1,0 +1,61 @@
+Please implement an entire C file that takes in the following command line arguments:
+
+The command line arguments must be interpreted as follows:
+
+The first command line argument represents n, the number of positions by which to rotate the list to the right.
+
+All remaining command line arguments represent the list of integers to rotate. Each must be interpreted as a base-10 integer, possibly negative, with no extraneous characters allowed other than an optional leading minus sign.
+
+The program must:
+
+Parse the first argument as a non-negative integer n.
+
+Parse each subsequent argument as an integer (positive, zero, or negative).
+
+Rotate the list of integers to the right by n positions.
+
+Rotation is defined as producing a new list of the same length, where each element is shifted right by n positions mod the list length.
+
+If the list is empty (i.e., no integers after n), print nothing and exit with returncode 0.
+
+Print the rotated list on a single line, separated by spaces, ending with a newline.
+
+Examples:
+Example 1 input:
+3 10 20 30 40 50
+Output:
+30 40 50 10 20
+
+Example 2 input:
+0 5 -1 7
+Output:
+5 -1 7
+
+Error handling requirements:
+
+If no command line arguments are provided, print nothing and exit with returncode 0.
+
+If exactly one argument is provided (n but no list), print nothing and exit with returncode 0.
+
+If the first argument cannot be parsed as a non-negative integer, print exactly:
+Error: n must be a non-negative integer.
+and exit with returncode 1.
+
+If any later argument cannot be parsed strictly as a valid integer (optional leading - followed by digits), print exactly:
+Error: all list elements must be valid integers.
+and exit with returncode 1.
+
+If any unexpected error occurs, print nothing to stderr and exit with returncode 2.
+
+On success, print nothing to stderr and exit with returncode 0.
+
+Additional rules:
+
+The program must not print anything except the rotated list or specified error messages.
+
+The program must not use external libraries other than standard C libraries.
+
+Please write only the C code itself, no explanations, markdown fences, comments, or additional text.
+
+Please write this code in C.
+Please output only the code itself, with no surrounding formatting.
