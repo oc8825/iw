@@ -1,6 +1,6 @@
 Write a complete program that takes as input a list of natural numbers representing stock prices across consecutive days and computes the maximum profit obtainable from a single buy operation followed by a single sell operation on a later day. The program must enforce all of the following requirements:
 
-The input consists of one or more stock prices provided as command line arguments. Each argument must be parsed as a natural number (0, 1, 2, ...). If any argument is not a valid natural number, the program must print an error message and exit without attempting computation.
+The input consists of one or more stock prices provided as command line arguments. Each argument must be parsed as a natural number (0, 1, 2, ...). If any argument is not a valid natural number, the program must print the message "Error: not a valid number" to stderr and exit with returncode 1. If no arguments are provided, simply print 0 and exit with returncode 0.
 
 The program must compute the maximum profit achievable by choosing a buy day i and a later sell day j, where j > i. Profit is defined as prices[j] - prices[i].
 

@@ -1,0 +1,195 @@
+----------------
+Test Case 1
+Command Line Arguments:
+aaaa
+
+Program Output:
+a4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+aaabbc
+
+Program Output:
+a3b2c1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+abbbbbccccdddddde
+
+Program Output:
+a1b5c4d6e1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+!!!!!! ?? &&&&
+
+Program Output:
+
+Error Output:
+&& was unexpected at this time.
+
+
+Exit Status:
+1
+
+----------------
+Test Case 5
+Command Line Arguments:
+1112233
+
+Program Output:
+132232
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+"aAaAaA"
+
+Program Output:
+"1a1A1a1A1a1A1"1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+"@@@" "***" "###"
+
+Program Output:
+"1@3"1 .1g1i1t1 .1g1i1t1i1g1n1o1r1e1 .1v1e1n1v1 .1v1s1c1o1d1e1 "1#3"1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+mix3dText
+
+Program Output:
+m1i1x131d1T1e1x1t1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+""
+
+Program Output:
+"2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+"::::::" "#####"
+
+Program Output:
+"1:6"1 "1#5"1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+xyz
+
+Program Output:
+x1y1z1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+""
+
+Program Output:
+"2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+AAAAAAAAAAAAAAAAAAAAA
+
+Program Output:
+A21
+
+Error Output:
+None.
+
+Exit Status:
+0
+

@@ -1,0 +1,154 @@
+----------------
+Test Case 1
+Command Line Arguments:
+7 1 5 3 6 4
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+9 8 7 6 5
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+2 4
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+2
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+3 3 3 3 3
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+1 10 2 12 3 15
+
+Program Output:
+14
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+a 5 3
+
+Program Output:
+
+Error Output:
+Error: not a valid number
+
+
+Exit Status:
+1
+
+----------------
+Test Case 8
+Command Line Arguments:
+0 0 5 0
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+100 1 100
+
+Program Output:
+99
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+7 -8
+
+Program Output:
+
+Error Output:
+Error: not a valid number
+
+
+Exit Status:
+1
+

@@ -1,0 +1,140 @@
+----------------
+Test Case 1
+Command Line Arguments:
+1 3 4 9 2 7
+
+Program Output:
+4 7 2 9
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+2 2 10 20 30 40
+
+Program Output:
+10 20 30 40
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+0 3 5 6 7 8
+
+Program Output:
+8 6 7 5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+3 0 5 6 7 8
+
+Program Output:
+8 6 7 5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+0 4 1 2 3 4 5
+
+Program Output:
+5 2 3 4 1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+1 2 100 200 300
+
+Program Output:
+100 300 200
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+1 5 9 8 7 6
+
+Program Output:
+
+Error Output:
+Error: Indices must be less than the array length.
+
+
+Exit Status:
+1
+
+----------------
+Test Case 8
+Command Line Arguments:
+0 1 a 2 3
+
+Program Output:
+
+Error Output:
+Error: Invalid integer in array.
+
+
+Exit Status:
+1
+
+----------------
+Test Case 9
+Command Line Arguments:
+0 1
+
+Program Output:
+
+Error Output:
+Error: At least three arguments are required.
+
+
+Exit Status:
+1
+
+----------------
+Test Case 10
+Command Line Arguments:
+-1 2 10 20 30
+
+Program Output:
+
+Error Output:
+Error: Indices must be non-negative.
+
+
+Exit Status:
+1
+

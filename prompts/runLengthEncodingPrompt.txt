@@ -1,22 +1,37 @@
-Please implement an entire C file that takes in an unspecified number of command-line arguments. Each argument is considered a “word,” defined as any non-empty sequence of characters containing no whitespace. All characters are allowed literally, including digits, punctuation, and symbols.
+Write a complete C program that reads an unspecified number of command-line arguments. Each argument is treated as a "word," where a word is any non-empty sequence of characters that contains no whitespace. All characters are allowed literally, including punctuation, digits, symbols, and repeated characters. No escaping or special interpretation is performed.
 
-For each input word, the program must generate a run-length encoded form according to the following rules:
--Each maximal sequence of identical consecutive characters must be replaced by the character followed immediately by the count of repetitions.
--The output must strictly alternate between a single character and its count (e.g., a3b2c1).
--The encoded word must decode back to the original input exactly.
--The encoded output for a word must be non-empty if and only if the input word is non-empty.
+For each input word, the program must produce a run-length encoded string that satisfies all of the requirements below:
 
-The program must:
--If no command-line arguments are provided, print nothing and exit with returncode 0.
--Process each argument independently.
--For each word:
+Run-length encoding definition
+• The program must scan the word from left to right, grouping each maximal sequence of identical consecutive characters into a “run.”
+• Each run must be encoded as:
+<character><count>
+where <character> is the repeated character itself, and <count> is the number of repetitions written in ASCII decimal digits (no leading zeros unless the count is actually zero, which cannot happen).
+• Example: the input word
+aaabbc
+must encode as
+a3b2c1
+• The encoded output must strictly alternate character–count–character–count, with no delimiter and no whitespace inside the encoded word.
 
-Traverse the characters using only pointer arithmetic and dereferencing (no array indexing).
+Correctness requirements
+• The encoded string must decode back to the original word exactly.
+• The encoded string must be non-empty if and only if the input word is non-empty.
+• Each command-line argument must be processed independently.
+• All characters (including symbols like %, *, ", ', , :, etc.) are treated literally.
 
-Construct the encoded output using dynamic memory allocation (malloc/realloc) as needed.
+Pointer and memory requirements
+• The program must traverse the input characters using only pointer arithmetic and dereferencing. No array indexing ([]) is allowed for reading characters.
+• Each encoded word must be constructed using dynamic memory allocation (malloc and/or realloc).
+• Memory must expand as needed while building the encoded output.
+• After printing the final outputs, all allocated memory must be freed.
 
-For each run-length pair, append the character followed by the count converted to ASCII digits.
--After encoding all words, print them all on one line, separated by a single space, followed by a final newline.
--Free all allocated memory for each encoded output.
--If any unexpected error occurs (allocation failure, invalid internal state, etc.), print nothing to stderr and exit with returncode 2.
--On success, print nothing to stderr and exit with returncode 0.
+Output formatting
+• If no command-line arguments are provided, print nothing and exit with returncode 0.
+• If at least one word is provided, encode all of them and print all encoded outputs on the same line, separated by a single space, ending with a newline.
+• Do not print anything to stderr on success.
+
+Error handling
+• If any unexpected error occurs at any point (allocation failure, null pointer, invalid internal state, etc.), print nothing to stderr and exit with returncode 2.
+• On success, exit with returncode 0.
+
+The program must consist only of C code, with no explanations or comments.

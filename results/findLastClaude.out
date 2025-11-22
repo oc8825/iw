@@ -1,0 +1,168 @@
+----------------
+Test Case 1
+Command Line Arguments:
+5 1 3 5 5 7
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+9 1 2 3 4
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+3 3 3 3 3
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+3 1 2 3
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+3
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+No command line arguments provided
+
+
+Exit Status:
+1
+
+----------------
+Test Case 7
+Command Line Arguments:
+10 2 4 6 8 10 10
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+-5 -10 -5 -5 -5 -1 0
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+2 a 3 4
+
+Program Output:
+
+Error Output:
+Invalid integer
+
+
+Exit Status:
+1
+
+----------------
+Test Case 10
+Command Line Arguments:
+b 1 2 3
+
+Program Output:
+
+Error Output:
+Invalid integer
+
+
+Exit Status:
+1
+
+----------------
+Test Case 11
+Command Line Arguments:
+5 1 5 x 7
+
+Program Output:
+
+Error Output:
+Invalid integer
+
+
+Exit Status:
+1
+
+----------------
+Test Case 12
+Command Line Arguments:
+0
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
