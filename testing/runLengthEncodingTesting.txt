@@ -1,0 +1,15 @@
+runLengthEncoding.c
+aaaa
+aaabbc
+abbbbbccccdddddde
+!!!!!! ?? &&&&
+1112233
+"aAaAaA"
+"@@@" "***" "###"
+mix3dText
+""
+"::::::" "#####"
+xyz
+
+""
+AAAAAAAAAAAAAAAAAAAAA

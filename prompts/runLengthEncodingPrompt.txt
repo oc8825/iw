@@ -1,0 +1,22 @@
+Please implement an entire C file that takes in an unspecified number of command-line arguments. Each argument is considered a “word,” defined as any non-empty sequence of characters containing no whitespace. All characters are allowed literally, including digits, punctuation, and symbols.
+
+For each input word, the program must generate a run-length encoded form according to the following rules:
+-Each maximal sequence of identical consecutive characters must be replaced by the character followed immediately by the count of repetitions.
+-The output must strictly alternate between a single character and its count (e.g., a3b2c1).
+-The encoded word must decode back to the original input exactly.
+-The encoded output for a word must be non-empty if and only if the input word is non-empty.
+
+The program must:
+-If no command-line arguments are provided, print nothing and exit with returncode 0.
+-Process each argument independently.
+-For each word:
+
+Traverse the characters using only pointer arithmetic and dereferencing (no array indexing).
+
+Construct the encoded output using dynamic memory allocation (malloc/realloc) as needed.
+
+For each run-length pair, append the character followed by the count converted to ASCII digits.
+-After encoding all words, print them all on one line, separated by a single space, followed by a final newline.
+-Free all allocated memory for each encoded output.
+-If any unexpected error occurs (allocation failure, invalid internal state, etc.), print nothing to stderr and exit with returncode 2.
+-On success, print nothing to stderr and exit with returncode 0.

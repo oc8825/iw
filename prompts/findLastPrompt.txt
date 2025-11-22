@@ -1,0 +1,32 @@
+Write a complete C program that reads its input entirely from the command line and prints the index of the last occurrence of a specified integer in a sorted array of integers. The program must satisfy all of the following requirements:
+
+Command line arguments:
+• The first argument is the target integer elem.
+• All subsequent arguments represent the array arr, which consists of zero or more integers.
+Thus argc may be as small as 2 (elem but no array).
+
+All array values must parse as valid integers. The first argument must also parse as a valid integer. If any argument fails to parse as an integer, the program must print an error message and exit with return code 1. The program must not print anything else if printing an error message.
+
+The array arr must be treated as sorted in non-decreasing order. The program must not reorder or modify the array in any way.
+
+The program must determine the index of the last occurrence of elem in arr.
+• If elem appears one or more times, print the index (0-indexed) of its final occurrence.
+• If elem does not appear at all, print -1.
+
+The program must print exactly one integer as output, followed by a newline.
+
+The program must not print anything to stderr except in an error case.
+On any unexpected failure (e.g., allocation issues, although none should be needed), print nothing to stderr and exit with return code 2.
+
+Example:
+Input arguments: 5 1 3 5 5 7
+Here elem = 5, arr = [1, 3, 5, 5, 7].
+The last occurrence of 5 is at index 3.
+Output: 3
+
+Another example:
+Input arguments: 9 1 2 3 4
+elem = 9 does not appear in arr.
+Output: -1
+
+Your program must implement all requirements exactly and must compile and run correctly for all test cases.
