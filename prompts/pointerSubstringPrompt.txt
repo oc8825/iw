@@ -1,0 +1,75 @@
+Please implement an entire C file that takes in the following command line arguments:
+-Two required arguments:
+1. A UTF-8 encoded "haystack" string.
+2. A UTF-8 encoded "needle" string.
+
+Definitions and rules:
+
+Both haystack and needle must be interpreted as UTF-8 encoded byte sequences.
+
+You must implement your own UTF-8–aware substring search that:
+
+Uses pointer arithmetic only.
+
+Does not call any library functions for string handling or searching (examples of forbidden functions include strlen, strcmp, strncmp, strstr, memcpy, memcmp, memmove, strchr, etc.).
+
+Operates on UTF-8 characters, not raw bytes.
+A match is defined as a contiguous sequence of UTF-8 code points in the haystack equal to the UTF-8 code points of the needle.
+
+You must correctly decode UTF-8 code points manually:
+
+1-byte code points: 0xxxxxxx
+
+2-byte code points: 110xxxxx 10xxxxxx
+
+3-byte code points: 1110xxxx 10xxxxxx 10xxxxxx
+
+4-byte code points: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+
+Invalid UTF-8 sequences must cause the program to print the exact message:
+Invalid UTF-8 sequence encountered.
+…followed by a newline, then exit with returncode 1.
+
+If the needle is empty (0 bytes), print nothing and exit with returncode 0.
+
+Program behavior:
+
+If fewer than 2 command line arguments are provided (meaning no haystack or no needle), print nothing and exit with returncode 0.
+
+On success:
+
+Attempt to find the UTF-8 substring.
+
+If found, print the byte offset (0-based) in the haystack where the first UTF-8 character of the match begins, followed by a newline.
+
+The offset is measured in bytes, not characters.
+
+If not found, print -1 followed by a newline.
+
+Do not print anything to stderr.
+
+Exit with returncode 0.
+
+On any unexpected error (other than invalid UTF-8), do not print anything to stderr, and exit with returncode 2.
+
+Examples:
+For the command line input:
+"héllo world" "llo"
+If "héllo world" is encoded in UTF-8 as: h (0x68), é (0xC3 0xA9), l (0x6C), l (0x6C), o (0x6F), space, world...
+Then the search should return the byte offset where the substring "llo" begins within the haystack, which is 3.
+
+For the command line input:
+"🌍🚀" "🚀"
+Given that "🌍" is a 4-byte UTF-8 code point and "🚀" is another 4-byte code point, the program should print:
+4
+
+Implementation notes:
+
+You must implement your own UTF-8 decoder using pointer arithmetic only.
+
+You must implement your own substring search using the decoded code points.
+
+You must not use any library functions for manipulating the strings.
+
+Please write this code in C.
+Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run it.

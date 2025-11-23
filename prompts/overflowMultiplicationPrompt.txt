@@ -1,0 +1,83 @@
+Please implement an entire C file that takes in the following command line arguments:
+
+An unspecified number of integers
+
+Each argument must represent a valid base-10 integer, possibly with a leading “+” or “-”.
+
+No whitespace is permitted inside an argument.
+
+No prefixes such as “0x”, “0b”, or “0o” are allowed.
+
+The program must treat each argument literally; characters such as "+", "-", and digits must be interpreted according to normal integer rules.
+
+Valid integer examples:
+5
+-3
++44
+00012
+-0009
+
+Invalid integer examples (the program must reject these):
+1.2
++
+--4
++-5 (contains disallowed characters)
+abc
+3a4
+(empty string)
+
+PROGRAM REQUIREMENTS:
+
+The program must parse every command line argument into a signed 64-bit integer (long long in C).
+
+The program must multiply all parsed integers together safely, detecting overflow at each multiplication step.
+
+Overflow detection rules:
+
+If any multiplication would overflow the range of a signed 64-bit integer, the program must immediately print:
+overflow
+and exit with return code 1.
+
+After processing all arguments:
+
+If no overflow occurred, print the resulting product as a base-10 integer, followed by a newline.
+
+Exit with return code 0.
+
+If no command line arguments are provided (argc == 1):
+
+Print nothing.
+
+Exit with return code 0.
+
+If any argument fails to parse as a valid integer under the rules above:
+
+Do NOT print anything except the following exact message:
+invalid integer
+
+Exit with return code 2.
+
+Print nothing to stderr.
+
+If any other unexpected error occurs:
+
+Print nothing to stderr.
+
+Exit with return code 2.
+
+You must not use any library multiplication-overflow helpers (e.g., __int128, _mul128, compiler builtins, or GCC/Clang overflow intrinsics).
+You must detect overflow manually using pointer-free arithmetic techniques, e.g., division checks before multiplying.
+
+Please write only the C code — no explanations, no comments, no markdown fences.
+
+EXAMPLE I/O:
+
+Example 1 command line:
+3 4 5
+Output:
+60
+
+Example 2 command line:
+9223372036854775807 2
+Output:
+overflow

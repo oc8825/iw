@@ -1,0 +1,24 @@
+pointerSubstring.C
+héllo world llo
+héllo world hé
+héllo world 🌍
+🌍🚀 🚀
+🌍🚀 🌍🚀
+abc αβγ
+αβγ β
+αβγ δ
+こんにちは にち
+こんにちは は
+"😊ab😊cd😊" "😊cd"
+"😊😊😊" "😊😊"
+multi-byte-test 𐍈
+"𐍈𐍈𐍈" "𐍈𐍈"
+invalid-seq-here "\xC3\x28"
+plainascii needle
+aaaaa aaa
+abcdefg xyz
+🤖robot 🤖r
+🤖robot bot
+test ""
+"" test
+"" ""
