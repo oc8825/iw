@@ -1,0 +1,237 @@
+----------------
+Test Case 1
+Command Line Arguments:
+12
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+01
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+226
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+10
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+27
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+0
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+100
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+101
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+11106
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+9999
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+1a
+
+Program Output:
+
+Error Output:
+Error: invalid input
+
+
+Exit Status:
+1
+
+----------------
+Test Case 12
+Command Line Arguments:
+12 34
+
+Program Output:
+
+Error Output:
+Error: expected 1 argument
+
+
+Exit Status:
+1
+
+----------------
+Test Case 13
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+123456789
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 15
+Command Line Arguments:
+1010
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 16
+Command Line Arguments:
+230
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 17
+Command Line Arguments:
+120123
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+

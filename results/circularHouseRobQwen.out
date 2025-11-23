@@ -1,0 +1,349 @@
+----------------
+Test Case 1
+Command Line Arguments:
+3 4 3
+
+Program Output:
+4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+2 9 8 3 6
+
+Program Output:
+15
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+0
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+10
+
+Program Output:
+10
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+1 2 3 4 5 6
+
+Program Output:
+12
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+6 5 4 3 2 1
+
+Program Output:
+12
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+9999 1 9999
+
+Program Output:
+9999
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+4 1 2 10 2 3
+
+Program Output:
+14
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+100 1 1 100
+
+Program Output:
+101
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+7 8 9 10 11 12 13 14 15
+
+Program Output:
+48
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+5 1 1 5
+
+Program Output:
+6
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+12 0 12 0 12
+
+Program Output:
+24
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+3 0 0 0 3
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+-1
+
+Program Output:
+
+Error Output:
+Error: non-integer argument
+
+
+Exit Status:
+1
+
+----------------
+Test Case 15
+Command Line Arguments:
+5 -2 3
+
+Program Output:
+
+Error Output:
+Error: non-integer argument
+
+
+Exit Status:
+1
+
+----------------
+Test Case 16
+Command Line Arguments:
+abc
+
+Program Output:
+
+Error Output:
+Error: non-integer argument
+
+
+Exit Status:
+1
+
+----------------
+Test Case 17
+Command Line Arguments:
+12 3x 4
+
+Program Output:
+
+Error Output:
+Error: non-integer argument
+
+
+Exit Status:
+1
+
+----------------
+Test Case 18
+Command Line Arguments:
++
+
+Program Output:
+
+Error Output:
+Error: non-integer argument
+
+
+Exit Status:
+1
+
+----------------
+Test Case 19
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 20
+Command Line Arguments:
+7 "" 3
+
+Program Output:
+
+Error Output:
+Error: non-integer argument
+
+
+Exit Status:
+1
+
+----------------
+Test Case 21
+Command Line Arguments:
+4 " " 5
+
+Program Output:
+
+Error Output:
+Error: non-integer argument
+
+
+Exit Status:
+1
+
+----------------
+Test Case 22
+Command Line Arguments:
+3 5 2.0 1
+
+Program Output:
+
+Error Output:
+Error: non-integer argument
+
+
+Exit Status:
+1
+
+----------------
+Test Case 23
+Command Line Arguments:
+03 5 7
+
+Program Output:
+7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 24
+Command Line Arguments:
+010 20 30
+
+Program Output:
+30
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 25
+Command Line Arguments:
+3 --4 7
+
+Program Output:
+
+Error Output:
+Error: non-integer argument
+
+
+Exit Status:
+1
+

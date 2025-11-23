@@ -1,0 +1,447 @@
+----------------
+Test Case 1
+Command Line Arguments:
+XYYX 2
+
+Program Output:
+4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+AAABABB 1
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+A 0
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+A 5
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+ABAB 2
+
+Program Output:
+4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+ABAB 0
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+ABCDE 10
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+ABCDE 0
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+ZZZZZ 3
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+AZAZAZAZ 3
+
+Program Output:
+7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+AZAZAZAZ 0
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+BBBBBA 1
+
+Program Output:
+6
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+BAAAAA 1
+
+Program Output:
+6
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+XYZXYZXYZ 3
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 15
+Command Line Arguments:
+XYZXYZXYZ 0
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 16
+Command Line Arguments:
+QWERTYUIOP 4
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 17
+Command Line Arguments:
+QWERTYUIOP 0
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 18
+Command Line Arguments:
+AAAAAAAAAA 0
+
+Program Output:
+10
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 19
+Command Line Arguments:
+ABBBCCCDDDEEEFFF 2
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 20
+Command Line Arguments:
+ABCD 100
+
+Program Output:
+4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 21
+Command Line Arguments:
+XXXXXXXXXXXXXXXXXXXX 0
+
+Program Output:
+20
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 22
+Command Line Arguments:
+ABCDEFGHIJKLMNOP 5
+
+Program Output:
+6
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 23
+Command Line Arguments:
+ABCDEFGHIJKLMNOP 0
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 24
+Command Line Arguments:
+AABBAABB 2
+
+Program Output:
+6
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 25
+Command Line Arguments:
+AABBAABB 1
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 26
+Command Line Arguments:
+Z 1000
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 27
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 28
+Command Line Arguments:
+ABCDEFGHIJKL 1
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 29
+Command Line Arguments:
+AAAAAAAAAAB 1
+
+Program Output:
+11
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 30
+Command Line Arguments:
+AABAAAAAAAA 1
+
+Program Output:
+11
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 31
+Command Line Arguments:
+ABCDEFEDCBA 3
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 32
+Command Line Arguments:
+ABCDEFEDCBA 0
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
