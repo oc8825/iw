@@ -1,0 +1,276 @@
+----------------
+Test Case 1
+Command Line Arguments:
+7 10 3 2 100
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 2
+Command Line Arguments:
+42
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 3
+Command Line Arguments:
+-1 -2 -3 -4 -5
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 4
+Command Line Arguments:
+0 1 2 3 4 5 6 7 8 9
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 5
+Command Line Arguments:
+999999999 123456789 -987654321
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 6
+Command Line Arguments:
++10 -20 +30 -40 +50
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 7
+Command Line Arguments:
+2147483647 -2147483648
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 8
+Command Line Arguments:
+001 002 003 004 005
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 9
+Command Line Arguments:
+abcd
+
+Program Output:
+
+Error Output:
+Invalid integer input.
+
+
+Exit Status:
+2
+
+----------------
+Test Case 10
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+12 34 xyz 56
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 12
+Command Line Arguments:
+"12" "34" "56"
+
+Program Output:
+
+Error Output:
+Invalid integer input.
+
+
+Exit Status:
+2
+
+----------------
+Test Case 13
+Command Line Arguments:
+--10
+
+Program Output:
+
+Error Output:
+Invalid integer input.
+
+
+Exit Status:
+2
+
+----------------
+Test Case 14
+Command Line Arguments:
+9999999999999999999999999999999
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 15
+Command Line Arguments:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 16
+Command Line Arguments:
+5 -5 10 -10 15 -15
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 17
+Command Line Arguments:
+100 200 300 400 500 600 700 800 900 1000
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 18
+Command Line Arguments:
+7
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 19
+Command Line Arguments:
+0000000000001 0000000000002 0000000000003
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 20
+Command Line Arguments:
+-0005 00010 -00020
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+
+----------------
+Test Case 21
+Command Line Arguments:
+3 2 1 0 -1 -2 -3
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+3221225477
+

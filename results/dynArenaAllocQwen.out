@@ -1,0 +1,556 @@
+----------------
+Test Case 1
+Command Line Arguments:
+8
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+8 8 8
+
+Program Output:
+0
+8
+16
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+1 2 3
+
+Program Output:
+0
+8
+16
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+0 0 0 0
+
+Program Output:
+0
+0
+0
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+7 1 1 1 1
+
+Program Output:
+0
+8
+16
+24
+32
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+15 1
+
+Program Output:
+0
+16
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+1024 2048 4096
+
+Program Output:
+0
+1024
+3072
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+65530 1
+
+Program Output:
+0
+ERROR: out of memory
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 9
+Command Line Arguments:
+65536
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+9999999999
+
+Program Output:
+ERROR: invalid size
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 11
+Command Line Arguments:
+abc
+
+Program Output:
+ERROR: invalid size
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 12
+Command Line Arguments:
+12 xyz 3
+
+Program Output:
+0
+ERROR: invalid size
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 13
+Command Line Arguments:
+10000 20000 30000 40000
+
+Program Output:
+0
+10000
+30000
+ERROR: out of memory
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 14
+Command Line Arguments:
+8191 1 1 1
+
+Program Output:
+0
+8192
+8200
+8208
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 15
+Command Line Arguments:
+8192 1 1 1
+
+Program Output:
+0
+8192
+8200
+8208
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 16
+Command Line Arguments:
+100 100 100 100 100 100 100 100
+
+Program Output:
+0
+104
+208
+312
+416
+520
+624
+728
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 17
+Command Line Arguments:
+63 1
+
+Program Output:
+0
+64
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 18
+Command Line Arguments:
+64 1
+
+Program Output:
+0
+64
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 19
+Command Line Arguments:
+130 1
+
+Program Output:
+0
+136
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 20
+Command Line Arguments:
+50000 10000 10000
+
+Program Output:
+0
+50000
+ERROR: out of memory
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 21
+Command Line Arguments:
+4096 4096 4096 4096 4096 4096 4096 4096
+
+Program Output:
+0
+4096
+8192
+12288
+16384
+20480
+24576
+28672
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 22
+Command Line Arguments:
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+Program Output:
+0
+8
+16
+24
+32
+40
+48
+56
+64
+72
+80
+88
+96
+104
+112
+120
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 23
+Command Line Arguments:
+9999
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 24
+Command Line Arguments:
+2147483647
+
+Program Output:
+ERROR: out of memory
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 25
+Command Line Arguments:
+2147483648
+
+Program Output:
+ERROR: invalid size
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 26
+Command Line Arguments:
+00012 0005 001
+
+Program Output:
+0
+16
+24
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 27
+Command Line Arguments:
+8 16 5 3 2 1
+
+Program Output:
+0
+8
+24
+32
+40
+48
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 28
+Command Line Arguments:
+50000 20000 20000
+
+Program Output:
+0
+ERROR: out of memory
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 29
+Command Line Arguments:
+32 32 32 32 32 32 32 32 32 32
+
+Program Output:
+0
+32
+64
+96
+128
+160
+192
+224
+256
+288
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 30
+Command Line Arguments:
+7 7 7 7 7 7
+
+Program Output:
+0
+8
+16
+24
+32
+40
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 31
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 32
+Command Line Arguments:
+1
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 33
+Command Line Arguments:
+2
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 34
+Command Line Arguments:
+3
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+

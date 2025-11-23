@@ -1,0 +1,255 @@
+I originally gave you, and one other LLM, the prompt outlined below: 
+Please implement an entire C file that takes in the following command line arguments:
+-Two required arguments:
+
+A "haystack" string.
+
+A "needle" string.
+
+Definitions and rules:
+
+Both haystack and needle must be interpreted as UTF-8 encoded byte sequences, even though the testing inputs contain only ASCII. Treat them as general UTF-8 and write the code as if multi-byte code points may occur.
+
+You must implement your own UTF-8–aware substring search that:
+
+Uses pointer arithmetic only.
+
+Does not call any library functions for string handling or searching (examples of forbidden functions include strlen, strcmp, strncmp, strstr, memcpy, memcmp, memmove, strchr, and similar).
+
+Operates on UTF-8 characters, not raw bytes.
+A match is defined as a contiguous sequence of UTF-8 code points in the haystack equal to the UTF-8 code points of the needle.
+
+You must correctly decode UTF-8 code points manually:
+
+1-byte code points: 0xxxxxxx
+
+2-byte code points: 110xxxxx 10xxxxxx
+
+3-byte code points: 1110xxxx 10xxxxxx 10xxxxxx
+
+4-byte code points: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+
+Invalid UTF-8 sequences must cause the program to print the exact message:
+Invalid UTF-8 sequence encountered.
+…followed by a newline, then exit with returncode 1.
+
+If the needle is empty (0 bytes), print nothing and exit with returncode 0.
+
+Program behavior:
+
+If fewer than 2 command line arguments are provided (meaning no haystack or no needle), print nothing and exit with returncode 0.
+
+On success:
+
+Attempt to find the UTF-8 substring.
+
+If found, print the byte offset (0-based) in the haystack where the first UTF-8 character of the match begins, followed by a newline. The offset is measured in bytes, not characters.
+
+If not found, print -1 followed by a newline.
+
+Do not print anything to stderr.
+
+Exit with returncode 0.
+
+On any unexpected error (other than invalid UTF-8), do not print anything to stderr, and exit with returncode 2.
+
+Examples:
+For the command line input:
+hello world llo
+The program should print:
+2
+
+For the command line input:
+aaa aa
+The program should print:
+0
+
+Implementation notes:
+
+You must implement your own UTF-8 decoder using pointer arithmetic only.
+
+You must implement your own substring search using decoded code points.
+
+You must not use any library functions for manipulating the strings.
+
+Please write this code in C.
+Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run it.
+One given solution was: 
+#include <stdio.h>
+#include <stdlib.h>
+
+int is_valid_utf8(const unsigned char *s, int len) {
+    if (len == 1) {
+        return (s[0] & 0x80) == 0;
+    } else if (len == 2) {
+        return (s[0] & 0xE0) == 0xC0 && (s[1] & 0xC0) == 0x80;
+    } else if (len == 3) {
+        return (s[0] & 0xF0) == 0xE0 && (s[1] & 0xC0) == 0x80 && (s[2] & 0xC0) == 0x80;
+    } else if (len == 4) {
+        return (s[0] & 0xF8) == 0xF0 && (s[1] & 0xC0) == 0x80 && (s[2] & 0xC0) == 0x80 && (s[3] & 0xC0) == 0x80;
+    }
+    return 0;
+}
+
+int utf8_codepoint_len(const unsigned char *s) {
+    if ((s[0] & 0x80) == 0) return 1;
+    if ((s[0] & 0xE0) == 0xC0) return 2;
+    if ((s[0] & 0xF0) == 0xE0) return 3;
+    if ((s[0] & 0xF8) == 0xF0) return 4;
+    return 0;
+}
+
+int utf8_strncmp(const unsigned char *haystack, const unsigned char *needle, int len) {
+    while (len > 0) {
+        int h_len = utf8_codepoint_len(haystack);
+        int n_len = utf8_codepoint_len(needle);
+        if (h_len != n_len) return 1;
+        for (int i = 0; i < h_len; i++) {
+            if (haystack[i] != needle[i]) return 1;
+        }
+        haystack += h_len;
+        needle += n_len;
+        len -= h_len;
+    }
+    return 0;
+}
+
+int utf8_strstr(const unsigned char *haystack, const unsigned char *needle) {
+    if (*needle == 0) return 0;
+    int h_len = 0;
+    while (haystack[h_len] != 0) {
+        int n_len = utf8_codepoint_len(needle);
+        int h_codepoint_len = utf8_codepoint_len(haystack + h_len);
+        if (!is_valid_utf8(haystack + h_len, h_codepoint_len)) {
+            printf("Invalid UTF-8 sequence encountered.\n");
+            exit(1);
+        }
+        if (utf8_strncmp(haystack + h_len, needle, n_len) == 0) {
+            return h_len;
+        }
+        h_len += h_codepoint_len;
+    }
+    return -1;
+}
+
+int main(int argc, char *argv[]) {
+    if (argc < 3) {
+        return 0;
+    }
+
+    const unsigned char *haystack = (const unsigned char *)argv[1];
+    const unsigned char *needle = (const unsigned char *)argv[2];
+
+    int result = utf8_strstr(haystack, needle);
+    printf("%d\n", result);
+
+    return 0;
+}
+
+The other provided solution was: 
+#include <stdio.h>
+#include <stdlib.h>
+
+int decode_utf8_char(const char *str, int *char_len) {
+    const unsigned char *s = (const unsigned char *)str;
+    
+    if (*s == 0) {
+        *char_len = 0;
+        return 0;
+    }
+    
+    if ((*s & 0x80) == 0) {
+        *char_len = 1;
+        return *s;
+    } else if ((*s & 0xE0) == 0xC0) {
+        if (s[1] == 0 || (s[1] & 0xC0) != 0x80) return -1;
+        *char_len = 2;
+        return ((*s & 0x1F) << 6) | (s[1] & 0x3F);
+    } else if ((*s & 0xF0) == 0xE0) {
+        if (s[1] == 0 || s[2] == 0 || (s[1] & 0xC0) != 0x80 || (s[2] & 0xC0) != 0x80) return -1;
+        *char_len = 3;
+        return ((*s & 0x0F) << 12) | ((s[1] & 0x3F) << 6) | (s[2] & 0x3F);
+    } else if ((*s & 0xF8) == 0xF0) {
+        if (s[1] == 0 || s[2] == 0 || s[3] == 0 || (s[1] & 0xC0) != 0x80 || (s[2] & 0xC0) != 0x80 || (s[3] & 0xC0) != 0x80) return -1;
+        *char_len = 4;
+        return ((*s & 0x07) << 18) | ((s[1] & 0x3F) << 12) | ((s[2] & 0x3F) << 6) | (s[3] & 0x3F);
+    }
+    
+    return -1;
+}
+
+int is_empty_string(const char *str) {
+    return *str == '\0';
+}
+
+int main(int argc, char *argv[]) {
+    if (argc < 3) {
+        return 0;
+    }
+    
+    const char *haystack = argv[1];
+    const char *needle = argv[2];
+    
+    if (is_empty_string(needle)) {
+        return 0;
+    }
+    
+    const char *haystack_ptr = haystack;
+    
+    while (!is_empty_string(haystack_ptr)) {
+        const char *h_temp = haystack_ptr;
+        const char *n_temp = needle;
+        int match = 1;
+        
+        while (!is_empty_string(n_temp)) {
+            if (is_empty_string(h_temp)) {
+                match = 0;
+                break;
+            }
+            
+            int h_char_len, n_char_len;
+            int h_codepoint = decode_utf8_char(h_temp, &h_char_len);
+            int n_codepoint = decode_utf8_char(n_temp, &n_char_len);
+            
+            if (h_codepoint == -1 || n_codepoint == -1) {
+                printf("Invalid UTF-8 sequence encountered.\n");
+                return 1;
+            }
+            
+            if (h_codepoint != n_codepoint) {
+                match = 0;
+                break;
+            }
+            
+            h_temp += h_char_len;
+            n_temp += n_char_len;
+        }
+        
+        if (match) {
+            printf("%d\n", (int)(haystack_ptr - haystack));
+            return 0;
+        }
+        
+        int char_len;
+        int codepoint = decode_utf8_char(haystack_ptr, &char_len);
+        if (codepoint == -1) {
+            printf("Invalid UTF-8 sequence encountered.\n");
+            return 1;
+        }
+        
+        haystack_ptr += char_len;
+    }
+    
+    printf("-1\n");
+    return 0;
+}
+
+However, after running these two solutions, the output differed in these sections: 
+With command line arguments basictext tic, get differing output in:
+Program Output
+With command line arguments pre prefix, get differing output in:
+Program Output
+With command line arguments multiword test, get differing output in:
+Program Output
+
+Given this information of the two solutions and where they differ, please write a new solution that conforms to the original prompt repeated above. Prioritize the solution that actually behaves according to the specified prompt. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

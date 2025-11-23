@@ -37,31 +37,32 @@ int main(int argc, char *argv[]) {
     const char *replacementWord = argv[2];
     const char *text = argv[3];
 
-    size_t textLen = strlen(text);
     size_t wordLen = strlen(wordToReplace);
     size_t replaceLen = strlen(replacementWord);
+    size_t textLen = strlen(text);
 
-    char *result = malloc(textLen * sizeof(char) + 1);
+    char *result = malloc(textLen * 2 + 1); // Allocate enough space for worst case
     if (result == NULL) {
         return 2;
     }
 
-    char *resultPtr = result;
-    const char *textPtr = text;
+    char *resultPos = result;
+    const char *textPos = text;
 
-    while (*textPtr) {
-        if (strncasecmp(textPtr, wordToReplace, wordLen) == 0) {
-            if ((textPtr == text || !isalnum(*(textPtr - 1))) &&
-                (textPtr[wordLen] == '\0' || !isalnum(textPtr[wordLen]))) {
-                strcpy(resultPtr, replacementWord);
-                resultPtr += replaceLen;
-                textPtr += wordLen;
+    while (*textPos) {
+        if (strncmp(textPos, wordToReplace, wordLen) == 0) {
+            // Check if the match is a whole word
+            if ((textPos == text || !isalnum((unsigned char)textPos[-1])) &&
+                (textPos[wordLen] == '\0' || !isalnum((unsigned char)textPos[wordLen]))) {
+                strcpy(resultPos, replacementWord);
+                resultPos += replaceLen;
+                textPos += wordLen;
                 continue;
             }
         }
-        *resultPtr++ = *textPtr++;
+        *resultPos++ = *textPos++;
     }
-    *resultPtr = '\0';
+    *resultPos = '\0';
 
     printf("%s\n", result);
     free(result);
@@ -70,8 +71,8 @@ int main(int argc, char *argv[]) {
 But it doesn't compile. The compiler gave these errors:
 solutions/Replace.C: In function 'int main(int, char**)':
 solutions/Replace.C:20:26: error: invalid conversion from 'void*' to 'char*' [-fpermissive]
-   20 |     char *result = malloc(textLen * sizeof(char) + 1);
-      |                    ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   20 |     char *result = malloc(textLen * 2 + 1); // Allocate enough space for worst case
+      |                    ~~~~~~^~~~~~~~~~~~~~~~~
       |                          |
       |                          void*
 

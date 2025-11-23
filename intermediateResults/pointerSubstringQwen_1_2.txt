@@ -1,0 +1,171 @@
+I gave you this prompt:
+Please implement an entire C file that takes in the following command line arguments:
+-Two required arguments:
+1. A UTF-8 encoded "haystack" string.
+2. A UTF-8 encoded "needle" string.
+
+Definitions and rules:
+
+Both haystack and needle must be interpreted as UTF-8 encoded byte sequences.
+
+You must implement your own UTF-8–aware substring search that:
+
+Uses pointer arithmetic only.
+
+Does not call any library functions for string handling or searching (examples of forbidden functions include strlen, strcmp, strncmp, strstr, memcpy, memcmp, memmove, strchr, etc.).
+
+Operates on UTF-8 characters, not raw bytes.
+A match is defined as a contiguous sequence of UTF-8 code points in the haystack equal to the UTF-8 code points of the needle.
+
+You must correctly decode UTF-8 code points manually:
+
+1-byte code points: 0xxxxxxx
+
+2-byte code points: 110xxxxx 10xxxxxx
+
+3-byte code points: 1110xxxx 10xxxxxx 10xxxxxx
+
+4-byte code points: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+
+Invalid UTF-8 sequences must cause the program to print the exact message:
+Invalid UTF-8 sequence encountered.
+…followed by a newline, then exit with returncode 1.
+
+If the needle is empty (0 bytes), print nothing and exit with returncode 0.
+
+Program behavior:
+
+If fewer than 2 command line arguments are provided (meaning no haystack or no needle), print nothing and exit with returncode 0.
+
+On success:
+
+Attempt to find the UTF-8 substring.
+
+If found, print the byte offset (0-based) in the haystack where the first UTF-8 character of the match begins, followed by a newline.
+
+The offset is measured in bytes, not characters.
+
+If not found, print -1 followed by a newline.
+
+Do not print anything to stderr.
+
+Exit with returncode 0.
+
+On any unexpected error (other than invalid UTF-8), do not print anything to stderr, and exit with returncode 2.
+
+Examples:
+For the command line input:
+"héllo world" "llo"
+If "héllo world" is encoded in UTF-8 as: h (0x68), é (0xC3 0xA9), l (0x6C), l (0x6C), o (0x6F), space, world...
+Then the search should return the byte offset where the substring "llo" begins within the haystack, which is 3.
+
+For the command line input:
+"🌍🚀" "🚀"
+Given that "🌍" is a 4-byte UTF-8 code point and "🚀" is another 4-byte code point, the program should print:
+4
+
+Implementation notes:
+
+You must implement your own UTF-8 decoder using pointer arithmetic only.
+
+You must implement your own substring search using the decoded code points.
+
+You must not use any library functions for manipulating the strings.
+
+Please write this code in C.
+Please write only the code itself, no explanations, markdown fences, or other content, as I want to be able to copy the results directly into a file and run it.
+
+And you produced this code:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int is_valid_utf8(const unsigned char *str, size_t len) {
+    for (size_t i = 0; i < len; ) {
+        if ((str[i] & 0x80) == 0) {
+            i++;
+        } else if ((str[i] & 0xE0) == 0xC0) {
+            if (i + 1 >= len || (str[i + 1] & 0xC0) != 0x80) return 0;
+            i += 2;
+        } else if ((str[i] & 0xF0) == 0xE0) {
+            if (i + 2 >= len || (str[i + 1] & 0xC0) != 0x80 || (str[i + 2] & 0xC0) != 0x80) return 0;
+            i += 3;
+        } else if ((str[i] & 0xF8) == 0xF0) {
+            if (i + 3 >= len || (str[i + 1] & 0xC0) != 0x80 || (str[i + 2] & 0xC0) != 0x80 || (str[i + 3] & 0xC0) != 0x80) return 0;
+            i += 4;
+        } else {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+size_t utf8_codepoint_len(const unsigned char *str) {
+    if ((str[0] & 0x80) == 0) return 1;
+    if ((str[0] & 0xE0) == 0xC0) return 2;
+    if ((str[0] & 0xF0) == 0xE0) return 3;
+    if ((str[0] & 0xF8) == 0xF0) return 4;
+    return 0;
+}
+
+int utf8_substring_search(const unsigned char *haystack, size_t haystack_len, const unsigned char *needle, size_t needle_len) {
+    if (needle_len == 0) return -1;
+
+    for (size_t i = 0; i < haystack_len; ) {
+        if (haystack_len - i < needle_len) break;
+
+        size_t j = 0;
+        for (; j < needle_len; ) {
+            size_t h_len = utf8_codepoint_len(haystack + i + j);
+            size_t n_len = utf8_codepoint_len(needle + j);
+            if (h_len != n_len) break;
+            for (size_t k = 0; k < h_len; k++) {
+                if (haystack[i + j + k] != needle[j + k]) break;
+            }
+            if (k == h_len) j += h_len;
+            else break;
+        }
+
+        if (j == needle_len) return i;
+
+        i += utf8_codepoint_len(haystack + i);
+    }
+
+    return -1;
+}
+
+int main(int argc, char *argv[]) {
+    if (argc < 3) {
+        return 0;
+    }
+
+    const unsigned char *haystack = (const unsigned char *)argv[1];
+    const unsigned char *needle = (const unsigned char *)argv[2];
+    size_t haystack_len = 0;
+    size_t needle_len = 0;
+
+    while (haystack[haystack_len]) haystack_len++;
+    while (needle[needle_len]) needle_len++;
+
+    if (!is_valid_utf8(haystack, haystack_len) || !is_valid_utf8(needle, needle_len)) {
+        printf("Invalid UTF-8 sequence encountered.\n");
+        return 1;
+    }
+
+    if (needle_len == 0) {
+        return 0;
+    }
+
+    int offset = utf8_substring_search(haystack, haystack_len, needle, needle_len);
+    printf("%d\n", offset);
+
+    return 0;
+}
+But it doesn't compile. The compiler gave these errors:
+solutions/pointerSubstring.C: In function 'int utf8_substring_search(const unsigned char*, size_t, const unsigned char*, size_t)':
+solutions/pointerSubstring.C:46:17: error: 'k' was not declared in this scope
+   46 |             if (k == h_len) j += h_len;
+      |                 ^
+
+
+Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.

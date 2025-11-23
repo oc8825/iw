@@ -1,24 +1,23 @@
 pointerSubstring.C
-héllo world llo
-héllo world hé
-héllo world 🌍
-🌍🚀 🚀
-🌍🚀 🌍🚀
-abc αβγ
-αβγ β
-αβγ δ
-こんにちは にち
-こんにちは は
-"😊ab😊cd😊" "😊cd"
-"😊😊😊" "😊😊"
-multi-byte-test 𐍈
-"𐍈𐍈𐍈" "𐍈𐍈"
-invalid-seq-here "\xC3\x28"
-plainascii needle
+hello world llo
+hello world hello
+hello world xyz
 aaaaa aaa
-abcdefg xyz
-🤖robot 🤖r
-🤖robot bot
-test ""
-"" test
+aaaaa bbb
+basictext text
+basictext tic
+emptyhaystack ""
+"" emptyneedle
 "" ""
+prefixmatch pre
+pre prefix
+multiword test
+longerstring longer
+longerstring string
+byteoffsetcheck off
+checkoffset offset
+invalidsequence1 "\xC3\x28"
+invalidsequence2 "\xE2\x28\xA1"
+invalidsequence3 "\xF0\x28\x8C\xBC"
+simpletest t
+t simpletest

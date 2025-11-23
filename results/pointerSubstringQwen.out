@@ -1,0 +1,308 @@
+----------------
+Test Case 1
+Command Line Arguments:
+hello world llo
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+hello world hello
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+hello world xyz
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+aaaaa aaa
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+aaaaa bbb
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+basictext text
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+basictext tic
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+emptyhaystack ""
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+"" emptyneedle
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+"" ""
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+prefixmatch pre
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+pre prefix
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+multiword test
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+longerstring longer
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 15
+Command Line Arguments:
+longerstring string
+
+Program Output:
+6
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 16
+Command Line Arguments:
+byteoffsetcheck off
+
+Program Output:
+4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 17
+Command Line Arguments:
+checkoffset offset
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 18
+Command Line Arguments:
+invalidsequence1 "\xC3\x28"
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 19
+Command Line Arguments:
+invalidsequence2 "\xE2\x28\xA1"
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 20
+Command Line Arguments:
+invalidsequence3 "\xF0\x28\x8C\xBC"
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 21
+Command Line Arguments:
+simpletest t
+
+Program Output:
+6
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 22
+Command Line Arguments:
+t simpletest
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+

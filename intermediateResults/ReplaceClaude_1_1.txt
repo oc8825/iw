@@ -28,7 +28,7 @@ And you produced this code:
 #include <ctype.h>
 
 int is_word_boundary(char c) {
-    return isspace(c) || ispunct(c) || c == '\0';
+    return !isalnum(c) && c != '_';
 }
 
 int main(int argc, char *argv[]) {
@@ -55,27 +55,27 @@ int main(int argc, char *argv[]) {
         exit(2);
     }
     
-    int resultPos = 0;
+    int resultIndex = 0;
     int i = 0;
     
     while (i < textLen) {
         if (strncmp(&text[i], wordToReplace, wordToReplaceLen) == 0) {
-            int prevBoundary = (i == 0) || is_word_boundary(text[i-1]);
-            int nextBoundary = is_word_boundary(text[i + wordToReplaceLen]);
+            int prevBoundary = (i == 0) || is_word_boundary(text[i - 1]);
+            int nextBoundary = (i + wordToReplaceLen >= textLen) || is_word_boundary(text[i + wordToReplaceLen]);
             
             if (prevBoundary && nextBoundary) {
-                strcpy(&result[resultPos], replacementWord);
-                resultPos += replacementWordLen;
+                strcpy(&result[resultIndex], replacementWord);
+                resultIndex += replacementWordLen;
                 i += wordToReplaceLen;
             } else {
-                result[resultPos++] = text[i++];
+                result[resultIndex++] = text[i++];
             }
         } else {
-            result[resultPos++] = text[i++];
+            result[resultIndex++] = text[i++];
         }
     }
     
-    result[resultPos] = '\0';
+    result[resultIndex] = '\0';
     printf("%s", result);
     
     free(result);
