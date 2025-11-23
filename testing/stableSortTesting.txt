@@ -1,0 +1,25 @@
+stableSort.C
+apple banana pear fig
+z aa bb c a
+one two three four five six seven
+cat dog ant bee eel
+mix3d words 42with numbers
+a aa aaa aaaa aaaaa
+x y z
+hello HELLO HeLLO
+
+""
+''
+ABC abc Abc aBC
+short longest mid tiny tin
+repeat repeat repeat
+word1 word2 word10 word3
+same same same same
+_underscore __double ___triple
+A b C d E f G h
+c b a
+zzz yyy xxx www
+hello1 hello2 hello10 hello3
+sort THESE words PLEASE
+zzz zZa zaZ Zzz
+aaa aab aba baa aaa aab

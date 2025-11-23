@@ -1,0 +1,84 @@
+Please implement an entire C file that takes in the following command line arguments:
+
+Exactly one command line argument.
+
+This single argument must represent one natural number n. A natural number is a non-empty sequence of ASCII digits 0–9 and must not include signs, decimal points, whitespace, or any other characters.
+
+The program must interpret the argument literally. No thousands separators, no prefixes, no suffixes, and no whitespace are permitted. The program must not allow leading plus or minus signs. The program must not allow empty strings. If the argument contains any non-digit characters, this is an error and the program must exit with returncode 2.
+
+Definition:
+A natural number is defined as:
+
+One or more characters in the range '0' through '9'.
+
+Leading zeros are allowed.
+
+The value represented may exceed the range of any built-in C integer type; therefore, the program must parse the string manually using pointer arithmetic only, without atoi, strtol, or similar library functions.
+
+The task:
+Given the natural number n (which may be arbitrarily large), your program must compute the smallest prime factor of n that is less than 10. The set of primes to check is exactly: 2, 3, 5, 7.
+
+Because n may exceed native integer limits, the program must check divisibility using manual string-based arithmetic. You must not convert the entire value into any built-in numeric type. All arithmetic to test divisibility must operate directly on the input string using pointer dereferencing only (no array indexing syntax).
+
+Output:
+
+Print exactly one natural number:
+
+The smallest element of {2, 3, 5, 7} that divides n.
+
+If none divide n, print 0.
+
+Print the output followed by a newline.
+
+Print nothing else to stdout.
+
+Error handling:
+
+If zero command line arguments are provided (meaning argc == 1), print nothing and exit with returncode 0.
+
+If more than one argument is provided, print nothing to stderr and exit with returncode 2.
+
+If the single argument is not a valid natural number by the definition above, print nothing to stderr and exit with returncode 2.
+
+If any other unexpected error occurs (allocation failure, invalid internal state, etc.), print nothing to stderr and exit with returncode 2.
+
+On success, print nothing to stderr and exit with returncode 0.
+
+Restrictions:
+
+You must write the entire program in C.
+
+You must not use atoi, strtol, strtoul, sscanf, or similar standard library numeric converters.
+
+You must not use array indexing syntax. All character access must use pointer arithmetic and dereferencing.
+
+You must not use big-integer libraries.
+
+You must not call external programs.
+
+You may dynamically allocate temporary memory if needed. If dynamic allocation is used, you must free it before exiting.
+
+You must output only the final result and a newline. No extra text.
+
+Examples:
+
+Example 1:
+Command line:
+100
+Output:
+2
+
+Example 2:
+Command line:
+49
+Output:
+7
+
+Example 3:
+Command line:
+121
+Output:
+11 is not less than 10, so the program should output:
+0
+
+Please write only the C code itself, no explanations, no comments, no surrounding text, and no formatting fences.

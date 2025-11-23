@@ -1,0 +1,57 @@
+Please implement an entire C file that takes in the following command line arguments:
+
+An unspecified number of integers
+
+Every command line argument after argv[0] must represent a valid 32-bit signed integer written in standard decimal form with an optional leading minus sign.
+Examples of valid integers:
+0, 5, -10, 42, 003 (leading zeros allowed), -0007
+The program must reject any argument that is not a valid integer (examples of invalid: --5, 5-, 12a, +5, empty string, space characters, etc.).
+
+Behavior of the program:
+
+If no command line arguments (other than the program name) are given, print nothing and exit with return code 0.
+
+Let the input list be the sequence of integers in the order they appear on the command line.
+
+The program must construct an output list of the same length such that the element at index i equals the product of all input integers except the integer at index i.
+
+The solution must run in O(n) time and must not use the division operator anywhere in the program.
+
+All intermediate products and final outputs are guaranteed to fit within the range of a 32-bit signed integer.
+
+Output format: print all resulting integers on one line, separated by a single space, and ending with a newline.
+
+Example 1:
+Command line:
+1 2 3 4
+Output:
+24 12 8 6
+
+Example 2:
+Command line:
+3 3 3
+Output:
+9 9 9
+
+Error handling:
+
+If any argument is not a valid integer as defined above, the program must:
+
+Print exactly the following message to stdout (not stderr):
+Error: invalid integer argument.
+
+Exit with return code 1.
+
+If any unexpected error occurs (allocation failure, overflow detection logic, etc.), print nothing to stderr, and exit with return code 2.
+
+On success, print nothing to stderr and exit with return code 0.
+
+Implementation requirements:
+
+You must manually implement the O(n) two-pass algorithm without division: a prefix-product pass and a suffix-product pass.
+
+You must not use division anywhere in the file.
+
+The program must consist of a single valid C file and include a main function.
+
+Please output only the code, no explanations, formatting, markdown fences, comments, or any additional text. I need to be able to paste the output directly into a .c file and compile it.

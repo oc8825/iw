@@ -1,0 +1,34 @@
+slidingWindowSubstring.C
+abc zzabcyy
+aba zzababaqq
+aaa aaaaaaaaaaaaa
+xyz abcdef
+pattern p a t t e r n
+hello hell o
+aa a aaa aaaaa
+zzz z z z z zzzzz
+== ========
+[] [][][[]]
+<> abc<><>xyz
+abc abc
+abc ab
+abc a bc
+repeat r e p e a t repeat
+aaa aa a aaa aa aaaa
+123 0012300123
+abc xabcxabcyabc
+aaa baaabaaaacaaa
+pattern ppppatternppp
+xxxxx x x x x xxxxx x
+
+UPPER lower UPPERlowerUPPERlower
+end endendendendend
+start ststartstart
+abab abababaabbabab
+word w o r d
+++ ++++++++++
+-- ------abc----
+987 987987987000987
+one o n e
+LONG L O N G LONG LONGSHORTLONG
+abcabc abc abcabcabc abcabc
