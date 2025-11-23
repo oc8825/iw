@@ -1,0 +1,62 @@
+Please implement an entire C file that takes in exactly one command line argument:
+
+A single natural number n, which must satisfy the definition of a natural number: a non-negative integer written in base-10 with no sign character.
+Valid examples: 0, 5, 153, 9474
+Invalid examples: -1, +2, 3.14, abc, 04x
+
+The purpose of the program is to determine whether n is an Armstrong number (also known as a Narcissistic number).
+A number is an Armstrong number if it is equal to the sum of its own digits, each digit raised to the power of the number of digits.
+
+For example:
+
+153 has 3 digits, and
+1³ + 5³ + 3³ = 153 → Armstrong number
+
+9474 has 4 digits, and
+9⁴ + 4⁴ + 7⁴ + 4⁴ = 9474 → Armstrong number
+
+10 has 2 digits, and
+1² + 0² = 1 → not an Armstrong number
+
+Your program must:
+
+• Parse the single command line argument as a natural number (no sign allowed).
+• Compute whether the number satisfies the Armstrong property.
+• Print true or false, followed by a newline.
+
+Output formatting rules:
+
+• Output must be exactly true or false in lowercase, then a newline.
+• No extra spaces, no additional text.
+• Output goes to stdout only.
+• Nothing is printed to stderr on success.
+
+Error handling:
+
+• If no command line argument is provided, print nothing and exit with return code 0.
+• If more than one argument is provided, print Error: expected one argument to stderr and exit with return code 1.
+• If the single argument is not a valid natural number according to the definition above, print Error: invalid number to stderr and exit with return code 1.
+• If any unexpected error occurs (integer overflow, allocation failure, etc.), print nothing to stderr and exit with return code 2.
+• On success, exit with return code 0.
+
+Restrictions:
+
+• The program must operate only from command line input.
+• You must write an entire compilable C program.
+• Do not include any explanations, comments, markdown code fences, or anything except the C code.
+
+Examples:
+
+Example 1 input: 153
+Digits = 1, 5, 3
+1³ + 5³ + 3³ = 153 → Armstrong number
+Output:
+true
+
+Example 2 input: 10
+Digits = 1, 0
+1² + 0² = 1 → not equal to 10
+Output:
+false
+
+Please write the full C program as specified, with only the code and no extra text.
