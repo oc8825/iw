@@ -1,0 +1,251 @@
+----------------
+Test Case 1
+Command Line Arguments:
+101001 2
+
+Program Output:
+101
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+000 0
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+1111 0
+
+Program Output:
+
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+1111 1
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+01010 2
+
+Program Output:
+101
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+1010 3
+
+Program Output:
+
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+"" 0
+
+Program Output:
+
+Error Output:
+Error: invalid binary string
+
+
+Exit Status:
+1
+
+----------------
+Test Case 9
+Command Line Arguments:
+"" 1
+
+Program Output:
+
+Error Output:
+Error: invalid binary string
+
+
+Exit Status:
+1
+
+----------------
+Test Case 10
+Command Line Arguments:
+001100 1
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+001100 2
+
+Program Output:
+11
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+001100 3
+
+Program Output:
+
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+1000001 1
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+1000001 2
+
+Program Output:
+1000001
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 15
+Command Line Arguments:
+abc 2
+
+Program Output:
+
+Error Output:
+Error: invalid binary string
+
+
+Exit Status:
+1
+
+----------------
+Test Case 16
+Command Line Arguments:
+10101 -1
+
+Program Output:
+
+Error Output:
+Error: invalid k
+
+
+Exit Status:
+1
+
+----------------
+Test Case 17
+Command Line Arguments:
+10101 2 3
+
+Program Output:
+
+Error Output:
+Error: expected 2 arguments
+
+
+Exit Status:
+1
+
+----------------
+Test Case 18
+Command Line Arguments:
+10101
+
+Program Output:
+
+Error Output:
+Error: expected 2 arguments
+
+
+Exit Status:
+1
+

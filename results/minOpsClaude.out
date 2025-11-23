@@ -1,0 +1,336 @@
+----------------
+Test Case 1
+Command Line Arguments:
+3 5 1 4 2 5
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+1 2 3 4 5 3
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+10 9 8 7 6 5 4 3 2 1 10
+
+Program Output:
+10
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+5 4 3 2 1 1
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+2 1 2 1 2 2
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+100 1 50 25 75 100
+
+Program Output:
+Error: nums does not contain all integers 1..k.
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 7
+Command Line Arguments:
+1 1
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+5 4 3 2 1 0
+
+Program Output:
+Error: k must be a positive integer.
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 9
+Command Line Arguments:
+5 4 3 2 1 -1
+
+Program Output:
+Error: k must be a positive integer.
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 10
+Command Line Arguments:
+-5 4 3 2 1 5
+
+Program Output:
+Error: all values in nums must be positive.
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 11
+Command Line Arguments:
+3 2 1 2
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+9 8 7 6 5 4 3 2 1 9
+
+Program Output:
+9
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+4 1 2 3 4
+
+Program Output:
+4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+7 3 1 4 5 2 6 7
+
+Program Output:
+7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 15
+Command Line Arguments:
+10 1 2 3 10
+
+Program Output:
+Error: nums does not contain all integers 1..k.
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 16
+Command Line Arguments:
+1
+
+Program Output:
+Error: nums is empty.
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 17
+Command Line Arguments:
+99999 99998 1 2 3 99999
+
+Program Output:
+Error: nums does not contain all integers 1..k.
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 18
+Command Line Arguments:
+42 41 40 39 38 1
+
+Program Output:
+Error: nums does not contain all integers 1..k.
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 19
+Command Line Arguments:
+3 2 1 100
+
+Program Output:
+Error: nums does not contain all integers 1..k.
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 20
+Command Line Arguments:
+11 1 2 3 4 5 6 7 8 9 10 11
+
+Program Output:
+11
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 21
+Command Line Arguments:
+4 3 2 1 4
+
+Program Output:
+4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 22
+Command Line Arguments:
+5 1 4 2 3 5
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 23
+Command Line Arguments:
+15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 15
+
+Program Output:
+15
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 24
+Command Line Arguments:
+20 1 2 3 4 5 6 7 8 9 10 20
+
+Program Output:
+Error: nums does not contain all integers 1..k.
+
+Error Output:
+None.
+
+Exit Status:
+1
+

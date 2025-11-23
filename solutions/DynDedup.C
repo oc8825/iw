@@ -16,17 +16,14 @@ int main(int argc, char *argv[]) {
     size_t count = 0;
 
     for (int i = 1; i < argc; i++) {
-        char *word = argv[i];
-        int is_duplicate = 0;
-
+        int found = 0;
         for (size_t j = 0; j < count; j++) {
-            if (strcmp(words[j], word) == 0) {
-                is_duplicate = 1;
+            if (strcmp(argv[i], words[j]) == 0) {
+                found = 1;
                 break;
             }
         }
-
-        if (!is_duplicate) {
+        if (!found) {
             if (count == capacity) {
                 capacity = capacity == 0 ? 1 : capacity * 2;
                 words = realloc(words, capacity * sizeof(char *));
@@ -34,7 +31,7 @@ int main(int argc, char *argv[]) {
                     exit(2);
                 }
             }
-            words[count] = strdup(word);
+            words[count] = strdup(argv[i]);
             if (words[count] == NULL) {
                 exit(2);
             }

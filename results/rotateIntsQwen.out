@@ -1,0 +1,305 @@
+----------------
+Test Case 1
+Command Line Arguments:
+3 10 20 30 40 50
+
+Program Output:
+30 40 50 10 20
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+0 5 -1 7
+
+Program Output:
+5 -1 7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+10
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+4 1
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+1 1 2 3 4
+
+Program Output:
+4 1 2 3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+2 -5 -4 -3 -2 -1
+
+Program Output:
+-2 -1 -5 -4 -3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+7 9 8 7 6 5 4 3 2 1 0
+
+Program Output:
+6 5 4 3 2 1 0 9 8 7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+12 100
+
+Program Output:
+100
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+5 0 0 0 0 0 0
+
+Program Output:
+0 0 0 0 0 0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+1 999999999 -999999999
+
+Program Output:
+-999999999 999999999
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+100 1 2 3 4 5 6 7 8 9 10
+
+Program Output:
+1 2 3 4 5 6 7 8 9 10
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+3 -1
+
+Program Output:
+-1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+abc 1 2 3
+
+Program Output:
+Error: n must be a non-negative integer.
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 14
+Command Line Arguments:
+1 5 x 7
+
+Program Output:
+Error: all list elements must be valid integers.
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 15
+Command Line Arguments:
+9999999999999999999 1 2
+
+Program Output:
+Error: n must be a non-negative integer.
+
+Error Output:
+None.
+
+Exit Status:
+1
+
+----------------
+Test Case 16
+Command Line Arguments:
+2
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 17
+Command Line Arguments:
+4 -10 -20 -30 -40 -50
+
+Program Output:
+-20 -30 -40 -50 -10
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 18
+Command Line Arguments:
+0
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 19
+Command Line Arguments:
+3 42
+
+Program Output:
+42
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 20
+Command Line Arguments:
+6 3 3 3 3 3 3 3
+
+Program Output:
+3 3 3 3 3 3 3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 21
+Command Line Arguments:
+1 -1 -2 -3 -4 -5 -6 -7 -8 -9
+
+Program Output:
+-9 -1 -2 -3 -4 -5 -6 -7 -8
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 22
+Command Line Arguments:
+10 4 3 2 1 0 -1 -2 -3 -4
+
+Program Output:
+-4 4 3 2 1 0 -1 -2 -3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
