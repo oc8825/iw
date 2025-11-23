@@ -1,0 +1,265 @@
+----------------
+Test Case 1
+Command Line Arguments:
+0 1 0 2
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+4 2 0 3 2 5
+
+Program Output:
+9
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+1 1 1 1
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+5 4 1 2
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+0 0 0 0 0
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+0
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+10 0 2 0 10
+
+Program Output:
+28
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+2 1 0 1 2
+
+Program Output:
+4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+100 0 100
+
+Program Output:
+100
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+3 2 1 0 1 2 3
+
+Program Output:
+9
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+-1 0 1
+
+Program Output:
+
+Error Output:
+Error: invalid height
+
+
+Exit Status:
+1
+
+----------------
+Test Case 12
+Command Line Arguments:
+3 4.5 2
+
+Program Output:
+
+Error Output:
+Error: invalid height
+
+
+Exit Status:
+1
+
+----------------
+Test Case 13
+Command Line Arguments:
+a b
+
+Program Output:
+
+Error Output:
+Error: invalid height
+
+
+Exit Status:
+1
+
+----------------
+Test Case 14
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 15
+Command Line Arguments:
+000 000 000
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 16
+Command Line Arguments:
++1 +0 +2
+
+Program Output:
+1
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 17
+Command Line Arguments:
+7
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 18
+Command Line Arguments:
+0 2 0 2 0 2 0
+
+Program Output:
+4
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 19
+Command Line Arguments:
+4 3 2 1 0
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
