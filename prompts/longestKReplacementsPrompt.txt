@@ -1,0 +1,62 @@
+Please implement an entire C file that takes in the following command line arguments:
+
+-Exactly two arguments after the program name:
+
+A non-empty string s, consisting only of uppercase English letters A–Z.
+All characters must be uppercase letters; if any character fails this requirement, treat it as an unexpected error.
+
+A non-negative integer k, fitting in a 32-bit signed int.
+
+The program must compute the following:
+
+Problem Definition:
+
+Given a string s and integer k, you may choose up to k characters in the string and replace them with any uppercase English letter. After at most k replacements, determine the length of the longest substring that contains only one distinct character.
+
+You MUST implement the optimal O(n) sliding-window algorithm using:
+
+A frequency array of size 26.
+
+A sliding window with two pointers that only move forward.
+
+A variable tracking the highest character frequency in the current window.
+
+No brute force, no nested full rescans each window movement.
+
+The program must:
+
+Read the two command-line arguments s and k.
+
+Interpret k as an integer; if k is negative or not a valid integer, this is an unexpected error.
+
+Verify that s is non-empty and contains only A–Z. If not, this is an unexpected error.
+
+Compute the length of the longest valid substring as defined.
+
+Print the integer result followed by a newline.
+
+Print nothing else.
+
+Examples:
+
+Example 1:
+Input:
+XYYX 2
+Output:
+4
+
+Example 2:
+Input:
+AAABABB 1
+Output:
+5
+
+Error handling rules:
+
+-If fewer than two command line arguments are provided, print nothing and exit with returncode 0.
+-If more than two command line arguments are provided, this is an unexpected error: print nothing and exit with returncode 2.
+-If any unexpected error occurs (invalid characters, invalid integer parsing, negative k, empty s, etc.), print nothing to stderr, print nothing to stdout, and exit with returncode 2.
+-On success, print only the final integer and a newline, write nothing to stderr, and exit with returncode 0.
+
+Please write this code in C.
+Please write only the code itself, with no explanations, no markdown, and no surrounding text, as I want to copy it directly into a file and run it.

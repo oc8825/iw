@@ -1,0 +1,89 @@
+Write a complete C program that reads exactly one command-line argument (after the program name) — a string s containing only digit characters — and prints the number of ways to decode s using the mapping '1'->'A', '2'->'B', ..., '26'->'Z'. Your program must follow the precise rules below.
+
+Invocation rules:
+
+If the program is invoked with no command-line arguments (argc == 1), print nothing to stdout and exit with return code 0.
+
+If the program is invoked with any number of arguments other than exactly one after the program name (i.e., argc != 2 and argc != 1), the program must:
+
+Print exactly this single line to stderr:
+Error: expected 1 argument
+
+Exit immediately with return code 1.
+
+Print nothing else (no additional text on stdout or stderr).
+
+Input validation rules:
+
+The single argument s must be treated literally and may be of length 1..100 (you may assume test inputs respect the length constraint).
+
+s must consist exclusively of ASCII digits '0'..'9'. If s contains any non-digit character, the program must:
+
+Print exactly this single line to stderr:
+Error: invalid input
+
+Exit with return code 1.
+
+Print nothing else.
+
+Decoding rules:
+
+A valid decoding partitions s into groups where each group is either:
+
+a single digit '1'..'9' mapping to 'A'..'I', or
+
+a two-digit string '10'..'26' mapping to 'J'..'Z'.
+
+Leading zeros inside a group are invalid (for example "01" is invalid). The single character '0' is not a valid single-digit mapping and can only appear as part of '10' or '20'.
+
+Compute the number of distinct valid decodings of the entire string s. You may assume the result fits in a signed 32-bit integer.
+
+Output rules:
+
+On successful computation, print exactly one integer (the number of decodings) followed by a single newline to stdout, print nothing to stderr, and exit with return code 0.
+
+If no valid decoding exists, print 0 followed by a newline and exit 0.
+
+Unexpected failures:
+
+If any unexpected failure occurs (for example, an allocation error), print nothing to stdout or stderr and exit with return code 2.
+
+Examples (exact I/O):
+
+Example 1:
+Command-line argument:
+12
+Output (stdout):
+2
+Explanation: "12" can be decoded as "AB" (1,2) or "L" (12).
+
+Example 2:
+Command-line argument:
+01
+Output (stdout):
+0
+Explanation: "01" cannot be decoded because "01" has a leading zero and cannot be mapped.
+
+Example 3:
+Command-line argument:
+226
+Output (stdout):
+3
+Explanation: "226" → "BZ" (2,26), "VF" (22,6), "BBF" (2,2,6).
+
+Example 4 (invalid input):
+Command-line argument:
+1a
+stderr:
+Error: invalid input
+Exit code: 1
+
+Implementation constraints summary:
+
+Single C source file that uses argv to read the single input string.
+
+Use exact error messages and exit codes described above.
+
+Output must be formatted exactly as specified.
+
+No extra output, prompts, or debug text.

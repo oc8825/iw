@@ -1,0 +1,43 @@
+Please implement an entire C file that takes in the following command line arguments:
+-An unspecified number of integers
+
+Definition of an integer:
+An "integer" is any sequence of characters representing a valid base-10 integer that fits in a signed 32-bit int. The program must reject any argument that does not represent a valid integer. No other forms of input (floating point, hex prefixes, plus signs except leading '+', leading zeros, etc.) require special handling: they must be parsed using strtol and rejected if strtol fails or if the value does not fit in a signed 32-bit int. The program may assume no duplicate integers appear in the input.
+
+The command-line integers together represent a rotated sorted array:
+-The list was originally strictly increasing.
+-It was rotated k times, where 1 ≤ k ≤ n.
+-All elements are unique.
+
+The program must:
+-Read all command line arguments
+-Validate that each argument is a valid 32-bit signed integer
+-Store them in an array in the order provided
+-Find the minimum element of this rotated sorted array using an O(log n) algorithm (a binary-search-based approach)
+-Print exactly the minimum element followed by a newline
+
+Examples:
+Input:
+3 4 5 6 1 2
+Output:
+1
+
+Input:
+7 8 9 10 2 3 4 5 6
+Output:
+2
+
+Error handling:
+-If no command line arguments are provided, print nothing and exit with returncode 0.
+-If any command line argument is not a valid 32-bit signed integer as defined above, print exactly:
+INVALID INTEGER
+and exit with returncode 1. Do not print anything else.
+-If any unexpected error occurs, do not print anything to stderr, and simply exit with returncode 2.
+-On success, print only the minimum element and a newline, no stderr, and exit with returncode 0.
+
+Constraints:
+-The solution MUST use an O(log n) method to find the minimum.
+-The program MUST NOT use linear scanning to locate the minimum except for trivial constant-time checks.
+-The program must be written entirely in C, with no explanations, no comments, no markdown fences, and no extra text.
+
+Please write only the code itself, as I want to be able to copy the results directly into a file and run it.
