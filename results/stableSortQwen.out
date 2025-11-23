@@ -1,0 +1,335 @@
+----------------
+Test Case 1
+Command Line Arguments:
+apple banana pear fig
+
+Program Output:
+fig pear apple banana
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+z aa bb c a
+
+Program Output:
+a c z aa bb
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+one two three four five six seven
+
+Program Output:
+one six two five four seven three
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+cat dog ant bee eel
+
+Program Output:
+ant bee cat dog eel
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+mix3d words 42with numbers
+
+Program Output:
+mix3d words 42with numbers
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+a aa aaa aaaa aaaaa
+
+Program Output:
+a aa aaa aaaa aaaaa
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+x y z
+
+Program Output:
+x y z
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+hello HELLO HeLLO
+
+Program Output:
+HELLO HeLLO hello
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+
+
+Program Output:
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+""
+
+Program Output:
+""
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+''
+
+Program Output:
+''
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+ABC abc Abc aBC
+
+Program Output:
+ABC Abc aBC abc
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+short longest mid tiny tin
+
+Program Output:
+mid tin tiny short longest
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+repeat repeat repeat
+
+Program Output:
+repeat repeat repeat
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 15
+Command Line Arguments:
+word1 word2 word10 word3
+
+Program Output:
+word1 word2 word3 word10
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 16
+Command Line Arguments:
+same same same same
+
+Program Output:
+same same same same
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 17
+Command Line Arguments:
+_underscore __double ___triple
+
+Program Output:
+__double ___triple _underscore
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 18
+Command Line Arguments:
+A b C d E f G h
+
+Program Output:
+A C E G b d f h
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 19
+Command Line Arguments:
+c b a
+
+Program Output:
+a b c
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 20
+Command Line Arguments:
+zzz yyy xxx www
+
+Program Output:
+www xxx yyy zzz
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 21
+Command Line Arguments:
+hello1 hello2 hello10 hello3
+
+Program Output:
+hello1 hello2 hello3 hello10
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 22
+Command Line Arguments:
+sort THESE words PLEASE
+
+Program Output:
+sort THESE words PLEASE
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 23
+Command Line Arguments:
+zzz zZa zaZ Zzz
+
+Program Output:
+Zzz zZa zaZ zzz
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 24
+Command Line Arguments:
+aaa aab aba baa aaa aab
+
+Program Output:
+aaa aaa aab aab aba baa
+
+Error Output:
+None.
+
+Exit Status:
+0
+

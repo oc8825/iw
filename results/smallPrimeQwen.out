@@ -1,0 +1,546 @@
+----------------
+Test Case 1
+Command Line Arguments:
+5
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 2
+Command Line Arguments:
+2
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 3
+Command Line Arguments:
+3
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 4
+Command Line Arguments:
+4
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 5
+Command Line Arguments:
+6
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 6
+Command Line Arguments:
+7
+
+Program Output:
+7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 7
+Command Line Arguments:
+8
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 8
+Command Line Arguments:
+9
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 9
+Command Line Arguments:
+10
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 10
+Command Line Arguments:
+49
+
+Program Output:
+7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 11
+Command Line Arguments:
+77
+
+Program Output:
+7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 12
+Command Line Arguments:
+121
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 13
+Command Line Arguments:
+143
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 14
+Command Line Arguments:
+10000000000000000000000000000003
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 15
+Command Line Arguments:
+10000000000000000000000000000005
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 16
+Command Line Arguments:
+00000000000000000000000000000007
+
+Program Output:
+7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 17
+Command Line Arguments:
+987654321987654321987654321
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 18
+Command Line Arguments:
+111111111111111111111111111
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 19
+Command Line Arguments:
+222222222222222222222222222
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 20
+Command Line Arguments:
+31415926535897932384626433832795
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 21
+Command Line Arguments:
+27
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 22
+Command Line Arguments:
+25
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 23
+Command Line Arguments:
+14
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 24
+Command Line Arguments:
+21
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 25
+Command Line Arguments:
+33
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 26
+Command Line Arguments:
+55
+
+Program Output:
+5
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 27
+Command Line Arguments:
+77
+
+Program Output:
+7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 28
+Command Line Arguments:
+91
+
+Program Output:
+7
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 29
+Command Line Arguments:
+99999999999999999999999999999998
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 30
+Command Line Arguments:
+99999999999999999999999999999999
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 31
+Command Line Arguments:
+12345678901234567890
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 32
+Command Line Arguments:
+0000000123456
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 33
+Command Line Arguments:
+0000000000000
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 34
+Command Line Arguments:
+444444444444444444444444444444444444
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 35
+Command Line Arguments:
+7000000000000000000000000000000
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 36
+Command Line Arguments:
+570
+
+Program Output:
+2
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 37
+Command Line Arguments:
+357
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 38
+Command Line Arguments:
+99991
+
+Program Output:
+0
+
+Error Output:
+None.
+
+Exit Status:
+0
+
+----------------
+Test Case 39
+Command Line Arguments:
+900000000000000000000003
+
+Program Output:
+3
+
+Error Output:
+None.
+
+Exit Status:
+0
+

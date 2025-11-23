@@ -38,40 +38,41 @@ int main(int argc, char *argv[]) {
     const char *text = argv[3];
 
     size_t wordLen = strlen(wordToReplace);
-    size_t replaceLen = strlen(replacementWord);
+    size_t replLen = strlen(replacementWord);
     size_t textLen = strlen(text);
 
-    char *result = malloc(textLen * 2 + 1); // Allocate enough space for worst case
+    char *result = malloc(textLen * 2 + 1); // Allocate enough space
     if (result == NULL) {
         return 2;
     }
 
-    char *resultPos = result;
-    const char *textPos = text;
+    char *resultPtr = result;
+    const char *textPtr = text;
 
-    while (*textPos) {
-        if (strncmp(textPos, wordToReplace, wordLen) == 0) {
-            // Check if the match is a whole word
-            if ((textPos == text || !isalnum((unsigned char)textPos[-1])) &&
-                (textPos[wordLen] == '\0' || !isalnum((unsigned char)textPos[wordLen]))) {
-                strcpy(resultPos, replacementWord);
-                resultPos += replaceLen;
-                textPos += wordLen;
+    while (*textPtr) {
+        if (strncmp(textPtr, wordToReplace, wordLen) == 0) {
+            // Check if it's a whole word
+            if ((textPtr == text || !isalnum((unsigned char)textPtr[-1])) &&
+                (textPtr[wordLen] == '\0' || !isalnum((unsigned char)textPtr[wordLen]))) {
+                strcpy(resultPtr, replacementWord);
+                resultPtr += replLen;
+                textPtr += wordLen;
                 continue;
             }
         }
-        *resultPos++ = *textPos++;
+        *resultPtr++ = *textPtr++;
     }
-    *resultPos = '\0';
+    *resultPtr = '\0';
 
     printf("%s\n", result);
+
     free(result);
     return 0;
 }
 But it doesn't compile. The compiler gave these errors:
 solutions/Replace.C: In function 'int main(int, char**)':
 solutions/Replace.C:20:26: error: invalid conversion from 'void*' to 'char*' [-fpermissive]
-   20 |     char *result = malloc(textLen * 2 + 1); // Allocate enough space for worst case
+   20 |     char *result = malloc(textLen * 2 + 1); // Allocate enough space
       |                    ~~~~~~^~~~~~~~~~~~~~~~~
       |                          |
       |                          void*

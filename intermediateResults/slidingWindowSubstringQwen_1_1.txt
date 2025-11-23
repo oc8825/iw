@@ -1,0 +1,113 @@
+I gave you this prompt:
+Please implement an entire C file that takes in the following command line arguments:
+
+An unspecified number of non-empty strings.
+
+Definition of a “string” for this program:
+A string is any non-empty sequence of bytes that does not contain whitespace. All characters are permitted, including punctuation, digits, braces, percent signs, symbols, sequences such as "<<>>", "[[]]", "===", and so on. The program must treat each argument literally, without interpreting any characters specially. The empty string (length zero) is not allowed; if an empty string appears, it counts as invalid input as described below.
+
+Your program must:
+
+Interpret the first command line argument as the “pattern” string.
+
+Interpret all subsequent command line arguments as the “haystack” string, but joined together with no separators. That is, if the arguments are:
+pattern H1 H2 H3 ...
+then the haystack is the concatenation of H1 followed immediately by H2 followed immediately by H3, with no space inserted.
+
+Perform a substring search for the pattern inside the concatenated haystack.
+
+Implement this substring search using raw pointer arithmetic only. You must not call any library string-handling functions such as strlen, strcmp, memcmp, strstr, strncmp, memcpy, or anything similar. You must manually compute lengths and compare bytes using only pointers.
+
+You must implement a sliding-window / two-pointer technique: one pointer scans through the haystack, and another scans through the pattern, advancing and retreating as necessary. No library abstractions, no arrays indexed by integers except for reading from argv itself.
+
+If the pattern occurs at least once, print the zero-based index of the first byte at which the pattern begins in the haystack, followed by a newline. If the pattern does not occur, print -1 followed by a newline.
+
+Example:
+Command line input:
+abc zzabcyy
+pattern = "abc"
+haystack = "zzabcyy"
+The first occurrence of "abc" starts at index 2.
+Output:
+2
+
+Another example:
+aba zzababaqq
+pattern = "aba"
+haystack = "zzababaqq"
+The first occurrence of "aba" starts at index 2.
+Output:
+2
+
+Error handling:
+
+If no arguments are provided, print nothing and exit with return code 0.
+
+If exactly one argument is provided (a pattern but no haystack), then:
+
+If the pattern is empty (which is impossible under the rules), treat as invalid input.
+
+Otherwise, the haystack is empty, so the pattern cannot appear. Print -1 and exit with return code 0.
+
+If any argument is an empty string, print the following exact message to stderr:
+Error: invalid string
+Then exit with return code 1, printing nothing else.
+
+If any unexpected error occurs (allocation failure, pointer error, etc.), print nothing to stderr and exit with return code 2.
+
+On success, print nothing to stderr and exit with return code 0.
+
+Please write the code in C. Please write only the code itself, no explanations, no comments, no markdown fences, and no additional text. I want to copy/paste the resulting file directly.
+
+And you produced this code:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[]) {
+    if (argc < 2) return 0;
+    char *pattern = argv[1];
+    if (*pattern == '\0') {
+        fprintf(stderr, "Error: invalid string\n");
+        return 1;
+    }
+    char *haystack = argv[2];
+    for (int i = 2; i < argc; i++) {
+        if (*argv[i] == '\0') {
+            fprintf(stderr, "Error: invalid string\n");
+            return 1;
+        }
+        if (i > 2) haystack += strlen(argv[i - 1]);
+        for (int j = 0; argv[i][j]; j++) {
+            haystack[j] = argv[i][j];
+        }
+    }
+    int pattern_len = 0;
+    while (pattern[pattern_len]) pattern_len++;
+    int haystack_len = 0;
+    while (haystack[haystack_len]) haystack_len++;
+    int i = 0;
+    while (i <= haystack_len - pattern_len) {
+        int j = 0;
+        while (j < pattern_len && haystack[i + j] == pattern[j]) j++;
+        if (j == pattern_len) {
+            printf("%d\n", i);
+            return 0;
+        }
+        i++;
+    }
+    printf("-1\n");
+    return 0;
+}
+But it doesn't compile. The compiler gave these errors:
+solutions/slidingWindowSubstring.C: In function 'int main(int, char**)':
+solutions/slidingWindowSubstring.C:17:32: error: 'strlen' was not declared in this scope
+   17 |         if (i > 2) haystack += strlen(argv[i - 1]);
+      |                                ^~~~~~
+solutions/slidingWindowSubstring.C:3:1: note: 'strlen' is defined in header '<cstring>'; this is probably fixable by adding '#include <cstring>'
+    2 | #include <stdlib.h>
+  +++ |+#include <cstring>
+    3 | 
+
+
+Please fix the code so it compiles successfully and follows the same prompt given above. Return only valid C code - no explanations or markdown fences. Start your response directly with code.
