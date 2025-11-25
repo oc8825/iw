@@ -188,7 +188,7 @@ Command Line Arguments:
 Program Output:
 
 Error Output:
-Error: non-integer argument
+Error: negative integer argument
 
 
 Exit Status:
@@ -202,7 +202,7 @@ Command Line Arguments:
 Program Output:
 
 Error Output:
-Error: non-integer argument
+Error: negative integer argument
 
 
 Exit Status:
