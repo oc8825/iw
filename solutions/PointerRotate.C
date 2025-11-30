@@ -12,25 +12,26 @@ int main(int argc, char *argv[]) {
     }
 
     for (int i = 1; i < argc; i++) {
-        *(words + i - 1) = *(argv + i);
+        words[i - 1] = argv[i];
     }
 
     if (argc > 2) {
-        char *first = *words;
-        char **temp = words;
+        char **first = words;
+        char **last = words + argc - 2;
+        char *temp = *first;
 
-        while (temp < words + argc - 2) {
-            *temp = *(temp + 1);
-            temp++;
+        while (first < last) {
+            *first = *(first + 1);
+            first++;
         }
-        *temp = first;
+        *last = temp;
     }
 
     for (int i = 0; i < argc - 1; i++) {
-        printf("%s", *(words + i));
-        if (i < argc - 2) {
+        if (i > 0) {
             printf(" ");
         }
+        printf("%s", words[i]);
     }
     printf("\n");
 

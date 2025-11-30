@@ -55,14 +55,17 @@ int main(int argc, char *argv[]) {
         words[i - 1] = argv[i];
     }
 
-    char **first = words;
-    char **last = words + argc - 2;
-    char **temp = words;
+    if (argc > 2) {
+        char **first = words;
+        char **last = words + argc - 2;
+        char **temp = words + argc - 2;
 
-    *last = *first;
-    while (temp < last) {
-        *temp = *(temp + 1);
-        temp++;
+        *temp = *first;
+        while (first < last) {
+            *first = *(first + 1);
+            first++;
+        }
+        *last = *temp;
     }
 
     for (int i = 0; i < argc - 1; i++) {
