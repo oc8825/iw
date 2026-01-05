@@ -31,27 +31,26 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    long long sum = 0;
-
+    int sum = 0;
     for (int i = 1; i < argc; i++) {
         char *endptr;
         errno = 0;
 
-        long val = strtol(argv[i], &endptr, 10);
+        long num = strtol(argv[i], &endptr, 10);
 
-        if (errno != 0 || *endptr != '\0' || endptr == argv[i]) {
+        if (errno != 0 || *endptr != '\0' || endptr == argv[i] || num < INT_MIN || num > INT_MAX) {
             fprintf(stderr, "Error: command line argument not an integer\n");
             return 1;
         }
 
-        if (sum > LLONG_MAX - val || sum < LLONG_MIN - val) {
+        if (sum > INT_MAX - num || sum < INT_MIN - num) {
             return 2;
         }
 
-        sum += val;
+        sum += num;
     }
 
-    printf("%lld\n", sum);
+    printf("%d\n", sum);
     return 0;
 }
 
@@ -67,26 +66,34 @@ int main(int argc, char *argv[]) {
         printf("0\n");
         return 0;
     }
-
-    int sum = 0;
+    
+    long long sum = 0;
+    
     for (int i = 1; i < argc; i++) {
         char *endptr;
         errno = 0;
-        long num = strtol(argv[i], &endptr, 10);
-
-        if (errno != 0 || *endptr != '\0' || endptr == argv[i] || num < INT_MIN || num > INT_MAX) {
+        
+        long val = strtol(argv[i], &endptr, 10);
+        
+        if (errno != 0 || *endptr != '\0' || endptr == argv[i]) {
             fprintf(stderr, "Error: command line argument not an integer\n");
             return 1;
         }
-
-        if ((num > 0 && sum > INT_MAX - num) || (num < 0 && sum < INT_MIN - num)) {
+        
+        if (val < INT_MIN || val > INT_MAX) {
+            fprintf(stderr, "Error: command line argument not an integer\n");
+            return 1;
+        }
+        
+        long long new_sum = sum + val;
+        if ((val > 0 && new_sum < sum) || (val < 0 && new_sum > sum)) {
             return 2;
         }
-
-        sum += (int)num;
+        
+        sum = new_sum;
     }
-
-    printf("%d\n", sum);
+    
+    printf("%lld\n", sum);
     return 0;
 }
 
@@ -113,6 +120,9 @@ With command line arguments 1 a 3, get differing output in:
 Error Output
 Exit Status
 With command line arguments 5, get differing output in:
+Program Output
+Exit Status
+With command line arguments 1000000000 2000000000, get differing output in:
 Program Output
 Exit Status
 With command line arguments -2147483648 0 2147483647, get differing output in:

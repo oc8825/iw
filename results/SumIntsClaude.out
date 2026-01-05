@@ -172,12 +172,13 @@ Command Line Arguments:
 1000000000 2000000000
 
 Program Output:
+-1294967296
 
 Error Output:
 None.
 
 Exit Status:
-2
+0
 
 ----------------
 Test Case 14

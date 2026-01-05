@@ -14,6 +14,7 @@ int main(int argc, char *argv[]) {
     for (int i = 1; i < argc; i++) {
         char *endptr;
         errno = 0;
+
         long num = strtol(argv[i], &endptr, 10);
 
         if (errno != 0 || *endptr != '\0' || endptr == argv[i] || num < INT_MIN || num > INT_MAX) {
@@ -21,11 +22,7 @@ int main(int argc, char *argv[]) {
             return 1;
         }
 
-        if ((num > 0 && sum > INT_MAX - num) || (num < 0 && sum < INT_MIN - num)) {
-            return 2;
-        }
-
-        sum += (int)num;
+        sum += num;
     }
 
     printf("%d\n", sum);

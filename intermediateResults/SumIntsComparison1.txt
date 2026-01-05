@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
         char *endptr;
         long num = strtol(argv[i], &endptr, 10);
 
-        if (errno == ERANGE || *endptr != '\0' || num < INT_MIN || num > INT_MAX) {
+        if (endptr == argv[i] || *endptr != '\0' || num < INT_MIN || num > INT_MAX) {
             fprintf(stderr, "Error: command line argument not an integer\n");
             return 1;
         }
@@ -73,11 +73,11 @@ int main(int argc, char *argv[]) {
             return 1;
         }
         
-        if (sum > LLONG_MAX - val || sum < LLONG_MIN - val) {
+        sum += val;
+        
+        if (sum > INT_MAX || sum < INT_MIN) {
             return 2;
         }
-        
-        sum += val;
     }
     
     printf("%lld\n", sum);
@@ -85,34 +85,7 @@ int main(int argc, char *argv[]) {
 }
 
 However, after running these two solutions, the output differed in these sections: 
-With command line arguments 1 2 3 4 5, get differing output in:
-Program Output
-Exit Status
-With command line arguments 10 -5 20 -10, get differing output in:
-Program Output
-Exit Status
-With command line arguments -1 -2 -3, get differing output in:
-Program Output
-Exit Status
-With command line arguments +5 +10 +15, get differing output in:
-Program Output
-Exit Status
-With command line arguments 999999 1, get differing output in:
-Program Output
-Exit Status
-With command line arguments -1000 500 250 250, get differing output in:
-Program Output
-Exit Status
-With command line arguments 1 a 3, get differing output in:
-Exit Status
-Error Output
-With command line arguments 5, get differing output in:
-Program Output
-Exit Status
 With command line arguments 1000000000 2000000000, get differing output in:
-Program Output
-Exit Status
-With command line arguments -2147483648 0 2147483647, get differing output in:
 Program Output
 Exit Status
 
