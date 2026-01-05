@@ -24,13 +24,14 @@ void heapify_up(int index) {
 }
 
 void heapify_down(int index) {
+    int largest = index;
     int left = 2 * index + 1;
     int right = 2 * index + 2;
-    int largest = index;
     
     if (left < heap_size && heap[left] > heap[largest]) {
         largest = left;
     }
+    
     if (right < heap_size && heap[right] > heap[largest]) {
         largest = right;
     }
@@ -57,7 +58,9 @@ int pop() {
     int max = heap[0];
     heap[0] = heap[heap_size - 1];
     heap_size--;
-    heapify_down(0);
+    if (heap_size > 0) {
+        heapify_down(0);
+    }
     return max;
 }
 
@@ -70,9 +73,8 @@ int is_valid_integer(char *str) {
         if (str[1] == '\0') return 0;
     }
     
-    while (str[i] != '\0') {
+    for (; str[i] != '\0'; i++) {
         if (!isdigit(str[i])) return 0;
-        i++;
     }
     
     return 1;
@@ -99,9 +101,10 @@ int main(int argc, char *argv[]) {
         push((int)val);
     }
     
-    for (int i = 0; i < argc - 1; i++) {
+    int count = heap_size;
+    for (int i = 0; i < count; i++) {
         printf("%d", pop());
-        if (i < argc - 2) {
+        if (i < count - 1) {
             printf(" ");
         }
     }

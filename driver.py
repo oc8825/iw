@@ -9,7 +9,7 @@ import os
 # set up connection to Qwen LLM
 qwen_model = OpenAIModel(
   client_args={
-    "api_key": "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",
+    "api_key": os.environ["API_KEY"],
     "base_url": "https://openrouter.ai/api/v1"
   },
   model_id="qwen/qwen-2.5-72b-instruct",
@@ -22,7 +22,7 @@ qwen_model = OpenAIModel(
 # set up connection to Claude LLM
 claude_model = OpenAIModel(
   client_args={
-    "api_key": "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",
+    "api_key": os.environ["API_KEY"],
     "base_url": "https://openrouter.ai/api/v1"
   },
   model_id="anthropic/claude-sonnet-4",
